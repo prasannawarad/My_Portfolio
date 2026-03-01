@@ -1,0 +1,63 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 3091 >>
+stream
+BT /F2 16 Tf 1 0 0 1 46.00 758.00 Tm (Portfolio App - One-Page Repo Summary) Tj ET
+BT /F2 12 Tf 1 0 0 1 46.00 736.00 Tm (What it is) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 46.00 722.00 Tm (A single-page application portfolio built with React, React Router, SCSS, and Vite. It presents) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 46.00 709.00 Tm (professional background, projects, resume access, and contact details across five client-side routes.) Tj ET
+BT /F2 12 Tf 1 0 0 1 46.00 690.00 Tm (Who it is for) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 46.00 676.00 Tm (Primary persona: recruiters, hiring managers, collaborators, and peers evaluating Prasanna Warad for) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 46.00 663.00 Tm (data engineering, analytics, and BI opportunities.) Tj ET
+BT /F2 12 Tf 1 0 0 1 46.00 644.00 Tm (What it does) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 630.00 Tm (- Provides five routed pages: Home, About, Projects, Resume, and Contact.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 617.00 Tm (- Implements persistent navigation with active route highlighting and a mobile hamburger menu.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 604.00 Tm (- Displays curated project cards from in-code data arrays with technology tags and outbound links.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 591.00 Tm (- Embeds the resume in an iframe and supports direct PDF download from `/resume.pdf`.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 578.00 Tm (- Shows direct contact channels \(email, LinkedIn, GitHub, location\) plus a message form UI.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 565.00 Tm (- Supports SPA deployment routing via Netlify redirects and GitHub Pages 404 redirect script.) Tj ET
+BT /F2 12 Tf 1 0 0 1 46.00 546.00 Tm (How it works \(repo-evidence architecture\)) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 532.00 Tm (- Entry/runtime: `src/main.jsx` mounts `<App />` in `StrictMode`.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 519.00 Tm (- Composition: `src/App.jsx` wraps `Navbar` + `AppRoutes` in `BrowserRouter`.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 506.00 Tm (- Routing/data flow: URL path -> React Router \(`src/routes/AppRoutes.jsx`\) -> page component) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 493.00 Tm (render.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 480.00 Tm (- Content/data source: Mostly static JSX and in-file arrays \(for example, projects in) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 467.00 Tm (`Projects.jsx`\) plus local assets \(`src/assets`, `public/resume.pdf`\).) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 454.00 Tm (- Styling layer: SCSS modules per component/page under `src/**/Scss` and `src/App.scss`.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 441.00 Tm (- Services/APIs: Not found in repo.) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 428.00 Tm (- Persistent backend/database/auth layer: Not found in repo.) Tj ET
+BT /F2 12 Tf 1 0 0 1 46.00 409.00 Tm (How to run \(minimal\)) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 395.00 Tm (1. Install dependencies: `npm install`) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 382.00 Tm (2. Start dev server: `npm run dev`) Tj ET
+BT /F1 10.5 Tf 1 0 0 1 50.00 369.00 Tm (3. Open the local Vite URL shown in terminal \(typically `http://localhost:5173`\).) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000003393 00000 n 
+0000003463 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3538
+%%EOF

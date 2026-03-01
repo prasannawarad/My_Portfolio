@@ -1,0 +1,260 @@
+:root {
+  --bg-page: #f8fafc;
+  --bg-alt: #eef2f7;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-primary: #2563eb;
+  --accent-secondary: #0ea5a4;
+  --accent-tertiary: #6366f1;
+  --border-color: #d9e2ef;
+  --focus-color: rgba(37, 99, 235, 0.45);
+  --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --card-shadow-hover: 0 14px 32px rgba(15, 23, 42, 0.1);
+  --radius-card: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+main {
+  padding-top: 84px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p,
+li,
+span,
+label,
+input,
+textarea,
+button,
+a {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+  color: var(--text-primary);
+}
+
+.container {
+  width: min(1200px, 100% - 3rem);
+  margin: 0 auto;
+}
+
+.section-shell {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+.section-shell + .section-shell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0),
+    rgba(37, 99, 235, 0.55),
+    rgba(37, 99, 235, 0)
+  );
+}
+
+.alt-section {
+  background: var(--bg-alt);
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  color: var(--accent-primary);
+  font-size: clamp(1.8rem, 2.8vw, 2rem);
+  margin-bottom: 1.5rem;
+}
+
+.surface-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 0.8rem 1.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease,
+    color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.25);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  background: var(--accent-primary);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  z-index: 2000;
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.45s ease both;
+}
+
+@media (max-width: 900px) {
+  .section-shell {
+    padding-top: 96px;
+    padding-bottom: 72px;
+  }
+
+  p,
+  li,
+  span,
+  label,
+  input,
+  textarea,
+  button,
+  a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 78px;
+  }
+
+  .container {
+    width: min(1200px, 100% - 2rem);
+  }
+
+  .section-shell {
+    padding-top: 80px;
+    padding-bottom: 64px;
+  }
+}
