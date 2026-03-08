@@ -20,7 +20,7 @@ function Footer() {
         </div>
       ) : null}
       <p className="font-mono text-sm text-text-muted">
-        © 2024 Prasanna Kailash Warad. Built with <span className="text-primary">Tailwind</span>{' '}
+        © {new Date().getFullYear()} Prasanna Kailash Warad. Built with <span className="text-primary">Tailwind</span>{' '}
         &amp; <span className="text-primary">Passion</span>. <br className="md:hidden" />
         <span className="hidden md:inline"> | </span>
         System Status: <span className="text-green-500">Normal</span>

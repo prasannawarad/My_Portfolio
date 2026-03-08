@@ -12,16 +12,24 @@ const socialLinks = [
     id: 'social-1',
     icon: 'work',
     label: 'linkedin.com/in/prasannawarad',
-    href: 'http://www.linkedin.com/in/prasannawarad',
+    href: 'https://www.linkedin.com/in/prasannawarad',
+    external: true,
   },
   {
     id: 'social-2',
+    icon: 'code',
+    label: 'github.com/prasannawarad',
+    href: 'https://github.com/prasannawarad',
+    external: true,
+  },
+  {
+    id: 'social-3',
     icon: 'mail',
     label: 'waradprasanna@gmail.com',
     href: 'mailto:waradprasanna@gmail.com',
   },
   {
-    id: 'social-3',
+    id: 'social-4',
     icon: 'call',
     label: '+1 469-766-7241',
     href: 'tel:+14697667241',
@@ -37,7 +45,7 @@ const statusItems = [
 
 function Contact() {
   const [formData, setFormData] = useState(initialState);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,8 +54,26 @@ function Contact() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    setFormData(initialState);
+    setStatus('sending');
+
+    const body = new URLSearchParams({
+      'form-name': 'contact',
+      ...formData,
+    });
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        setStatus('success');
+        setFormData(initialState);
+      })
+      .catch(() => {
+        setStatus('error');
+      });
   };
 
   return (
@@ -73,8 +99,8 @@ function Contact() {
         </p>
       </header>
 
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16" aria-label="Contact content">
-        <div className="lg:col-span-2">
+      <section className="grid grid-cols-1 lg:grid-cols-5 gap-8" aria-label="Contact content">
+        <div className="lg:col-span-3">
           <form
             className="flex flex-col gap-6 bg-surface-dark border border-surface-accent p-6 md:p-8 rounded shadow-2xl shadow-primary/5 relative overflow-hidden group"
             onSubmit={handleSubmit}
@@ -143,8 +169,14 @@ function Contact() {
 
             <div className="flex flex-wrap items-center justify-between mt-2 gap-4">
               <div className="flex items-center gap-2 text-xs text-text-muted font-mono">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span>Input stream ready</span>
+                <span className={`w-2 h-2 rounded-full animate-pulse ${
+                  status === 'sending' ? 'bg-yellow-500' :
+                  status === 'error' ? 'bg-red-500' : 'bg-green-500'
+                }`} />
+                <span>
+                  {status === 'sending' ? 'Transmitting payload...' :
+                   status === 'error' ? 'Transmission failed' : 'Input stream ready'}
+                </span>
               </div>
               <Button
                 type="submit"
@@ -152,25 +184,31 @@ function Contact() {
                 className="group relative h-12 px-8 active:scale-[0.98]"
                 ariaLabel="Send contact message"
                 icon={<span className="material-symbols-outlined">send</span>}
+                disabled={status === 'sending'}
               >
-                ./send_message.sh
+                {status === 'sending' ? 'sending...' : './send_message.sh'}
               </Button>
             </div>
 
-            {submitted ? (
+            {status === 'success' ? (
               <p className="font-mono text-xs text-green-400">
                 Message payload submitted successfully. Awaiting response...
+              </p>
+            ) : null}
+            {status === 'error' ? (
+              <p className="font-mono text-xs text-red-400">
+                Error: Connection refused. Please try again or use a direct link above.
               </p>
             ) : null}
           </form>
         </div>
 
-        <aside className="lg:col-span-1 flex flex-col gap-8" aria-label="Contact metadata">
-          <div className="p-6 border border-surface-accent bg-code-bg rounded relative">
-            <h2 className="text-white font-mono font-bold mb-4 flex items-center gap-2">
+        <aside className="lg:col-span-2 flex flex-col gap-6" aria-label="Contact metadata">
+          <div className="p-5 border border-surface-accent bg-code-bg rounded relative">
+            <h2 className="text-white font-mono font-bold mb-3 flex items-center gap-2 text-sm">
               <span className="text-primary">#</span> current_status
             </h2>
-            <div className="font-mono text-sm space-y-3 text-text-muted">
+            <div className="font-mono text-xs space-y-2 text-text-muted">
               {statusItems.map((item) => (
                 <p key={item.key}>
                   <span className="text-purple-400">{item.key}</span>:{' '}
@@ -180,16 +218,17 @@ function Contact() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <h2 className="text-white font-mono font-bold flex items-center gap-2 text-xl">
+          <div className="flex flex-col gap-3">
+            <h2 className="text-white font-mono font-bold flex items-center gap-2 text-sm">
               <span className="text-primary">&gt;</span> links --social
             </h2>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               {socialLinks.map((socialLink) => (
                 <a
                   key={socialLink.id}
-                  className="group flex items-center justify-between p-4 border border-surface-accent bg-surface-dark hover:border-primary/50 hover:bg-surface-accent/50 rounded transition-all"
+                  className="group flex items-center justify-between p-3 border border-surface-accent bg-surface-dark hover:border-primary/50 hover:bg-surface-accent/50 rounded transition-all"
                   href={socialLink.href}
+                  {...(socialLink.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   aria-label={`Open ${socialLink.label}`}
                 >
                   <div className="flex items-center gap-3">
@@ -199,7 +238,7 @@ function Contact() {
                     >
                       {socialLink.icon}
                     </span>
-                    <span className="text-text-muted group-hover:text-white font-mono text-sm transition-colors">
+                    <span className="text-text-muted group-hover:text-white font-mono text-xs transition-colors">
                       {socialLink.label}
                     </span>
                   </div>
