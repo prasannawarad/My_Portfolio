@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python / misc
+.venv/
+.Rhistory
+tmp/
+output/
+.DS_Store
