@@ -28,7 +28,16 @@ jobs:
           node-version: '20'
           cache: npm
       - run: npm ci
-      - run: npm run build
+      # Only pass VITE_CHAT_API_URL when the repo secret is set; an empty value would
+      # override committed .env.production and break the chat (Vite prefers process env).
+      - name: Build
+        run: |
+          if [ -n "${VITE_CHAT_API_URL_SECRET:-}" ]; then
+            export VITE_CHAT_API_URL="$VITE_CHAT_API_URL_SECRET"
+          fi
+          npm run build
+        env:
+          VITE_CHAT_API_URL_SECRET: ${{ secrets.VITE_CHAT_API_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

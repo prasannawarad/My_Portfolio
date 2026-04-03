@@ -33,4 +33,4 @@ worker/.wrangler/
 worker/.wrangler/
 .env
 .env.local
-.env.production
+# .env.production is committed (public Worker URL only). Use .env.local for private overrides.
