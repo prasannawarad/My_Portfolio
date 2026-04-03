@@ -62,25 +62,23 @@ function ChatPanel({ open, onClose }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] ${
-        open ? 'pointer-events-auto md:pointer-events-none' : 'pointer-events-none'
-      }`}
+      className={`fixed inset-0 z-[100] ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
       aria-hidden={!open}
     >
-      <div
-        className={`absolute inset-0 hidden bg-black/20 transition-opacity duration-300 md:block md:pointer-events-auto ${
-          open ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        onClick={onClose}
-      />
+      {open ? (
+        <div
+          className="absolute inset-0 hidden bg-black/20 transition-opacity duration-300 md:block"
+          onClick={onClose}
+        />
+      ) : null}
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label="Chat with portfolio assistant"
-        className={`absolute flex max-h-[100dvh] flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 transition-transform duration-300 ease-out md:pointer-events-auto z-[1]
+        className={`absolute flex max-h-[100dvh] flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 transition-transform duration-300 ease-out z-[1]
           inset-0 h-[100dvh] w-full rounded-none border md:inset-auto md:bottom-6 md:left-auto md:right-6 md:top-auto md:h-auto md:max-h-[600px] md:w-96 md:rounded-2xl md:border
-          ${open ? 'translate-x-0' : 'translate-x-full'}`}
+          ${open ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}
       >
         <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
           <div>
