@@ -92,10 +92,9 @@ function Contact() {
           ssh <span className="text-primary break-all">waradprasanna@gmail.com</span>
         </h1>
         <p className="text-text-muted font-mono max-w-2xl mt-2">
-          Establishing secure connection...
+          Let&apos;s connect — drop me a message and I&apos;ll get back to you within 24 hours.
           <br />
-          Please authenticate yourself by filling out the form below to initiate communication
-          protocol.
+          Open to full-time Data Engineering and ML roles.
         </p>
       </header>
 
@@ -192,7 +191,7 @@ function Contact() {
 
             {status === 'success' ? (
               <p className="font-mono text-xs text-green-400">
-                Message payload submitted successfully. Awaiting response...
+            Message sent successfully. I&apos;ll get back to you soon.
               </p>
             ) : null}
             {status === 'error' ? (

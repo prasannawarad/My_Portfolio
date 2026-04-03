@@ -1,7 +1,7 @@
-import profileImage from '../assets/profile-960.jpg';
+import profileImage from '../assets/profile-960.webp';
 import Button from '../components/Button';
 import TerminalWindow from '../components/TerminalWindow';
-import { bio, certifications, education, experience, systemStats } from '../data/experience';
+import { bio, certifications, education, experience, impactMetrics } from '../data/experience';
 
 function About() {
   return (
@@ -17,6 +17,13 @@ function About() {
 
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10" aria-label="About content">
         <div className="lg:col-span-7 flex flex-col gap-10">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl font-bold text-white tracking-tight">Data Engineer building scalable systems</h2>
+            <p className="text-text-muted text-base leading-relaxed max-w-2xl">
+              I specialize in analyzing vast datasets, optimizing enterprise pipelines, and building predictive ML models. With experience handling multi-million record datasets and improving database architectures, I focus on turning complex data challenges into robust, production-grade solutions.
+            </p>
+          </div>
+
           <TerminalWindow title="bio.json" bodyClassName="p-6 font-mono text-sm leading-relaxed overflow-x-auto terminal-scrollbar">
             <pre>
               <code className="language-json text-text-muted">
@@ -43,6 +50,40 @@ function About() {
               </code>
             </pre>
           </TerminalWindow>
+
+          {/* Quick Contact — scannable for non-technical visitors */}
+          <div className="rounded border border-surface-accent bg-surface-dark p-5 flex flex-col gap-3">
+            <h3 className="font-mono text-xs font-bold text-text-muted uppercase tracking-wider flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+              Quick Contact
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <a
+                href={`mailto:${bio.email}`}
+                className="group flex items-center gap-3 p-3 rounded bg-code-bg border border-surface-accent hover:border-primary/50 transition-colors"
+              >
+                <span className="material-symbols-outlined text-primary text-lg" aria-hidden="true">mail</span>
+                <span className="text-sm text-text-muted group-hover:text-white transition-colors truncate">{bio.email}</span>
+              </a>
+              <a
+                href={`tel:${bio.phone}`}
+                className="group flex items-center gap-3 p-3 rounded bg-code-bg border border-surface-accent hover:border-primary/50 transition-colors"
+              >
+                <span className="material-symbols-outlined text-primary text-lg" aria-hidden="true">call</span>
+                <span className="text-sm text-text-muted group-hover:text-white transition-colors">{bio.phone}</span>
+              </a>
+              <a
+                href={bio.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 p-3 rounded bg-code-bg border border-surface-accent hover:border-primary/50 transition-colors sm:col-span-2"
+              >
+                <span className="material-symbols-outlined text-primary text-lg" aria-hidden="true">work</span>
+                <span className="text-sm text-text-muted group-hover:text-white transition-colors">linkedin.com/in/prasannawarad</span>
+                <span className="material-symbols-outlined text-text-muted text-sm ml-auto opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+              </a>
+            </div>
+          </div>
 
           <TerminalWindow
             title="education.json"
@@ -134,10 +175,10 @@ function About() {
             <div className="relative h-64 w-64 rounded-full overflow-hidden border-4 border-surface-accent group-hover:border-primary transition-all duration-500 shadow-2xl">
               <img
                 alt="Profile portrait"
-                className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                className="h-full w-full object-cover grayscale-0 group-hover:sepia-[.2] transition-all duration-500"
                 src={profileImage}
               />
-              <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-transparent group-hover:bg-primary/20 mix-blend-overlay transition-all duration-500" />
             </div>
             <div className="absolute bottom-4 right-4 bg-background-dark border border-primary px-3 py-1 rounded shadow-lg">
               <span className="text-xs font-mono text-primary font-bold">Data Engineer</span>
@@ -146,21 +187,18 @@ function About() {
 
           <div className="rounded border border-surface-accent bg-surface-dark p-6">
             <h3 className="font-mono text-sm font-bold text-text-muted mb-4 border-b border-surface-accent pb-2">
-              SYSTEM_STATS
+              KEY_IMPACT_METRICS
             </h3>
-            <div className="space-y-4 font-mono text-sm">
-              {systemStats.map((stat) => (
-                <div key={stat.id}>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-white">{stat.label}</span>
-                    <span className={stat.warning ? 'text-red-400' : 'text-primary'}>{stat.value}%</span>
+            <div className="space-y-6 font-mono">
+              {impactMetrics.map((metric) => (
+                <div key={metric.id} className="flex flex-col gap-1">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-black text-primary">{metric.value}</span>
+                    <span className="text-white font-bold">{metric.label}</span>
                   </div>
-                  <div className="h-1.5 w-full bg-background-dark rounded-full overflow-hidden">
-                    <div
-                      className={`h-full ${stat.colorClass} ${stat.warning ? 'animate-pulse' : ''}`}
-                      style={{ width: `${Math.min(stat.value, 100)}%` }}
-                    />
-                  </div>
+                  <span className="text-text-muted text-sm border-l-2 border-surface-accent pl-2 mt-1">
+                    {metric.text}
+                  </span>
                 </div>
               ))}
             </div>

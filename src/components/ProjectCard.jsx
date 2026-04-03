@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
 function ProjectCard({ project, variant }) {
+  const isValidLink = (url) => typeof url === 'string' && url.trim() !== '' && url.trim() !== '#';
+
   if (variant === 'featured') {
     return (
       <article className="group relative flex flex-col gap-4 rounded border border-surface-accent bg-surface-dark p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
@@ -10,11 +12,13 @@ function ProjectCard({ project, variant }) {
               {project.icon}
             </span>
           </div>
-          <a href={project.projectUrl} aria-label={`Open ${project.title}`}>
-            <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
-              open_in_new
-            </span>
-          </a>
+          {isValidLink(project.projectUrl) ? (
+            <a href={project.projectUrl} aria-label={`Open ${project.title}`}>
+              <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
+                open_in_new
+              </span>
+            </a>
+          ) : null}
         </div>
         <div>
           <h3 className="font-mono text-xl font-bold text-white mb-2">{project.title}</h3>
@@ -44,16 +48,20 @@ function ProjectCard({ project, variant }) {
             </span>
           </div>
           <div className="flex gap-2">
-            <a href={project.codeUrl} aria-label={`View code for ${project.title}`}>
-              <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
-                code
-              </span>
-            </a>
-            <a href={project.liveUrl} aria-label={`Open live project ${project.title}`}>
-              <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
-                open_in_new
-              </span>
-            </a>
+            {isValidLink(project.codeUrl) ? (
+              <a href={project.codeUrl} aria-label={`View code for ${project.title}`}>
+                <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
+                  code
+                </span>
+              </a>
+            ) : null}
+            {isValidLink(project.liveUrl) ? (
+              <a href={project.liveUrl} aria-label={`Open live project ${project.title}`}>
+                <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
+                  open_in_new
+                </span>
+              </a>
+            ) : null}
           </div>
         </div>
         <h3 className="font-mono text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">

@@ -1,72 +1,138 @@
 export const bio = {
   name: 'Prasanna Kailash Warad',
-  role: 'Data Engineer | AI/ML Enthusiast',
+  /** Hero headline (two lines visually; reads as one sentence) */
+  heroLine1: 'Turning Data Into',
+  heroLine2: 'Product Decisions',
+  /** Plain-language line for recruiters / execs (non-terminal) */
+  elevatorPitch:
+    'I build pipelines, analytics, and production-facing data systems so teams can trust the numbers—from millions of transactions to leadership-ready dashboards.',
+  role: 'Software Engineer · Data Engineer · Data Analyst',
   location: 'Dallas, TX',
-  yearsActive: 2,
-  status: 'Open to opportunities',
+  yearsActive: 3,
+  primaryFocus: 'Data systems, analytics & backend APIs',
+  status: 'Open to full-time SWE, data engineering & analytics roles',
   summary:
-    'Data Engineer experienced in analyzing 2M+ transaction records, optimizing enterprise data pipelines, and building predictive ML systems. Passionate about scalable data architectures, distributed systems, and real-time analytics.',
-  interests: ['Distributed Systems', 'Real-time Analytics', 'Machine Learning', 'Cloud Data Platforms'],
+    'Hands-on with Python, SQL, Spark, Airflow, Tableau, and cloud data platforms. Background in retail-scale analytics and ML; MS ITM at UT Dallas (Dean’s Excellence Scholar).',
+  interests: ['Data Pipelines', 'Real-time Analytics', 'ML Systems', 'Cloud Data Platforms'],
   phone: '469-766-7241',
-  email: 'prasannakailash.warad@utdallas.edu',
+  email: 'waradprasanna@gmail.com',
   linkedin: 'http://www.linkedin.com/in/prasannawarad',
+  github: 'https://github.com/prasannawarad',
+  timezone: 'UTC-6 (CST)',
 };
 
 export const experience = [
   {
     id: 'exp-1',
-    duration: '2023-02 -- 2024-07',
-    label: '// Client: Dollar General',
-    role: 'Data Engineer @ HCLTech Ltd',
+    duration: '2025-10 — Present',
+    label: '// Cloud BC Labs',
+    role: 'Software Engineer Intern',
     points: [
-      'Analyzed 2M+ customer transaction records using Python and SQL.',
-      'Improved Oracle database throughput by 30% with indexing and PL/SQL tuning.',
-      'Reduced query latency by 28% via caching and partitioning strategies.',
-      'Built Scikit-learn and PyTorch model to predict AWS downtime, improving incident response by 25%.',
-      'Reduced downtime incidents by 15% through proactive monitoring insights.',
+      'Developed RESTful APIs in Node.js/Python to streamline data exchange; cut integration effort by 20%.',
+      'Restructured Python ETL pipelines with indexing, query refactors, and batch processing to boost throughput by 25%.',
+      'Analyzed application usage metrics to surface behavioral trends, reducing recurring bug reports by 15%.',
+    ],
+    current: true,
+    category: 'technical',
+  },
+  {
+    id: 'exp-2',
+    duration: '2025-01 — 2025-10',
+    label: '// The University of Texas at Dallas',
+    role: 'Student Services & Operations Manager',
+    points: [
+      'Coordinated student services and operations workflows across student-facing processes.',
+      'Improved communication and execution across teams through structured process tracking.',
     ],
     current: false,
+    category: 'leadership',
+  },
+  {
+    id: 'exp-3',
+    duration: '2025-01 — 2025-09',
+    label: '// UTD Infinity Lions Club',
+    role: 'Vice President',
+    points: [
+      'Led planning and execution for club activities with cross-functional student collaboration.',
+      'Supported event coordination, team alignment, and community engagement initiatives.',
+    ],
+    current: false,
+    category: 'leadership',
+  },
+  {
+    id: 'exp-4',
+    duration: '2023-02 — 2024-07',
+    label: '// Client: Dollar General (HCLTech)',
+    role: 'Data Engineer',
+    points: [
+      'Analyzed 2M+ retail transactions with Python and SQL to detect anomalies, improving reporting accuracy and model reliability.',
+      'Boosted Oracle throughput by 30% with indexing and PL/SQL tuning for 10,000+ daily transactions.',
+      'Built Spark + Airflow pipelines for reporting; reduced query latency by 28% through caching and partition pruning.',
+      'Designed Tableau dashboards for leadership, reducing manual reporting effort by 40%.',
+      'Developed scikit-learn/PyTorch model on AWS logs to forecast downtimes, cutting incident response time by 25%.',
+    ],
+    current: false,
+    category: 'technical',
   },
 ];
+
+export const technicalExperience = experience.filter((item) => item.category === 'technical');
+
+export const leadershipExperience = experience.filter((item) => item.category === 'leadership');
 
 export const education = [
   {
     id: 'edu-1',
     degree: 'Master of Science, Information Technology & Management',
     institution: 'The University of Texas at Dallas',
-    duration: '2024-2026',
-    gpa: '3.8/4.0',
+    duration: 'Aug 2024 - May 2026',
     distinction: 'Dean\'s Excellence Scholar',
+    extra: 'Graduate Certificate: Business Analytics & Data Mining',
+    gpa: 'N/A',
   },
   {
     id: 'edu-2',
     degree: 'Bachelor of Engineering, Electrical',
     institution: 'Savitribai Phule Pune University',
-    duration: '2018-2022',
-    gpa: '3.8/4.0',
+    duration: 'Aug 2018 - May 2022',
+    gpa: 'N/A',
   },
 ];
 
-export const systemStats = [
-  { id: 'stat-1', label: 'Data Engineering', value: 94, colorClass: 'bg-primary' },
-  { id: 'stat-2', label: 'SQL & Optimization', value: 92, colorClass: 'bg-primary' },
-  { id: 'stat-3', label: 'ML Systems', value: 88, colorClass: 'bg-primary' },
-  { id: 'stat-4', label: 'Cloud Analytics', value: 86, colorClass: 'bg-primary' },
+export const impactMetrics = [
+  { id: 'metric-1', label: 'DB Throughput', value: '+30%', text: 'Oracle indexing and PL/SQL tuning' },
+  { id: 'metric-2', label: 'Manual Reporting', value: '-40%', text: 'Tableau dashboard automation' },
+  { id: 'metric-3', label: 'Query Latency', value: '-28%', text: 'Caching and partition pruning' },
+  { id: 'metric-4', label: 'Incident Response', value: '-25%', text: 'Predictive downtime model (AWS logs)' },
 ];
 
 export const certifications = [
   {
     id: 'cert-1',
-    icon: 'school',
+    icon: 'workspace_premium',
     iconClass: 'text-yellow-500',
-    title: 'Dean\'s Excellence',
-    subtitle: 'Scholar',
+    title: 'Salesforce Certified',
+    subtitle: 'AI Associate',
   },
   {
     id: 'cert-2',
-    icon: 'workspace_premium',
+    icon: 'analytics',
     iconClass: 'text-blue-400',
-    title: 'MSITM GPA',
-    subtitle: '3.8 / 4.0',
+    title: 'KNIME Analytics',
+    subtitle: 'Basic Proficiency',
+  },
+  {
+    id: 'cert-3',
+    icon: 'health_and_safety',
+    iconClass: 'text-green-400',
+    title: 'Domain Knowledge',
+    subtitle: 'HIPAA',
+  },
+  {
+    id: 'cert-4',
+    icon: 'ac_unit',
+    iconClass: 'text-sky-400',
+    title: 'Snowflake',
+    subtitle: 'SnowPro Core Certification',
   },
 ];

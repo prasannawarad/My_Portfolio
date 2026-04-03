@@ -1,9 +1,23 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import Contact from './pages/Contact';
+
+const Resume = lazy(() => import('./pages/Resume'));
+
+function ResumeRoute() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-[50vh] w-full items-center justify-center bg-background-dark font-mono text-sm text-text-muted">
+          Loading resume…
+        </div>
+      }
+    >
+      <Resume />
+    </Suspense>
+  );
+}
 
 function App() {
   return (
@@ -11,9 +25,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/resume" element={<ResumeRoute />} />
         </Route>
       </Routes>
     </BrowserRouter>

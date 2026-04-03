@@ -2,7 +2,7 @@ export const stackColumns = [
   {
     id: 'stack-1',
     icon: 'schema',
-    title: 'Data_Engineering',
+    title: 'Data Engineering',
     items: [
       'ETL / ELT',
       'Airflow',
@@ -10,6 +10,7 @@ export const stackColumns = [
       'Hadoop',
       'Data Modeling',
       'Lambda / Kappa Architecture',
+      'dbt',
     ],
   },
   {
@@ -17,23 +18,23 @@ export const stackColumns = [
     icon: 'code',
     title: 'Programming',
     items: [
-      'Python (Pandas, NumPy, PySpark)',
-      'Scikit-learn',
-      'PyTorch',
+      'Python (Pandas, NumPy, PySpark, Matplotlib, Seaborn)',
+      'Scikit-learn / PyTorch',
       'SQL (Advanced)',
       'R',
+      'C#',
     ],
   },
   {
     id: 'stack-3',
     icon: 'database',
     title: 'Databases',
-    items: ['MySQL', 'Oracle', 'SQL Server', 'NoSQL'],
+    items: ['MySQL', 'PostgreSQL', 'SQL Server', 'Oracle', 'MongoDB', 'Snowflake'],
   },
   {
     id: 'stack-4',
     icon: 'cloud',
-    title: 'Cloud_Platforms',
+    title: 'Cloud Platforms',
     items: [
       'AWS (Lambda, Redshift)',
       'GCP (BigQuery)',
@@ -45,6 +46,23 @@ export const stackColumns = [
     id: 'stack-5',
     icon: 'monitoring',
     title: 'Analytics',
-    items: ['Tableau', 'Power BI', 'Feature Engineering', 'Time-Series Analysis'],
+    items: ['Tableau', 'Power BI', 'KNIME', 'Feature Engineering', 'Time-Series Analysis', 'Figma'],
+  },
+  {
+    id: 'stack-6',
+    icon: 'build',
+    title: 'Dev Tooling',
+    items: ['Docker', 'Git/GitHub', 'REST APIs', 'Node.js', 'CSS/React'],
+  },
+  {
+    id: 'stack-7',
+    icon: 'verified_user',
+    title: 'Certifications & Domain',
+    items: [
+      'SnowPro Associate: Platform',
+      'Graduate Certificate: Business Intelligence & Data Mining',
+      'Salesforce AI Associate',
+      'HIPAA Awareness',
+    ],
   },
 ];
