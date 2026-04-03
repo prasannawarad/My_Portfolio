@@ -1,0 +1,9 @@
+name = "portfolio-chatbot-api"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://prasannawarad.com"
+
+# Secrets (set via `wrangler secret put GROQ_API_KEY`):
+# GROQ_API_KEY — never in this file

@@ -1,7 +1,10 @@
+import { Suspense, lazy } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import HashScrollHandler from './HashScrollHandler';
 import Navbar from './Navbar';
 import Footer from './Footer';
+
+const ChatWidget = lazy(() => import('./chat/ChatWidget'));
 
 function Layout() {
   const { pathname } = useLocation();
@@ -15,6 +18,9 @@ function Layout() {
         <Outlet />
       </main>
       {showFooter ? <Footer /> : null}
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
     </div>
   );
 }
