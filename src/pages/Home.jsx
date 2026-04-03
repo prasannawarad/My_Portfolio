@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import profileImage from '../assets/profile-960.webp';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
@@ -91,20 +92,22 @@ function Home() {
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href="#projects"
+              <Link
+                to="/#projects"
+                replace
                 className="inline-flex h-11 min-h-[44px] w-full items-center justify-center gap-2 rounded border border-primary bg-primary/10 px-5 font-mono text-sm font-bold text-primary transition-all hover:bg-primary hover:text-background-dark sm:w-auto sm:px-6"
               >
                 <span className="material-symbols-outlined text-base">terminal</span>
                 ./view_projects.sh
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                to="/#contact"
+                replace
                 className="inline-flex h-11 min-h-[44px] w-full items-center justify-center gap-2 rounded border border-surface-accent bg-code-bg px-5 font-mono text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary sm:w-auto sm:px-6"
               >
                 <span className="material-symbols-outlined text-base">mail</span>
                 echo &quot;contact&quot;
-              </a>
+              </Link>
             </div>
 
             <div className="overflow-x-auto rounded border-l-2 border-primary bg-surface-dark p-4 sm:p-5">

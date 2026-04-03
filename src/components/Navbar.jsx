@@ -113,30 +113,16 @@ function Navbar() {
   }, [isResumePage]);
 
   const scrollToSection = (sectionId) => {
-    if (isResumePage) {
-      navigate(`/#${sectionId}`);
-      return;
-    }
-
-    const target = document.getElementById(sectionId);
-    if (!target) return;
-
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setActiveSection(sectionId);
     setIsOpen(false);
-
-    const newHash = `#${sectionId}`;
-    if (window.location.hash !== newHash) {
-      window.history.replaceState(null, '', newHash);
+    navigate(`/#${sectionId}`, { replace: !isResumePage });
+    if (!isResumePage) {
+      setActiveSection(sectionId);
     }
   };
 
   const homeClick = () => {
-    if (isResumePage) {
-      navigate('/');
-      return;
-    }
-    scrollToSection('home');
+    setIsOpen(false);
+    navigate('/#home', { replace: !isResumePage });
   };
 
   const linkClasses = (isActive, layout = 'inline') =>

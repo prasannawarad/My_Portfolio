@@ -10,6 +10,14 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Fallback when JS scroll runs; pairs with sticky header */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 6.5rem;
+    }
   }
 
   body {
