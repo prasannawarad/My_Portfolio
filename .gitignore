@@ -29,3 +29,8 @@ dist-ssr
 tmp/
 output/
 .DS_Store
+worker/.wrangler/
+worker/.wrangler/
+.env
+.env.local
+.env.production

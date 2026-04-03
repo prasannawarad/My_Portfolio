@@ -14,11 +14,15 @@ function parseSseBuffer(buffer) {
   const lines = buffer.split('\n');
   const rest = lines.pop() ?? '';
   const textParts = [];
+  let done = false;
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed.startsWith('data:')) continue;
     const data = trimmed.slice(5).trim();
-    if (data === '[DONE]') continue;
+    if (data === '[DONE]') {
+      done = true;
+      continue;
+    }
     try {
       const json = JSON.parse(data);
       const piece = json.choices?.[0]?.delta?.content;
@@ -27,7 +31,7 @@ function parseSseBuffer(buffer) {
       /* ignore malformed chunks */
     }
   }
-  return { rest, textParts };
+  return { rest, textParts, done };
 }
 
 export async function* streamChat(messages) {
@@ -71,9 +75,10 @@ export async function* streamChat(messages) {
         break;
       }
       buffer += decoder.decode(value, { stream: true });
-      const { rest, textParts } = parseSseBuffer(buffer);
+      const { rest, textParts, done: sseDone } = parseSseBuffer(buffer);
       buffer = rest;
       for (const t of textParts) yield t;
+      if (sseDone) break;
     }
   } finally {
     reader.releaseLock();

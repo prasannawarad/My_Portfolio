@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { streamChat } from '../utils/chatApi';
+import { sendChat, streamChat } from '../utils/chatApi';
 
 const MAX_MESSAGES = 50;
 /** Worker accepts at most 20 chat messages per request */
@@ -13,6 +13,7 @@ export function useChat() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const friendlyError = "Couldn't reach the assistant. Please try again in a moment.";
 
   useEffect(() => {
     if (!error) return undefined;
@@ -59,20 +60,39 @@ export function useChat() {
 
       try {
         let acc = '';
+        let gotAny = false;
         for await (const chunk of streamChat(apiMessages)) {
+          gotAny = true;
           acc += chunk;
           setMessages((prev) =>
             prev.map((m) => (m.id === asstId ? { ...m, content: acc } : m)),
           );
         }
-      } catch (e) {
-        const msg = e instanceof Error ? e.message : 'Something went wrong';
-        setError(msg);
-        setMessages((prev) => {
-          const last = prev[prev.length - 1];
-          if (last?.id === asstId && !last.content) return prev.slice(0, -1);
-          return prev;
-        });
+        if (!gotAny || !acc.trim()) throw new Error('Empty response');
+      } catch {
+        try {
+          const full = await sendChat(apiMessages);
+          if (full && full.trim()) {
+            setError(null);
+            setMessages((prev) =>
+              prev.map((m) => (m.id === asstId ? { ...m, content: full } : m)),
+            );
+          } else {
+            setError(friendlyError);
+            setMessages((prev) => {
+              const last = prev[prev.length - 1];
+              if (last?.id === asstId && !last.content) return prev.slice(0, -1);
+              return prev;
+            });
+          }
+        } catch {
+          setError(friendlyError);
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.id === asstId && !last.content) return prev.slice(0, -1);
+            return prev;
+          });
+        }
       } finally {
         setIsLoading(false);
       }

@@ -17,6 +17,15 @@ function ChatPanel({ open, onClose }) {
 
   useEffect(() => {
     if (!open) return undefined;
+    function onKeyDown(e) {
+      if (e.key === 'Escape') onClose();
+    }
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open, onClose]);
+
+  useEffect(() => {
+    if (!open) return undefined;
     const root = panelRef.current;
     if (!root) return undefined;
 
@@ -58,22 +67,19 @@ function ChatPanel({ open, onClose }) {
       }`}
       aria-hidden={!open}
     >
-      <button
-        type="button"
-        className={`absolute inset-0 bg-black/60 transition-opacity duration-300 md:hidden ${
-          open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+      <div
+        className={`absolute inset-0 hidden bg-black/20 transition-opacity duration-300 md:block md:pointer-events-auto ${
+          open ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
-        aria-label="Close chat"
         onClick={onClose}
-        tabIndex={-1}
       />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label="Chat with portfolio assistant"
-        className={`absolute flex max-h-full flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 transition-transform duration-300 ease-out md:pointer-events-auto
-          inset-0 h-full w-full rounded-none border md:inset-auto md:bottom-6 md:left-auto md:right-6 md:top-auto md:h-auto md:max-h-[600px] md:w-96 md:rounded-2xl md:border
+        className={`absolute flex max-h-[100dvh] flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 transition-transform duration-300 ease-out md:pointer-events-auto z-[1]
+          inset-0 h-[100dvh] w-full rounded-none border md:inset-auto md:bottom-6 md:left-auto md:right-6 md:top-auto md:h-auto md:max-h-[600px] md:w-96 md:rounded-2xl md:border
           ${open ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
@@ -87,7 +93,7 @@ function ChatPanel({ open, onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close chat"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-transparent text-text-muted transition-colors hover:border-surface-accent hover:text-text-main"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-transparent text-text-muted transition-colors hover:border-surface-accent hover:text-text-main md:h-9 md:w-9"
           >
             <svg
               className="h-5 w-5"
@@ -103,7 +109,7 @@ function ChatPanel({ open, onClose }) {
         </header>
 
         {error ? (
-          <div className="shrink-0 border-b border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-300">
+          <div className="shrink-0 border-b border-orange-500/30 bg-orange-500/10 px-3 py-2 text-xs text-orange-200">
             {error}
           </div>
         ) : null}
@@ -114,7 +120,9 @@ function ChatPanel({ open, onClose }) {
           aria-relevant="additions"
           className="terminal-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto px-3 py-3"
         >
-          <QuickActions onPick={sendMessage} visible={messages.length === 0} />
+          {messages.length === 0 ? (
+            <QuickActions onPick={sendMessage} visible />
+          ) : null}
           {messages.map((m, i) => (
             <ChatMessage
               key={m.id}
@@ -126,7 +134,9 @@ function ChatPanel({ open, onClose }) {
           <div ref={endRef} />
         </div>
 
-        <ChatInput onSend={sendMessage} disabled={isLoading} />
+        <div className="shrink-0 pb-[env(safe-area-inset-bottom)]">
+          <ChatInput onSend={sendMessage} disabled={isLoading} />
+        </div>
       </div>
     </div>
   );
