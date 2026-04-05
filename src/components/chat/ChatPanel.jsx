@@ -7,13 +7,14 @@ import QuickActions from './QuickActions';
 
 function ChatPanel({ open, onClose }) {
   const { messages, isLoading, error, sendMessage } = useChat();
+  const isWaitingForResponse = isLoading;
   const panelRef = useRef(null);
   const endRef = useRef(null);
   const lastIdx = messages.length - 1;
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, [messages, isLoading, open]);
+  }, [messages, isWaitingForResponse, open]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -75,17 +76,17 @@ function ChatPanel({ open, onClose }) {
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Chat with portfolio assistant"
-        className={`absolute flex max-h-[100dvh] flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 transition-transform duration-300 ease-out z-[1]
+        aria-label="Chat with Prasanna AI"
+        className={`absolute z-[1] flex max-h-[100dvh] origin-bottom-right flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 will-change-transform transition-[opacity,transform]
           inset-0 h-[100dvh] w-full rounded-none border md:inset-auto md:bottom-6 md:left-auto md:right-6 md:top-auto md:h-auto md:max-h-[600px] md:w-96 md:rounded-2xl md:border
-          ${open ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}
+          ${open ? 'pointer-events-auto scale-100 opacity-100 duration-[250ms] ease-out' : 'pointer-events-none scale-95 opacity-0 duration-200 ease-in'}`}
       >
         <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
           <div>
             <p className="font-mono text-xs font-bold uppercase tracking-wide text-primary">
-              Ask about Prasanna
+              Prasanna AI
             </p>
-            <p className="text-[11px] text-text-muted">Portfolio assistant</p>
+            <p className="text-[11px] text-text-muted">Chat with me about my work</p>
           </div>
           <button
             type="button"
@@ -126,14 +127,14 @@ function ChatPanel({ open, onClose }) {
               key={m.id}
               role={m.role}
               content={m.content}
-              isLoading={isLoading && m.role === 'assistant' && i === lastIdx}
+              isLoading={isWaitingForResponse && m.role === 'assistant' && i === lastIdx}
             />
           ))}
           <div ref={endRef} />
         </div>
 
         <div className="shrink-0 pb-[env(safe-area-inset-bottom)]">
-          <ChatInput onSend={sendMessage} disabled={isLoading} />
+          <ChatInput onSend={sendMessage} disabled={isWaitingForResponse} />
         </div>
       </div>
     </div>

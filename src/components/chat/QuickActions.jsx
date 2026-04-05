@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
 const PRESETS = [
-  'Tell me about Prasanna',
-  'Show me projects',
-  "What's the tech stack?",
-  'How to contact?',
+  'Who are you?',
+  'Show me your projects',
+  'What tech do you use?',
+  'How can I reach you?',
 ];
 
 function QuickActions({ onPick, visible }) {

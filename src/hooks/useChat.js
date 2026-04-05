@@ -13,7 +13,7 @@ export function useChat() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const friendlyError = "Couldn't reach the assistant. Please try again in a moment.";
+  const friendlyError = "Couldn't reach Prasanna AI right now. Please try again in a moment.";
 
   useEffect(() => {
     if (!error) return undefined;

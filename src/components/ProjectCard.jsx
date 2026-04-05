@@ -13,7 +13,12 @@ function ProjectCard({ project, variant }) {
             </span>
           </div>
           {isValidLink(project.projectUrl) ? (
-            <a href={project.projectUrl} aria-label={`Open ${project.title}`}>
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${project.title}`}
+            >
               <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
                 open_in_new
               </span>
@@ -56,7 +61,12 @@ function ProjectCard({ project, variant }) {
               </a>
             ) : null}
             {isValidLink(project.liveUrl) ? (
-              <a href={project.liveUrl} aria-label={`Open live project ${project.title}`}>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open live project ${project.title}`}
+              >
                 <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
                   open_in_new
                 </span>

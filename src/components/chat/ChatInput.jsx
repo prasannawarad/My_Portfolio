@@ -31,7 +31,7 @@ function ChatInput({ onSend, disabled }) {
         onChange={(e) => setValue(e.target.value.slice(0, MAX_LEN))}
         onKeyDown={onKeyDown}
         disabled={disabled}
-        placeholder="Ask about Prasanna…"
+        placeholder="Ask me anything…"
         aria-label="Chat message"
         autoComplete="off"
         className="min-w-0 flex-1 rounded-lg border border-surface-accent bg-surface-dark px-3 py-2 text-sm text-text-main placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"

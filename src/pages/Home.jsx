@@ -63,8 +63,8 @@ function Home() {
   };
 
   return (
-    <div className="w-full min-w-0 max-w-7xl px-4 pb-24 pt-14 sm:px-5 lg:px-8">
-      <section id="home" className="scroll-mt-24 py-10 sm:scroll-mt-28 sm:py-12 md:py-16" aria-label="Home section">
+    <div className="w-full min-w-0 max-w-7xl px-4 pb-16 pt-8 sm:px-5 lg:px-8">
+      <section id="home" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="Home section">
         <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="flex min-w-0 flex-col gap-6">
             <div className="inline-flex w-fit max-w-full items-center gap-2 rounded border border-surface-accent bg-surface-dark px-2 py-1 sm:px-3">
@@ -156,8 +156,8 @@ function Home() {
         </div>
       </section>
 
-      <section id="about" className="scroll-mt-24 py-10 sm:scroll-mt-28 sm:py-12 md:py-16" aria-label="About section">
-        <SectionHeader index="01" title="ABOUT" />
+      <section id="about" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="About section">
+        <SectionHeader title="ABOUT" />
         <div className="mt-8 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="flex min-w-0 flex-col gap-8 lg:col-span-7">
             <TerminalWindow title="bio.json" bodyClassName="p-6 font-mono text-sm leading-relaxed overflow-x-auto terminal-scrollbar">
@@ -263,8 +263,8 @@ function Home() {
         </div>
       </section>
 
-      <section id="projects" className="scroll-mt-24 py-10 sm:scroll-mt-28 sm:py-12 md:py-16" aria-label="Projects section">
-        <SectionHeader index="02" title="PROJECTS" />
+      <section id="projects" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="Projects section">
+        <SectionHeader title="PROJECTS" />
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} variant="full" />
@@ -281,8 +281,8 @@ function Home() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 py-10 sm:scroll-mt-28 sm:py-12 md:py-16" aria-label="Contact section">
-        <SectionHeader index="03" title="CONTACT" />
+      <section id="contact" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="Contact section">
+        <SectionHeader title="CONTACT" />
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <form

@@ -13,7 +13,7 @@ function BotIcon() {
 
 function LoadingDots() {
   return (
-    <span className="inline-flex items-center gap-1 px-1 py-0.5" aria-label="Assistant is typing">
+    <span className="inline-flex items-center gap-1 px-1 py-0.5" aria-label="Prasanna AI is thinking">
       <span className="chat-loading-dot inline-block h-1.5 w-1.5 rounded-full bg-text-muted [animation-delay:0ms]" />
       <span className="chat-loading-dot inline-block h-1.5 w-1.5 rounded-full bg-text-muted [animation-delay:150ms]" />
       <span className="chat-loading-dot inline-block h-1.5 w-1.5 rounded-full bg-text-muted [animation-delay:300ms]" />
