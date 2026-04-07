@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import profileImage from '../assets/profile-960.webp';
 import ProjectCard from '../components/ProjectCard';
@@ -13,58 +12,18 @@ import {
   leadershipExperience,
   technicalExperience,
 } from '../data/experience';
+import { contactChannels } from '../data/contactChannels';
 import { projects } from '../data/projects';
 import { stackColumns } from '../data/stack';
 
-const initialState = {
-  name: '',
-  email: '',
-  message: '',
-};
-
 function Home() {
-  const [formData, setFormData] = useState(initialState);
-  const [status, setStatus] = useState('idle');
-
-  const socialLinks = [
-    { id: 'social-1', icon: 'work', label: 'linkedin.com/in/prasannawarad', href: bio.linkedin, external: true },
-    { id: 'social-2', icon: 'code', label: 'github.com/prasannawarad', href: bio.github, external: true },
-    { id: 'social-3', icon: 'mail', label: bio.email, href: `mailto:${bio.email}` },
-    { id: 'social-4', icon: 'call', label: bio.phone, href: `tel:${bio.phone.replace(/\D/g, '')}` },
-  ];
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setStatus('sending');
-
-    const body = new URLSearchParams({
-      'form-name': 'contact',
-      ...formData,
-    });
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body.toString(),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        setStatus('success');
-        setFormData(initialState);
-      })
-      .catch(() => {
-        setStatus('error');
-      });
-  };
-
   return (
     <div className="w-full min-w-0 max-w-7xl px-4 pb-16 pt-8 sm:px-5 lg:px-8">
-      <section id="home" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="Home section">
+      <section
+        id="home"
+        className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
+        aria-label="Home section"
+      >
         <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="flex min-w-0 flex-col gap-6">
             <div className="inline-flex w-fit max-w-full items-center gap-2 rounded border border-surface-accent bg-surface-dark px-2 py-1 sm:px-3">
@@ -156,7 +115,11 @@ function Home() {
         </div>
       </section>
 
-      <section id="about" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="About section">
+      <section
+        id="about"
+        className="scroll-mt-20 pt-12 pb-6 sm:scroll-mt-24 sm:pb-8 md:pb-14"
+        aria-label="About section"
+      >
         <SectionHeader title="ABOUT" />
         <div className="mt-8 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="flex min-w-0 flex-col gap-8 lg:col-span-7">
@@ -263,7 +226,11 @@ function Home() {
         </div>
       </section>
 
-      <section id="projects" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="Projects section">
+      <section
+        id="projects"
+        className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
+        aria-label="Projects section"
+      >
         <SectionHeader title="PROJECTS" />
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
@@ -271,129 +238,50 @@ function Home() {
           ))}
         </div>
 
-        <div className="mt-10 rounded border border-surface-accent bg-code-bg p-7">
-          <h3 className="mb-6 font-mono text-sm font-bold text-text-muted">TECHNICAL_STACK</h3>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {stackColumns.map((column) => (
-              <StackColumn key={column.id} icon={column.icon} title={column.title} items={column.items} />
-            ))}
+        <div className="mt-10">
+          <SectionHeader as="h3" title="TECHNICAL STACK" />
+          <div className="mt-8 rounded border border-surface-accent bg-code-bg p-7">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {stackColumns.map((column) => (
+                <StackColumn key={column.id} icon={column.icon} title={column.title} items={column.items} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-20 py-6 sm:scroll-mt-24 sm:py-8 md:py-10" aria-label="Contact section">
+      <section
+        id="contact"
+        className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
+        aria-label="Contact section"
+      >
         <SectionHeader title="CONTACT" />
-        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
-          <div className="lg:col-span-3">
-            <form
-              className="relative flex flex-col gap-6 overflow-hidden rounded border border-surface-accent bg-surface-dark p-6 md:p-8"
-              onSubmit={handleSubmit}
-              name="contact"
-              data-netlify="true"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-50" />
-
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <label htmlFor="name" className="font-mono text-sm font-bold text-primary">
-                  &gt; Name:
-                  <input
-                    className="mt-2 w-full rounded border border-surface-accent bg-code-bg px-3 py-3 font-mono text-sm text-white outline-none transition-colors focus:border-primary"
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-
-                <label htmlFor="email" className="font-mono text-sm font-bold text-primary">
-                  &gt; Email:
-                  <input
-                    className="mt-2 w-full rounded border border-surface-accent bg-code-bg px-3 py-3 font-mono text-sm text-white outline-none transition-colors focus:border-primary"
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-              </div>
-
-              <label htmlFor="message" className="font-mono text-sm font-bold text-primary">
-                &gt; Message:
-                <textarea
-                  className="terminal-scrollbar mt-2 w-full resize-none rounded border border-surface-accent bg-code-bg px-3 py-3 font-mono text-sm text-white outline-none transition-colors focus:border-primary"
-                  id="message"
-                  name="message"
-                  rows="6"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <p className="font-mono text-xs text-text-muted">
-                  {status === 'sending'
-                    ? 'Transmitting payload...'
-                    : status === 'success'
-                      ? 'Message sent successfully.'
-                      : status === 'error'
-                        ? 'Transmission failed.'
-                        : 'Input stream ready'}
-                </p>
-                <button
-                  type="submit"
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded border border-primary bg-primary/10 px-6 font-mono text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-background-dark disabled:opacity-60"
-                  disabled={status === 'sending'}
-                >
-                  <span className="material-symbols-outlined text-base">send</span>
-                  {status === 'sending' ? 'sending...' : './send_message.sh'}
-                </button>
-              </div>
-            </form>
+        <div className="mt-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {contactChannels.map((ch) => (
+              <a
+                key={ch.id}
+                href={ch.href}
+                {...(ch.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="group flex min-h-[11.5rem] flex-col rounded border border-surface-accent bg-surface-dark p-5 transition-all hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/5"
+                aria-label={`${ch.title}: ${ch.value}`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded border border-primary/35 bg-primary/10 text-primary">
+                    <span className="material-symbols-outlined text-[22px]" aria-hidden="true">
+                      {ch.icon}
+                    </span>
+                  </div>
+                  <span className="material-symbols-outlined text-lg text-text-muted opacity-60 transition-opacity group-hover:opacity-100 group-hover:text-primary" aria-hidden="true">
+                    {ch.external ? 'open_in_new' : 'arrow_forward'}
+                  </span>
+                </div>
+                <p className="mt-4 text-[10px] font-semibold uppercase tracking-wider text-primary">{ch.title}</p>
+                <p className="mt-1 break-all text-sm font-semibold text-white group-hover:text-primary">{ch.value}</p>
+                <p className="mt-auto pt-3 text-xs leading-snug text-text-muted">{ch.hint}</p>
+              </a>
+            ))}
           </div>
-
-          <aside className="lg:col-span-2 flex flex-col gap-4">
-            <div className="rounded border border-surface-accent bg-code-bg p-5">
-              <h3 className="mb-3 font-mono text-sm font-bold text-white">
-                <span className="text-primary">#</span> current_status
-              </h3>
-              <div className="space-y-1 font-mono text-xs text-text-muted">
-                <p>availability: <span className="text-green-400">{bio.status}</span></p>
-                <p>location: <span className="text-yellow-200">{bio.location}</span></p>
-                <p>timezone: <span className="text-blue-300">{bio.timezone}</span></p>
-                <p>response_time: <span className="text-blue-300">&lt; 24h</span></p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="group flex items-center justify-between rounded border border-surface-accent bg-surface-dark p-3 transition-colors hover:border-primary/50"
-                  aria-label={`Open ${item.label}`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-base text-text-muted group-hover:text-primary">
-                      {item.icon}
-                    </span>
-                    <span className="min-w-0 break-words font-mono text-xs text-text-muted group-hover:text-white">
-                      {item.label}
-                    </span>
-                  </span>
-                  <span className="material-symbols-outlined text-sm text-text-muted opacity-0 transition-opacity group-hover:opacity-100">
-                    arrow_forward
-                  </span>
-                </a>
-              ))}
-            </div>
-          </aside>
         </div>
       </section>
     </div>

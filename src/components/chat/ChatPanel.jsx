@@ -61,32 +61,30 @@ function ChatPanel({ open, onClose }) {
     return () => root.removeEventListener('keydown', onKeyDown);
   }, [open]);
 
+  if (!open) return null;
+
   return (
-    <div
-      className={`fixed inset-0 z-[100] ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
-      aria-hidden={!open}
-    >
-      {open ? (
-        <div
-          className="absolute inset-0 hidden bg-black/20 transition-opacity duration-300 md:block"
-          onClick={onClose}
-        />
-      ) : null}
+    <>
+      <div
+        className="fixed inset-0 z-[9998] hidden bg-black/20 transition-opacity duration-300 md:block"
+        onClick={onClose}
+        aria-hidden="true"
+      />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Chat with Prasanna AI"
-        className={`absolute z-[1] flex max-h-[100dvh] origin-bottom-right flex-col overflow-hidden border-surface-accent bg-code-bg shadow-2xl shadow-black/70 will-change-transform transition-[opacity,transform]
-          inset-0 h-[100dvh] w-full rounded-none border md:inset-auto md:bottom-6 md:left-auto md:right-6 md:top-auto md:h-auto md:max-h-[600px] md:w-96 md:rounded-2xl md:border
-          ${open ? 'pointer-events-auto scale-100 opacity-100 duration-[250ms] ease-out' : 'pointer-events-none scale-95 opacity-0 duration-200 ease-in'}`}
+        aria-label="Chat with Prasanna — personalized assistant"
+        className="fixed z-[9999] flex origin-bottom-right flex-col overflow-hidden border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
+          inset-0 h-[100dvh] w-full max-h-[100dvh] rounded-none
+          md:inset-auto md:bottom-6 md:right-6 md:top-auto md:h-[min(560px,90dvh)] md:max-h-[560px] md:w-[380px] md:max-w-[min(380px,calc(100vw-2rem))] md:rounded-2xl"
       >
         <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
           <div>
             <p className="font-mono text-xs font-bold uppercase tracking-wide text-primary">
               Prasanna AI
             </p>
-            <p className="text-[11px] text-text-muted">Chat with me about my work</p>
+            <p className="text-[11px] text-text-muted">Ask me anything — work, life, or everything in between</p>
           </div>
           <button
             type="button"
@@ -133,11 +131,11 @@ function ChatPanel({ open, onClose }) {
           <div ref={endRef} />
         </div>
 
-        <div className="shrink-0 pb-[env(safe-area-inset-bottom)]">
+        <div className="relative z-[2] shrink-0 pb-[env(safe-area-inset-bottom)]">
           <ChatInput onSend={sendMessage} disabled={isWaitingForResponse} />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

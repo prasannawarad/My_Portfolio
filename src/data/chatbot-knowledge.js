@@ -10,8 +10,22 @@ import {
 import { homeFeaturedProjects, projects } from './projects.js';
 import { stackColumns } from './stack.js';
 
+/** Hobbies & life beyond work — keep in sync with worker/src/index.js SYSTEM_PROMPT */
+export const personalBeyondWork = {
+  sportsPlay: ['Cricket', 'Pickleball', 'Table Tennis'],
+  sportsWatch: 'Loves soccer; watches games every single week',
+  reading: 'Reads often; fiction and philosophy are favorite genres',
+  showsTop: ['Suits', 'Billions', 'Modern Family'],
+  showsNote: 'Binge-watches; these are top favorites among others',
+  marvel: 'Big Marvel movie fan',
+  anime: 'Big anime watcher; watches regularly',
+  sideProjects:
+    'Loves side projects from random ideas that often help with everyday work and tooling',
+};
+
 export const profileData = {
   bio,
+  personalBeyondWork,
   experience,
   technicalExperience,
   leadershipExperience,
@@ -138,13 +152,29 @@ function formatContact() {
   ].join('\n');
 }
 
+function formatPersonalBeyondWork() {
+  const p = personalBeyondWork;
+  return [
+    `Sports (play): ${p.sportsPlay.join(', ')}`,
+    `Sports (watch): ${p.sportsWatch}`,
+    `Reading: ${p.reading}`,
+    `TV / streaming: ${p.showsTop.join(', ')} — ${p.showsNote}`,
+    `Movies: ${p.marvel}`,
+    `Anime: ${p.anime}`,
+    `Side projects: ${p.sideProjects}`,
+  ].join('\n');
+}
+
 export function buildSystemPrompt() {
   return [
     '# Portfolio knowledge base',
-    'Use only the following information when answering about Prasanna Warad.',
+    'Use only the following information when answering about Prasanna Warad (career and personal life below).',
     '',
     '## Bio',
     formatBio(),
+    '',
+    '## Beyond work — personal life & interests',
+    formatPersonalBeyondWork(),
     '',
     '## Education',
     formatEducation(),

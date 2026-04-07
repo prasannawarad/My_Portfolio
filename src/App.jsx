@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 
 const Resume = lazy(() => import('./pages/Resume'));
+const ChatWidget = lazy(() => import('./components/chat/ChatWidget'));
 
 function ResumeRoute() {
   return (
@@ -28,6 +29,9 @@ function App() {
           <Route path="/resume" element={<ResumeRoute />} />
         </Route>
       </Routes>
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
     </BrowserRouter>
   );
 }

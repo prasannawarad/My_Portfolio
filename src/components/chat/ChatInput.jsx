@@ -23,7 +23,7 @@ function ChatInput({ onSend, disabled }) {
   );
 
   return (
-    <div className="flex items-end gap-2 border-t border-surface-accent bg-code-bg p-3">
+    <div className="relative z-10 flex w-full min-w-0 items-center gap-2 border-t border-surface-accent bg-code-bg p-3">
       <input
         type="text"
         maxLength={MAX_LEN}
@@ -31,10 +31,10 @@ function ChatInput({ onSend, disabled }) {
         onChange={(e) => setValue(e.target.value.slice(0, MAX_LEN))}
         onKeyDown={onKeyDown}
         disabled={disabled}
-        placeholder="Ask me anything…"
+        placeholder="Ask about work, life, hobbies…"
         aria-label="Chat message"
         autoComplete="off"
-        className="min-w-0 flex-1 rounded-lg border border-surface-accent bg-surface-dark px-3 py-2 text-sm text-text-main placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+        className="min-h-[2.5rem] min-w-0 flex-1 rounded-lg border border-surface-accent bg-surface-dark px-3 py-2 text-sm text-text-main placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
       />
       <button
         type="button"

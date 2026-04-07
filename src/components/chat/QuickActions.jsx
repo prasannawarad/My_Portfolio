@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
 const PRESETS = [
-  'Who are you?',
+  'Who is Prasanna?',
+  "What's your work experience?",
   'Show me your projects',
-  'What tech do you use?',
+  'What are your skills?',
+  'What do you do outside work?',
   'How can I reach you?',
 ];
 
