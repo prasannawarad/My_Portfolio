@@ -64,78 +64,71 @@ function ChatPanel({ open, onClose }) {
   if (!open) return null;
 
   return (
-    <>
-      <div
-        className="fixed inset-0 z-[9998] hidden bg-black/20 transition-opacity duration-300 md:block"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      <div
-        ref={panelRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Chat with Prasanna — personalized assistant"
-        className="fixed z-[9999] flex origin-bottom-right flex-col overflow-hidden border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
-          inset-0 h-[100dvh] w-full max-h-[100dvh] rounded-none
-          md:inset-auto md:bottom-6 md:right-6 md:top-auto md:h-[min(560px,90dvh)] md:max-h-[560px] md:w-[380px] md:max-w-[min(380px,calc(100vw-2rem))] md:rounded-2xl"
-      >
-        <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
-          <div>
-            <p className="font-mono text-xs font-bold uppercase tracking-wide text-primary">
-              Prasanna AI
-            </p>
-            <p className="text-[11px] text-text-muted">Ask me anything — work, life, or everything in between</p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close chat"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-transparent text-text-muted transition-colors hover:border-surface-accent hover:text-text-main md:h-9 md:w-9"
-          >
-            <svg
-              className="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </header>
-
-        {error ? (
-          <div className="shrink-0 border-b border-orange-500/30 bg-orange-500/10 px-3 py-2 text-xs text-orange-200">
-            {error}
-          </div>
-        ) : null}
-
-        <div
-          role="log"
-          aria-live="polite"
-          aria-relevant="additions"
-          className="terminal-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto px-3 py-3"
+    <div
+      ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Chat with Prasanna — personalized assistant"
+      className="relative z-[1] flex w-[360px] max-w-[min(360px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
+        h-[520px] max-h-[75dvh]
+        max-md:fixed max-md:inset-0 max-md:z-[10000] max-md:h-full max-md:max-h-none max-md:w-full max-md:rounded-none"
+    >
+      <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
+        <div>
+          <p className="font-mono text-xs font-bold uppercase tracking-wide text-primary">
+            Prasanna AI
+          </p>
+          <p className="text-[11px] text-text-muted">Ask me anything — work, life, or everything in between</p>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close chat"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-transparent text-text-muted transition-colors hover:border-surface-accent hover:text-text-main md:h-9 md:w-9"
         >
-          {messages.length === 0 ? (
-            <QuickActions onPick={sendMessage} visible />
-          ) : null}
-          {messages.map((m, i) => (
-            <ChatMessage
-              key={m.id}
-              role={m.role}
-              content={m.content}
-              isLoading={isWaitingForResponse && m.role === 'assistant' && i === lastIdx}
-            />
-          ))}
-          <div ref={endRef} />
-        </div>
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
 
-        <div className="relative z-[2] shrink-0 pb-[env(safe-area-inset-bottom)]">
-          <ChatInput onSend={sendMessage} disabled={isWaitingForResponse} />
+      {error ? (
+        <div className="shrink-0 border-b border-orange-500/30 bg-orange-500/10 px-3 py-2 text-xs text-orange-200">
+          {error}
         </div>
+      ) : null}
+
+      <div
+        role="log"
+        aria-live="polite"
+        aria-relevant="additions"
+        className="terminal-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto px-3 py-3"
+      >
+        {messages.length === 0 ? (
+          <QuickActions onPick={sendMessage} visible />
+        ) : null}
+        {messages.map((m, i) => (
+          <ChatMessage
+            key={m.id}
+            role={m.role}
+            content={m.content}
+            isLoading={isWaitingForResponse && m.role === 'assistant' && i === lastIdx}
+          />
+        ))}
+        <div ref={endRef} />
       </div>
-    </>
+
+      <div className="relative z-[2] shrink-0 pb-[env(safe-area-inset-bottom)]">
+        <ChatInput onSend={sendMessage} disabled={isWaitingForResponse} />
+      </div>
+    </div>
   );
 }
 

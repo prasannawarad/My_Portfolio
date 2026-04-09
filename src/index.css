@@ -99,6 +99,42 @@
   transition: opacity 0.28s ease-in, transform 0.28s ease-in;
 }
 
+/* Teaser bubble tail — matches bg-surface-dark/95 + border-primary/35 (tailwind.config) */
+.chat-teaser-bubble {
+  position: relative;
+  overflow: visible;
+}
+
+.chat-teaser-bubble::before {
+  content: '';
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 11px solid rgba(212, 175, 55, 0.35);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.chat-teaser-bubble::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 10px solid rgb(19 35 38 / 0.95);
+  z-index: 1;
+  pointer-events: none;
+}
+
 @keyframes chat-message-in {
   from {
     opacity: 0;
