@@ -150,7 +150,7 @@ Timezone: UTC-6 (CST)
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const MODEL = 'llama-3.3-70b-versatile';
-const MAX_CONTENT = 500;
+const MAX_CONTENT = 1000;
 const MAX_MSGS = 20;
 const MAX_RPM = 10;
 const RATE_WINDOW_MS = 60_000;
