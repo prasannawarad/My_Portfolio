@@ -61,17 +61,18 @@ function ChatPanel({ open, onClose }) {
     return () => root.removeEventListener('keydown', onKeyDown);
   }, [open]);
 
-  if (!open) return null;
-
   return (
     <div
       ref={panelRef}
       role="dialog"
-      aria-modal="true"
+      aria-modal={open}
+      aria-hidden={!open}
       aria-label="Chat with Prasanna — personalized assistant"
-      className="relative z-[1] flex w-[360px] max-w-[min(360px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
+      className={`relative z-[1] flex w-[360px] max-w-[min(360px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
         h-[520px] max-h-[75dvh]
-        max-md:fixed max-md:inset-0 max-md:z-[10000] max-md:h-full max-md:max-h-none max-md:w-full max-md:rounded-none"
+        max-md:fixed max-md:inset-0 max-md:z-[10000] max-md:h-full max-md:max-h-none max-md:w-full max-md:rounded-none ${
+          open ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 translate-y-2'
+        }`}
     >
       <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
         <div>

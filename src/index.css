@@ -45,6 +45,10 @@
     text-wrap: balance;
   }
 
+  .home-main-section {
+    @apply scroll-mt-20 py-10 sm:scroll-mt-24 sm:py-12 md:py-14;
+  }
+
   .terminal-scrollbar::-webkit-scrollbar {
     width: 8px;
     height: 8px;

@@ -29,7 +29,7 @@ function Home() {
             <div className="inline-flex w-fit max-w-full items-center gap-2 rounded border border-surface-accent bg-surface-dark px-2 py-1 sm:px-3">
               <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse" />
               <span className="truncate font-mono text-[10px] font-bold text-primary sm:text-xs">
-                System Online // v5.0.0
+                System Online // v7.0.0
               </span>
             </div>
 
@@ -117,7 +117,7 @@ function Home() {
 
       <section
         id="about"
-        className="scroll-mt-20 pt-12 pb-6 sm:scroll-mt-24 sm:pb-8 md:pb-14"
+        className="home-main-section"
         aria-label="About section"
       >
         <SectionHeader title="ABOUT" />
@@ -228,7 +228,7 @@ function Home() {
 
       <section
         id="projects"
-        className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
+        className="home-main-section"
         aria-label="Projects section"
       >
         <SectionHeader title="PROJECTS" />
@@ -238,7 +238,7 @@ function Home() {
           ))}
         </div>
 
-        <div className="mt-10">
+        <div className="mt-12">
           <SectionHeader as="h3" title="TECHNICAL STACK" />
           <div className="mt-8 rounded border border-surface-accent bg-code-bg p-7">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -252,7 +252,7 @@ function Home() {
 
       <section
         id="contact"
-        className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
+        className="home-main-section"
         aria-label="Contact section"
       >
         <SectionHeader title="CONTACT" />

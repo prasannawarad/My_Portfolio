@@ -57,14 +57,12 @@ function ChatWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3" aria-live="polite">
-      {open ? (
-        <ChatPanel
-          open={open}
-          onClose={() => {
-            setOpen(false);
-          }}
-        />
-      ) : null}
+      <ChatPanel
+        open={open}
+        onClose={() => {
+          setOpen(false);
+        }}
+      />
       <div className="flex max-w-[min(100%,calc(100vw-2rem))] flex-row items-center gap-3">
         {showTeaser ? (
           <div

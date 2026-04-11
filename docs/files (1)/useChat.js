@@ -4,13 +4,6 @@ import { sendChat, streamChat } from '../utils/chatApi';
 const MAX_MESSAGES = 50;
 /** Worker accepts at most 20 chat messages per request */
 const MAX_API_MESSAGES = 20;
-const MAX_API_MESSAGE_CONTENT = 400;
-
-function trimMessageContent(content) {
-  return content.length > MAX_API_MESSAGE_CONTENT
-    ? content.slice(0, MAX_API_MESSAGE_CONTENT)
-    : content;
-}
 
 function newId() {
   return crypto.randomUUID();
@@ -58,7 +51,7 @@ export function useChat() {
       let apiMessages;
       setMessages((prev) => {
         apiMessages = [...prev, userMsg]
-          .map(({ role, content }) => ({ role, content: trimMessageContent(content) }))
+          .map(({ role, content }) => ({ role, content }))
           .slice(-MAX_API_MESSAGES);
         return [...prev, userMsg, asstMsg].slice(-MAX_MESSAGES);
       });
