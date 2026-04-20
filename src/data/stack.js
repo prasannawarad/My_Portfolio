@@ -59,7 +59,7 @@ export const stackColumns = [
     icon: 'verified_user',
     title: 'Certifications & Domain',
     items: [
-      'SnowPro Associate: Platform',
+      'SnowPro Associate: Platform Certified',
       'Graduate Certificate: Business Intelligence & Data Mining',
       'Salesforce AI Associate',
       'HIPAA Awareness',

@@ -112,7 +112,7 @@ Dev Tooling: Docker, Git/GitHub, REST APIs, Node.js, CSS/React
 Salesforce Certified: AI Associate
 KNIME Analytics: Basic Proficiency
 Domain Knowledge: HIPAA
-Snowflake: SnowPro Core Certification
+Snowflake: SnowPro Associate: Platform Certified
 Graduate Certificate: Business Intelligence & Data Mining
 
 ## Contact / Links

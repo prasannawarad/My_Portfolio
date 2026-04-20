@@ -1,7 +1,14 @@
 import profileImage from '../assets/profile-960.webp';
 import Button from '../components/Button';
 import TerminalWindow from '../components/TerminalWindow';
-import { bio, certifications, education, experience, impactMetrics } from '../data/experience';
+import {
+  bio,
+  certifications,
+  education,
+  experience,
+  experienceCompanyName,
+  impactMetrics,
+} from '../data/experience';
 
 function About() {
   return (
@@ -119,11 +126,13 @@ function About() {
               <span className="material-symbols-outlined text-primary" aria-hidden="true">
                 history
               </span>
-              <h2 className="font-mono text-xl font-bold text-white">tail -f career_history.log</h2>
+              <h2 className="font-mono text-xl font-bold text-white">tail -f Professional_Experience.log</h2>
             </div>
 
             <div className="relative border-l-2 border-surface-accent ml-3 pl-8 space-y-8 font-mono">
-              {experience.map((item) => (
+              {experience.map((item) => {
+                const company = experienceCompanyName(item);
+                return (
                 <article key={item.id} className="relative group">
                   <span
                     className={`absolute -left-[39px] top-1.5 h-5 w-5 rounded-full border-4 border-background-dark ${
@@ -132,12 +141,9 @@ function About() {
                         : 'bg-surface-accent group-hover:bg-primary transition-colors'
                     }`}
                   />
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-1">
-                    <span className={`${item.current ? 'text-primary' : 'text-text-muted'} font-bold`}>
-                      {item.duration}
-                    </span>
-                    {item.label ? <span className="text-text-muted text-xs">{item.label}</span> : null}
-                  </div>
+                  <p className={`mb-1 ${item.current ? 'text-primary' : 'text-text-muted'} font-bold`}>
+                    {item.duration}
+                  </p>
                   <h3
                     className={`text-lg font-bold ${
                       item.current ? 'text-white' : 'text-text-main group-hover:text-white transition-colors'
@@ -145,6 +151,10 @@ function About() {
                   >
                     {item.role}
                   </h3>
+                  {company ? <p className="mt-1 text-sm text-white">{company}</p> : null}
+                  {item.office ? (
+                    <p className="mt-1 text-xs text-white">{item.office}</p>
+                  ) : null}
                   <p className="text-text-muted text-sm mt-2 leading-relaxed max-w-xl">
                     {item.points.map((point) => (
                       <span key={point}>
@@ -154,7 +164,8 @@ function About() {
                     ))}
                   </p>
                 </article>
-              ))}
+                );
+              })}
               <div className="relative">
                 <span className="absolute -left-[35px] top-2 h-3 w-3 rounded-full bg-surface-accent" />
                 <span className="text-xs text-surface-accent font-mono animate-pulse">_ End of log stream</span>
@@ -204,23 +215,24 @@ function About() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 [&>*]:min-w-0">
             {certifications.map((certification) => (
               <div
                 key={certification.id}
-                className="rounded border border-surface-accent bg-code-bg p-4 flex flex-col items-center justify-center text-center gap-2 hover:border-primary/50 transition-colors"
+                className="flex min-h-[10.5rem] w-full min-w-0 flex-col items-center justify-center gap-2 rounded border border-surface-accent bg-code-bg p-4 text-center transition-colors hover:border-primary/50"
               >
-                <span
-                  className={`material-symbols-outlined text-3xl ${certification.iconClass}`}
-                  aria-hidden="true"
-                >
-                  {certification.icon}
-                </span>
-                <span className="font-mono text-xs text-white font-bold">
-                  {certification.title}
-                  <br />
-                  {certification.subtitle}
-                </span>
+                <div className="flex w-full shrink-0 justify-center">
+                  <span
+                    className={`material-symbols-outlined text-3xl ${certification.iconClass}`}
+                    aria-hidden="true"
+                  >
+                    {certification.icon}
+                  </span>
+                </div>
+                <div className="w-full min-w-0">
+                  <p className="text-balance font-mono text-xs font-bold text-white">{certification.title}</p>
+                  <p className="mt-1 text-balance font-mono text-xs leading-snug text-white/80">{certification.subtitle}</p>
+                </div>
               </div>
             ))}
           </div>

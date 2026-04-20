@@ -78,6 +78,7 @@ function formatExperienceEntry(item) {
   const header = [
     `${item.duration} — ${item.label}`,
     `Role: ${item.role}`,
+    item.office ? `Office / location: ${item.office}` : '',
     item.current ? '(Current)' : '',
   ]
     .filter(Boolean)

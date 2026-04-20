@@ -17,6 +17,9 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+
+# Cursor / Claude local tooling (worktrees, caches — not part of the app source)
+.claude/
 *.suo
 *.ntvs*
 *.njsproj

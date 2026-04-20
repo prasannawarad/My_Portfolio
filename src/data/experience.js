@@ -21,11 +21,20 @@ export const bio = {
   timezone: 'UTC-6 (CST)',
 };
 
+/** Plain company name for UI (falls back to stripping `//` from `label`). */
+export function experienceCompanyName(item) {
+  if (item.company) return item.company;
+  if (!item.label) return '';
+  return item.label.replace(/^\s*\/\/\s*/, '').trim();
+}
+
 export const experience = [
   {
     id: 'exp-1',
     duration: '2025-10 — Present',
+    company: 'Cloud BC Labs',
     label: '// Cloud BC Labs',
+    office: 'Reston, VA (Remote)',
     role: 'Software Engineer Intern',
     points: [
       'Developed RESTful APIs in Node.js/Python to streamline data exchange; cut integration effort by 20%.',
@@ -39,6 +48,7 @@ export const experience = [
     id: 'exp-2',
     duration: '2025-01 — 2025-10',
     label: '// The University of Texas at Dallas',
+    office: 'Richardson, TX',
     role: 'Student Services & Operations Manager',
     points: [
       'Coordinated student services and operations workflows across student-facing processes.',
@@ -51,6 +61,7 @@ export const experience = [
     id: 'exp-3',
     duration: '2025-01 — 2025-09',
     label: '// UTD Infinity Lions Club',
+    office: 'Richardson, TX',
     role: 'Vice President',
     points: [
       'Led planning and execution for club activities with cross-functional student collaboration.',
@@ -62,7 +73,9 @@ export const experience = [
   {
     id: 'exp-4',
     duration: '2023-02 — 2024-07',
-    label: '// Client: Dollar General (HCLTech)',
+    company: 'HCLTech — Client: Dollar General',
+    label: '// HCLTech (client: Dollar General)',
+    office: 'Noida, India',
     role: 'Data Engineer',
     points: [
       'Analyzed 2M+ retail transactions with Python and SQL to detect anomalies, improving reporting accuracy and model reliability.',
@@ -133,6 +146,6 @@ export const certifications = [
     icon: 'ac_unit',
     iconClass: 'text-sky-400',
     title: 'Snowflake',
-    subtitle: 'SnowPro Core Certification',
+    subtitle: 'SnowPro Associate: Platform Certified',
   },
 ];

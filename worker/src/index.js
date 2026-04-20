@@ -98,7 +98,7 @@ Role: Vice President
   • Led planning and execution for club activities with cross-functional student collaboration.
   • Supported event coordination, team alignment, and community engagement initiatives.
 
-2023-02 — 2024-07 — Client: Dollar General (HCLTech)
+2023-02 — 2024-07 — HCLTech (client: Dollar General)
 Role: Data Engineer
   • Analyzed 2M+ retail transactions with Python and SQL to detect anomalies, improving reporting accuracy and model reliability.
   • Boosted Oracle throughput by 30% with indexing and PL/SQL tuning for 10,000+ daily transactions.
@@ -137,7 +137,7 @@ Dev Tooling: Docker, Git/GitHub, REST APIs, Node.js, CSS/React
 Salesforce Certified: AI Associate
 KNIME Analytics: Basic Proficiency
 Domain Knowledge: HIPAA
-Snowflake: SnowPro Core Certification
+Snowflake: SnowPro Associate: Platform Certified
 Graduate Certificate: Business Intelligence & Data Mining
 
 ## Contact / Links

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -6,9 +6,6 @@ import 'react-pdf/dist/Page/TextLayer.css';
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
-
-/** Public folder asset; respects Vite `base` for GitHub Pages etc. */
-const resumePdfUrl = `${import.meta.env.BASE_URL}resume.pdf`.replace(/([^:]\/)\/+/g, '$1');
 
 function Resume() {
   const sheetRef = useRef(null);
@@ -18,6 +15,8 @@ function Resume() {
     return Math.min(Math.max(window.innerWidth - 32, 240), 900);
   });
   const [loadError, setLoadError] = useState(null);
+
+  const resumePdfUrl = useMemo(() => `${import.meta.env.BASE_URL}resume.pdf`, []);
 
   const onDocumentLoadSuccess = useCallback(({ numPages: n }) => {
     setNumPages(n);
@@ -85,9 +84,7 @@ function Resume() {
                 file={resumePdfUrl}
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={onDocumentLoadError}
-                loading={
-                  <p className="p-12 text-center font-mono text-sm text-slate-500">Loading resume…</p>
-                }
+                loading={<p className="p-12 text-center font-mono text-sm text-slate-500">Loading resume…</p>}
                 className="flex flex-col"
               >
                 {numPages

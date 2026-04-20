@@ -8,6 +8,7 @@ import {
   bio,
   certifications,
   education,
+  experienceCompanyName,
   impactMetrics,
   leadershipExperience,
   technicalExperience,
@@ -138,9 +139,11 @@ function Home() {
             </TerminalWindow>
 
             <div className="rounded border border-surface-accent bg-surface-dark p-6">
-              <h3 className="mb-6 font-mono text-lg font-bold text-white">tail -f relevant_experience.log</h3>
+              <h3 className="mb-6 font-mono text-lg font-bold text-white">tail -f Professional_Experience.log</h3>
               <div className="relative ml-3 space-y-7 border-l-2 border-surface-accent pl-7 font-mono">
-                {technicalExperience.map((item) => (
+                {technicalExperience.map((item) => {
+                  const company = experienceCompanyName(item);
+                  return (
                   <article key={item.id} className="relative">
                     <span
                       className={`absolute -left-[34px] top-1.5 h-4 w-4 rounded-full border-4 border-background-dark ${
@@ -149,14 +152,16 @@ function Home() {
                     />
                     <p className="text-xs font-bold text-primary">{item.duration}</p>
                     <h4 className="mt-1 text-base font-bold text-white">{item.role}</h4>
-                    {item.label ? <p className="mt-1 text-xs text-text-muted">{item.label}</p> : null}
+                    {company ? <p className="mt-1 text-sm text-white">{company}</p> : null}
+                    {item.office ? <p className="mt-1 text-xs text-white">{item.office}</p> : null}
                     <ul className="mt-3 space-y-2 text-sm text-text-muted">
                       {item.points.map((point) => (
                         <li key={point}>&gt; {point}</li>
                       ))}
                     </ul>
                   </article>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -165,13 +170,16 @@ function Home() {
                 LEADERSHIP_&_CAMPUS_EXPERIENCE
               </h3>
               <div className="space-y-3 font-mono text-sm text-text-muted">
-                {leadershipExperience.map((item) => (
+                {leadershipExperience.map((item) => {
+                  const company = experienceCompanyName(item);
+                  return (
                   <article key={item.id}>
                     <p className="text-xs font-bold text-primary">{item.duration}</p>
                     <p className="text-white">{item.role}</p>
-                    <p>{item.label}</p>
+                    {company ? <p className="text-white">{company}</p> : null}
                   </article>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -196,17 +204,21 @@ function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4 [&>*]:min-w-0">
               {certifications.map((certification) => (
                 <div
                   key={certification.id}
-                  className="rounded border border-surface-accent bg-code-bg p-4 text-center transition-colors hover:border-primary/50"
+                  className="flex min-h-[9.5rem] w-full min-w-0 flex-col items-center justify-center gap-2 rounded border border-surface-accent bg-code-bg p-4 text-center transition-colors hover:border-primary/50"
                 >
-                  <span className={`material-symbols-outlined text-2xl ${certification.iconClass}`} aria-hidden="true">
-                    {certification.icon}
-                  </span>
-                  <p className="mt-2 font-mono text-xs font-bold text-white">{certification.title}</p>
-                  <p className="font-mono text-xs text-text-muted">{certification.subtitle}</p>
+                  <div className="flex w-full shrink-0 justify-center">
+                    <span className={`material-symbols-outlined text-2xl ${certification.iconClass}`} aria-hidden="true">
+                      {certification.icon}
+                    </span>
+                  </div>
+                  <div className="w-full min-w-0">
+                    <p className="text-balance font-mono text-xs font-bold text-white">{certification.title}</p>
+                    <p className="mt-1 text-balance font-mono text-xs leading-snug text-white/80">{certification.subtitle}</p>
+                  </div>
                 </div>
               ))}
             </div>
