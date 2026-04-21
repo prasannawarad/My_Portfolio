@@ -114,7 +114,8 @@ function Navbar() {
 
   const scrollToSection = (sectionId) => {
     setIsOpen(false);
-    navigate(`/#${sectionId}`, { replace: !isResumePage });
+    const targetPath = sectionId === 'home' ? '/' : `/${sectionId}`;
+    navigate(targetPath, { replace: !isResumePage });
     if (!isResumePage) {
       setActiveSection(sectionId);
     }
@@ -122,7 +123,7 @@ function Navbar() {
 
   const homeClick = () => {
     setIsOpen(false);
-    navigate('/#home', { replace: !isResumePage });
+    navigate('/', { replace: !isResumePage });
   };
 
   const linkClasses = (isActive, layout = 'inline') =>

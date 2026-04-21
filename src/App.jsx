@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import { SECTION_IDS } from './utils/scrollToAnchor';
 
 const Resume = lazy(() => import('./pages/Resume'));
 const ChatWidget = lazy(() => import('./components/chat/ChatWidget'));
@@ -26,6 +27,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          {SECTION_IDS.filter((id) => id !== 'home').map((id) => (
+            <Route key={id} path={`/${id}`} element={<Home />} />
+          ))}
           <Route path="/resume" element={<ResumeRoute />} />
         </Route>
       </Routes>

@@ -53,7 +53,7 @@ function Home() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
-                to="/#projects"
+                to="/projects"
                 replace
                 className="inline-flex h-11 min-h-[44px] w-full items-center justify-center gap-2 rounded border border-primary bg-primary/10 px-5 font-mono text-sm font-bold text-primary transition-all hover:bg-primary hover:text-background-dark sm:w-auto sm:px-6"
               >
@@ -61,7 +61,7 @@ function Home() {
                 ./view_projects.sh
               </Link>
               <Link
-                to="/#contact"
+                to="/contact"
                 replace
                 className="inline-flex h-11 min-h-[44px] w-full items-center justify-center gap-2 rounded border border-surface-accent bg-code-bg px-5 font-mono text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary sm:w-auto sm:px-6"
               >
