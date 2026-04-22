@@ -2,14 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page not found</title>
+    <title>Refined Terminal Pro Portfolio</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      //
+      // IMPORTANT:
+      // - For a custom domain at the root (https://prasannawarad.com), keep 0.
+      // - Keeping 1 causes redirect loops like /projects/?/&/~and~/...
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      );
+    </script>
   </head>
   <body>
-    <main>
-      <h1>404</h1>
-      <p>Page not found.</p>
-      <p><a href="/">Go back home</a></p>
-    </main>
   </body>
 </html> 
