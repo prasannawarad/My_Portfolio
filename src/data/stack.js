@@ -1,5 +1,17 @@
 export const stackColumns = [
   {
+    id: 'stack-0',
+    icon: 'smart_toy',
+    title: 'Agentic AI & LLM',
+    items: [
+      'n8n (Workflow Orchestration)',
+      'Groq API',
+      'LLM Orchestration',
+      'Whisper (OpenAI)',
+      'Prompt Engineering',
+    ],
+  },
+  {
     id: 'stack-1',
     icon: 'schema',
     title: 'Data Engineering',
@@ -19,8 +31,9 @@ export const stackColumns = [
     title: 'Programming',
     items: [
       'Python (Pandas, NumPy, PySpark, Matplotlib, Seaborn)',
-      'Scikit-learn / PyTorch',
+      'Scikit-learn / PyTorch / XGBoost',
       'SQL (Advanced)',
+      'Node.js / FastAPI',
       'R',
       'C#',
     ],

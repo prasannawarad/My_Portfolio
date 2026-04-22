@@ -164,24 +164,6 @@ function Home() {
                 })}
               </div>
             </div>
-
-            <div className="rounded border border-surface-accent bg-code-bg p-5">
-              <h3 className="mb-3 font-mono text-sm font-bold text-text-muted">
-                LEADERSHIP_&_CAMPUS_EXPERIENCE
-              </h3>
-              <div className="space-y-3 font-mono text-sm text-text-muted">
-                {leadershipExperience.map((item) => {
-                  const company = experienceCompanyName(item);
-                  return (
-                  <article key={item.id}>
-                    <p className="text-xs font-bold text-primary">{item.duration}</p>
-                    <p className="text-white">{item.role}</p>
-                    {company ? <p className="text-white">{company}</p> : null}
-                  </article>
-                  );
-                })}
-              </div>
-            </div>
           </div>
 
           <aside className="flex min-w-0 flex-col gap-6 lg:col-span-5">
@@ -234,6 +216,24 @@ function Home() {
                 ))}
               </div>
             </TerminalWindow>
+
+            <div className="rounded border border-surface-accent bg-code-bg p-5">
+              <h3 className="mb-3 font-mono text-sm font-bold text-text-muted">
+                LEADERSHIP_&_CAMPUS_EXPERIENCE
+              </h3>
+              <div className="space-y-3 font-mono text-sm text-text-muted">
+                {leadershipExperience.map((item) => {
+                  const company = experienceCompanyName(item);
+                  return (
+                    <article key={item.id}>
+                      <p className="text-xs font-bold text-primary">{item.duration}</p>
+                      <p className="text-white">{item.role}</p>
+                      {company ? <p className="text-white">{company}</p> : null}
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
           </aside>
         </div>
       </section>

@@ -20,6 +20,7 @@ dist-ssr
 
 # Cursor / Claude local tooling (worktrees, caches — not part of the app source)
 .claude/
+CLAUDE.md
 *.suo
 *.ntvs*
 *.njsproj

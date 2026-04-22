@@ -20,6 +20,15 @@ export const homeFeaturedProjects = [
     projectUrl: githubProfile,
   },
   {
+    id: 'home-7',
+    title: 'CardioRisk',
+    description:
+      'Heart disease risk prediction pipeline in R — ingestion, feature engineering, model training, and evaluation in a single reproducible workflow with sensitivity/specificity threshold tuning.',
+    icon: 'favorite',
+    tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
+    projectUrl: githubProfile,
+  },
+  {
     id: 'home-6',
     title: 'Instacart_Customer_Behavior',
     description:
@@ -86,6 +95,20 @@ export const projects = [
     codeUrl: githubProfile,
     liveUrl: '#',
     category: 'data-eng',
+  },
+  {
+    id: 'proj-7',
+    title: 'CardioRisk',
+    description:
+      'Heart disease risk prediction pipeline in R — ingestion, feature engineering, model training, and evaluation in a single reproducible workflow; adjusted decision threshold based on sensitivity/specificity tradeoffs for clinical deployment viability.',
+    icon: 'favorite',
+    tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
+    commit: 'd3e7f1a',
+    commitMessage: 'feat: add threshold tuning and sensitivity/specificity evaluation',
+    updatedAt: 'recent',
+    codeUrl: githubProfile,
+    liveUrl: '#',
+    category: 'ml-ai',
   },
   {
     id: 'proj-6',
