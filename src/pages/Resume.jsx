@@ -10,6 +10,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 function Resume() {
   const sheetRef = useRef(null);
   const pageRefs = useRef(new Map());
+  const activePageRef = useRef(1);
+  const numPagesRef = useRef(null);
   const [numPages, setNumPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
   const [scale, setScale] = useState(1);
@@ -80,20 +82,27 @@ function Resume() {
   }, [numPages]);
 
   useEffect(() => {
+    activePageRef.current = activePage;
+    numPagesRef.current = numPages;
+  }, [activePage, numPages]);
+
+  useEffect(() => {
     const onKeyDown = (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (!numPages) return;
+      const n = numPagesRef.current;
+      const cur = activePageRef.current;
+      if (!n) return;
 
       if (e.key === 'j' || e.key === 'ArrowDown' || e.key === 'PageDown') {
         e.preventDefault();
-        const next = Math.min(numPages, activePage + 1);
+        const next = Math.min(n, cur + 1);
         setActivePage(next);
         scrollToPage(next);
       }
 
       if (e.key === 'k' || e.key === 'ArrowUp' || e.key === 'PageUp') {
         e.preventDefault();
-        const next = Math.max(1, activePage - 1);
+        const next = Math.max(1, cur - 1);
         setActivePage(next);
         scrollToPage(next);
       }
@@ -119,7 +128,7 @@ function Resume() {
 
     window.addEventListener('keydown', onKeyDown, { passive: false });
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [activePage, clampScale, numPages, scrollToPage]);
+  }, [clampScale, scrollToPage]);
 
   const displayWidth = useMemo(() => {
     if (fitMode === 'page') return Math.min(pageWidth, 900);
@@ -253,10 +262,77 @@ function Resume() {
 
                 <div className="mt-4">
                   <p className="font-mono text-[10px] font-bold tracking-[0.22em] text-primary/90">PAGES</p>
-                  <div className="mt-2 max-h-[18.5rem] overflow-auto pr-1 terminal-scrollbar">
+                  {/* Mobile: keep it fast + compact (no thumbnails) */}
+                  <div className="mt-2 lg:hidden">
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const next = Math.max(1, activePage - 1);
+                          setActivePage(next);
+                          scrollToPage(next);
+                        }}
+                        disabled={!numPages || activePage <= 1}
+                        className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded border border-surface-accent bg-surface-dark px-3 font-mono text-xs font-bold text-white transition-colors hover:border-primary hover:text-primary disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                      >
+                        <span className="material-symbols-outlined text-base" aria-hidden="true">
+                          arrow_upward
+                        </span>
+                        Prev
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const next = numPages ? Math.min(numPages, activePage + 1) : activePage + 1;
+                          setActivePage(next);
+                          scrollToPage(next);
+                        }}
+                        disabled={!numPages || (numPages ? activePage >= numPages : false)}
+                        className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded border border-primary bg-primary/10 px-3 font-mono text-xs font-bold text-primary transition-colors hover:bg-primary hover:text-background-dark disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                      >
+                        Next
+                        <span className="material-symbols-outlined text-base" aria-hidden="true">
+                          arrow_downward
+                        </span>
+                      </button>
+                    </div>
+                    <div className="mt-2 flex items-center gap-2 overflow-x-auto pr-1 terminal-scrollbar">
+                      {(numPages
+                        ? (numPages <= 6
+                            ? Array.from({ length: numPages }, (_, i) => i + 1)
+                            : Array.from(
+                                new Set([1, activePage - 1, activePage, activePage + 1, numPages].filter((n) => n >= 1 && n <= numPages)),
+                              ))
+                        : []
+                      ).map((n) => {
+                        const isActive = n === activePage;
+                        return (
+                          <button
+                            key={`page-chip-${n}`}
+                            type="button"
+                            onClick={() => {
+                              setActivePage(n);
+                              scrollToPage(n);
+                            }}
+                            className={`shrink-0 rounded border px-3 py-2 font-mono text-xs font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+                              isActive
+                                ? 'border-primary/60 bg-primary/10 text-primary'
+                                : 'border-surface-accent bg-code-bg text-text-muted hover:border-primary/45 hover:text-primary'
+                            }`}
+                          >
+                            {n}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Desktop: thumbnails */}
+                  <div className="mt-2 hidden max-h-[18.5rem] overflow-auto pr-1 terminal-scrollbar lg:block">
                     <div className="space-y-2">
-                      {numPages
-                        ? Array.from({ length: numPages }, (_, i) => {
+                      {numPages ? (
+                        <Document file={resumePdfUrl} loading={null} error={null} className="leading-none">
+                          {Array.from({ length: numPages }, (_, i) => {
                             const pageNumber = i + 1;
                             const isActive = pageNumber === activePage;
                             return (
@@ -274,20 +350,13 @@ function Resume() {
                                 }`}
                               >
                                 <div className="shrink-0 overflow-hidden rounded border border-surface-accent bg-white shadow-sm">
-                                  <Document
-                                    file={resumePdfUrl}
-                                    loading={null}
-                                    error={null}
-                                    className="leading-none"
-                                  >
-                                    <Page
-                                      pageNumber={pageNumber}
-                                      width={thumbWidth}
-                                      renderTextLayer={false}
-                                      renderAnnotationLayer={false}
-                                      className="[&_.react-pdf__Page__canvas]:block"
-                                    />
-                                  </Document>
+                                  <Page
+                                    pageNumber={pageNumber}
+                                    width={thumbWidth}
+                                    renderTextLayer={false}
+                                    renderAnnotationLayer={false}
+                                    className="[&_.react-pdf__Page__canvas]:block"
+                                  />
                                 </div>
                                 <div className="min-w-0">
                                   <p className="font-mono text-[10px] text-text-muted">
@@ -299,12 +368,13 @@ function Resume() {
                                 </div>
                               </button>
                             );
-                          })
-                        : (
-                          <div className="rounded border border-surface-accent bg-code-bg p-3 font-mono text-xs text-text-muted">
-                            Loading pages…
-                          </div>
-                        )}
+                          })}
+                        </Document>
+                      ) : (
+                        <div className="rounded border border-surface-accent bg-code-bg p-3 font-mono text-xs text-text-muted">
+                          Loading pages…
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -28,10 +28,10 @@ function ChatMessage({ role, content, isLoading }) {
     return (
       <div className="animate-chat-message flex justify-end">
         <div
-          className="max-w-[85%] rounded-2xl rounded-br-md border border-primary/40 bg-primary/15 px-3 py-2 text-sm text-text-main"
+          className="chat-bubble chat-bubble--user max-w-[85%] rounded-2xl rounded-br-md border border-primary/40 bg-primary/15 px-3 py-2 text-sm text-text-main"
           role="article"
         >
-          <p className="whitespace-pre-wrap break-words">{content}</p>
+          <p className="whitespace-pre-wrap break-words leading-relaxed">{content}</p>
         </div>
       </div>
     );
@@ -41,13 +41,13 @@ function ChatMessage({ role, content, isLoading }) {
     <div className="animate-chat-message flex gap-2 justify-start">
       <BotIcon />
       <div
-        className="max-w-[85%] rounded-2xl rounded-bl-md border border-surface-accent bg-surface-dark px-3 py-2 text-sm text-text-main"
+        className="chat-bubble chat-bubble--assistant max-w-[85%] rounded-2xl rounded-bl-md border border-surface-accent bg-surface-dark px-3 py-2 text-sm text-text-main"
         role="article"
       >
         {isLoading && !content ? (
           <LoadingDots />
         ) : (
-          <p className="whitespace-pre-wrap break-words">{content}</p>
+          <p className="whitespace-pre-wrap break-words leading-relaxed">{content}</p>
         )}
       </div>
     </div>

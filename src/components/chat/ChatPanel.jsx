@@ -10,11 +10,23 @@ function ChatPanel({ open, onClose }) {
   const isWaitingForResponse = isLoading;
   const panelRef = useRef(null);
   const endRef = useRef(null);
+  const lastScrollLenRef = useRef(0);
+  const openerRef = useRef(null);
   const lastIdx = messages.length - 1;
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, [messages, isWaitingForResponse, open]);
+    if (!open) return undefined;
+
+    const prevLen = lastScrollLenRef.current;
+    const nextLen = messages.length;
+    lastScrollLenRef.current = nextLen;
+
+    // Only smooth-scroll when a new message is appended.
+    const behavior = nextLen > prevLen && !isWaitingForResponse ? 'smooth' : 'auto';
+    endRef.current?.scrollIntoView({ behavior, block: 'end' });
+
+    return undefined;
+  }, [messages.length, isWaitingForResponse, open]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -27,25 +39,37 @@ function ChatPanel({ open, onClose }) {
 
   useEffect(() => {
     if (!open) return undefined;
+    openerRef.current = document.activeElement;
     const root = panelRef.current;
     if (!root) return undefined;
 
-    const focusables = root.querySelectorAll(
-      'button, [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])',
-    );
-    const list = Array.from(focusables).filter(
-      (el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true',
-    );
-    const first = list[0];
-    const last = list[list.length - 1];
     window.requestAnimationFrame(() => {
       const inputEl = root.querySelector('input[type="text"]');
       if (inputEl) inputEl.focus();
-      else first?.focus();
+      else {
+        const focusables = root.querySelectorAll(
+          'button, [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])',
+        );
+        const list = Array.from(focusables).filter(
+          (el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true',
+        );
+        list[0]?.focus();
+      }
     });
 
     function onKeyDown(e) {
-      if (e.key !== 'Tab' || list.length === 0) return;
+      if (e.key !== 'Tab') return;
+
+      const focusables = root.querySelectorAll(
+        'button, [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      const list = Array.from(focusables).filter(
+        (el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true',
+      );
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (!first || !last) return;
+
       if (e.shiftKey) {
         if (document.activeElement === first) {
           e.preventDefault();
@@ -58,28 +82,34 @@ function ChatPanel({ open, onClose }) {
     }
 
     root.addEventListener('keydown', onKeyDown);
-    return () => root.removeEventListener('keydown', onKeyDown);
+    return () => {
+      root.removeEventListener('keydown', onKeyDown);
+      openerRef.current?.focus?.();
+    };
   }, [open]);
 
   return (
     <div
       ref={panelRef}
       role="dialog"
-      aria-modal={open}
-      aria-hidden={!open}
-      aria-label="Chat with Prasanna — personalized assistant"
+      aria-modal={open ? 'true' : undefined}
+      aria-hidden={!open ? 'true' : undefined}
+      aria-labelledby="chat-panel-title"
+      aria-describedby="chat-panel-subtitle"
       className={`relative z-[1] flex w-[360px] max-w-[min(360px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
         h-[520px] max-h-[75dvh]
         max-md:fixed max-md:inset-0 max-md:z-[10000] max-md:h-full max-md:max-h-none max-md:w-full max-md:rounded-none ${
           open ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 translate-y-2'
         }`}
     >
-      <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2">
+      <header className="flex shrink-0 items-center justify-between border-b border-surface-accent bg-surface-dark px-3 py-2 max-md:pt-[max(0.5rem,env(safe-area-inset-top))]">
         <div>
-          <p className="font-mono text-xs font-bold uppercase tracking-wide text-primary">
+          <p id="chat-panel-title" className="font-mono text-xs font-bold uppercase tracking-wide text-primary">
             Prasanna AI
           </p>
-          <p className="text-[11px] text-text-muted">Ask me anything — work, life, or everything in between</p>
+          <p id="chat-panel-subtitle" className="text-[11px] text-text-muted">
+            Ask me anything — work, life, or everything in between
+          </p>
         </div>
         <button
           type="button"

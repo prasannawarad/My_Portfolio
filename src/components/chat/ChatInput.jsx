@@ -15,6 +15,7 @@ function ChatInput({ onSend, disabled }) {
 
   const onKeyDown = useCallback(
     (e) => {
+      if (e.isComposing) return;
       if (e.key !== 'Enter' || e.shiftKey) return;
       e.preventDefault();
       submit();
@@ -23,12 +24,12 @@ function ChatInput({ onSend, disabled }) {
   );
 
   return (
-    <div className="relative z-10 flex w-full min-w-0 items-center gap-2 border-t border-surface-accent bg-code-bg p-3">
+    <div className="relative z-10 flex w-full min-w-0 items-center gap-2 border-t border-surface-accent bg-code-bg p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <input
         type="text"
         maxLength={MAX_LEN}
         value={value}
-        onChange={(e) => setValue(e.target.value.slice(0, MAX_LEN))}
+        onChange={(e) => setValue(e.target.value)}
         onKeyDown={onKeyDown}
         disabled={disabled}
         placeholder="Ask about work, life, hobbies…"
@@ -41,7 +42,7 @@ function ChatInput({ onSend, disabled }) {
         onClick={submit}
         disabled={disabled || !value.trim()}
         aria-label="Send message"
-        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary/50 text-primary transition-colors hover:bg-primary hover:text-background-dark disabled:pointer-events-none disabled:opacity-40"
+        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary/50 text-primary transition-colors hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:pointer-events-none disabled:opacity-40"
       >
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />

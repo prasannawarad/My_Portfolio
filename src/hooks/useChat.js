@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { sendChat, streamChat } from '../utils/chatApi';
 
 const MAX_MESSAGES = 50;
@@ -21,6 +21,7 @@ export function useChat() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const friendlyError = "Couldn't reach Prasanna AI right now. Please try again in a moment.";
+  const streamRafRef = useRef(null);
 
   useEffect(() => {
     if (!error) return undefined;
@@ -68,13 +69,21 @@ export function useChat() {
       try {
         let acc = '';
         let gotAny = false;
+        let pending = false;
+
+        const flush = () => {
+          pending = false;
+          setMessages((prev) => prev.map((m) => (m.id === asstId ? { ...m, content: acc } : m)));
+        };
+
         for await (const chunk of streamChat(apiMessages)) {
           gotAny = true;
           acc += chunk;
-          setMessages((prev) =>
-            prev.map((m) => (m.id === asstId ? { ...m, content: acc } : m)),
-          );
+          if (pending) continue;
+          pending = true;
+          streamRafRef.current = window.requestAnimationFrame(flush);
         }
+        if (pending) flush();
         if (!gotAny || !acc.trim()) throw new Error('Empty response');
       } catch {
         try {
@@ -101,6 +110,10 @@ export function useChat() {
           });
         }
       } finally {
+        if (streamRafRef.current) {
+          window.cancelAnimationFrame(streamRafRef.current);
+          streamRafRef.current = null;
+        }
         setIsLoading(false);
       }
     },

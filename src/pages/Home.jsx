@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
 import StackColumn from '../components/StackColumn';
@@ -24,10 +24,21 @@ function Home() {
   const heroRef = useRef(null);
   const heroRafRef = useRef(null);
 
-  const heroSpotlightDefaults = useMemo(() => ({ '--mx': '22%', '--my': '18%' }), []);
+  const heroSpotlightDefaults = useMemo(() => ({ '--mx': '22%', '--my': '18%', '--hero-gold-a': '0.14' }), []);
   const profileImageUrl = useMemo(() => `${import.meta.env.BASE_URL}prasanna.jpeg`, []);
+  const isCoarsePointer = useMemo(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return false;
+    return window.matchMedia('(pointer: coarse)').matches;
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (heroRafRef.current) cancelAnimationFrame(heroRafRef.current);
+    };
+  }, []);
 
   const onHeroPointerMove = (e) => {
+    if (isCoarsePointer) return;
     const el = heroRef.current;
     if (!el) return;
     if (heroRafRef.current) cancelAnimationFrame(heroRafRef.current);
@@ -42,6 +53,7 @@ function Home() {
   };
 
   const onHeroPointerLeave = () => {
+    if (isCoarsePointer) return;
     const el = heroRef.current;
     if (!el) return;
     el.style.setProperty('--mx', '22%');
@@ -57,7 +69,7 @@ function Home() {
       >
         <div
           ref={heroRef}
-          className="relative grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center"
+          className="hero-spotlight relative grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center"
           style={heroSpotlightDefaults}
           onPointerMove={onHeroPointerMove}
           onPointerLeave={onHeroPointerLeave}
@@ -66,11 +78,11 @@ function Home() {
             className="pointer-events-none absolute -inset-x-4 -top-10 -bottom-8 opacity-70 sm:-inset-x-6 lg:-inset-x-10"
             aria-hidden="true"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mx)_var(--my),rgba(212,175,55,0.14),transparent_44%),radial-gradient(circle_at_82%_32%,rgba(148,163,184,0.10),transparent_44%),linear-gradient(to_bottom,rgba(8,15,16,0.55),rgba(8,15,16,0))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mx)_var(--my),rgba(212_175_55_/_var(--hero-gold-a)),transparent_44%),radial-gradient(circle_at_82%_32%,rgba(148_163_184_/_0.10),transparent_44%),linear-gradient(to_bottom,rgba(8_15_16_/_0.55),rgba(8_15_16_/_0))]" />
             <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,rgba(148,163,184,0.9)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.9)_1px,transparent_1px)] [background-size:48px_48px]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.10),transparent_55%)] blur-2xl" />
           </div>
-          <div className="flex min-w-0 flex-col gap-6">
+          <div className="hero-copy relative flex min-w-0 flex-col gap-6">
             <div className="inline-flex w-fit max-w-full items-center gap-2 rounded border border-surface-accent bg-surface-dark px-2 py-1 sm:px-3">
               <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse motion-reduce:animate-none" />
               <span className="truncate font-mono text-[10px] font-bold text-primary sm:text-xs">
@@ -134,7 +146,7 @@ function Home() {
           <div className="min-w-0">
             <TerminalWindow title="profile --card" className="terminal-window--no-filter" bodyClassName="p-4 sm:p-6">
               <div className="flex flex-col gap-4">
-                <div className="mx-auto h-56 w-56 overflow-hidden rounded-full border-2 border-surface-accent">
+                <div className="mx-auto h-52 w-52 overflow-hidden rounded-full border-2 border-surface-accent sm:h-56 sm:w-56">
                   <img
                     src={profileImageUrl}
                     alt="Prasanna Warad profile"
