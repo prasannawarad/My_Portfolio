@@ -45,8 +45,94 @@
     text-wrap: balance;
   }
 
+  /* Scroll reveal (used on Home sections) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+    transition: opacity 700ms cubic-bezier(0.2, 0.9, 0.2, 1),
+      transform 700ms cubic-bezier(0.2, 0.9, 0.2, 1),
+      filter 700ms cubic-bezier(0.2, 0.9, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+  }
+
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+  }
+
   .home-main-section {
     @apply scroll-mt-20 py-10 sm:scroll-mt-24 sm:py-12 md:py-14;
+  }
+
+  /* One tasteful “signature moment”: scanlines + soft glow on terminal surfaces */
+  .terminal-window::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 380ms ease;
+    background:
+      linear-gradient(to bottom, rgba(226, 232, 240, 0.06), rgba(226, 232, 240, 0) 30%),
+      repeating-linear-gradient(
+        to bottom,
+        rgba(8, 15, 16, 0) 0px,
+        rgba(8, 15, 16, 0) 3px,
+        rgba(226, 232, 240, 0.06) 4px
+      );
+    mix-blend-mode: overlay;
+  }
+
+  .terminal-window::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 0.5rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 380ms ease;
+    box-shadow:
+      0 0 0 1px rgba(212, 175, 55, 0.18) inset,
+      0 0 0 1px rgba(148, 163, 184, 0.10);
+  }
+
+  .terminal-window:hover::before,
+  .terminal-window:focus-within::before {
+    opacity: 0.32;
+  }
+
+  .terminal-window:hover::after,
+  .terminal-window:focus-within::after {
+    opacity: 1;
+  }
+
+  /* Opt-out for photo/asset surfaces (keeps terminal frame, removes scanline/filter feel) */
+  .terminal-window.terminal-window--no-filter::before,
+  .terminal-window.terminal-window--no-filter::after,
+  .terminal-window.terminal-window--no-filter:hover::before,
+  .terminal-window.terminal-window--no-filter:hover::after,
+  .terminal-window.terminal-window--no-filter:focus-within::before,
+  .terminal-window.terminal-window--no-filter:focus-within::after {
+    opacity: 0 !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-window::before,
+    .terminal-window::after {
+      transition: none;
+    }
   }
 
   .terminal-scrollbar::-webkit-scrollbar {

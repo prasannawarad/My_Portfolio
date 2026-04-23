@@ -5,7 +5,7 @@ function ProjectCard({ project, variant }) {
 
   if (variant === 'featured') {
     return (
-      <article className="group relative flex flex-col gap-4 rounded border border-surface-accent bg-surface-dark p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
+      <article className="group relative flex flex-col gap-4 rounded border border-surface-accent bg-surface-dark p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-within:ring-2 focus-within:ring-primary/35">
         <div className="flex items-start justify-between">
           <div className="rounded bg-background-dark p-3 text-primary border border-surface-accent">
             <span className="material-symbols-outlined text-3xl" aria-hidden="true">
@@ -18,6 +18,7 @@ function ProjectCard({ project, variant }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Open ${project.title}`}
+              className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
             >
               <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
                 open_in_new
@@ -26,7 +27,7 @@ function ProjectCard({ project, variant }) {
           ) : null}
         </div>
         <div>
-          <h3 className="font-mono text-xl font-bold text-white mb-2">{project.title}</h3>
+          <h3 className="font-display text-xl font-black tracking-tight text-white mb-2">{project.title}</h3>
           <p className="text-text-muted text-sm leading-relaxed mb-4">{project.description}</p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -44,7 +45,7 @@ function ProjectCard({ project, variant }) {
   }
 
   return (
-    <article className="group relative flex flex-col gap-0 rounded border border-surface-accent bg-surface-dark transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 overflow-hidden">
+    <article className="group relative flex flex-col gap-0 rounded border border-surface-accent bg-surface-dark transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 overflow-hidden focus-within:ring-2 focus-within:ring-primary/35">
       <div className="p-6 pb-4">
         <div className="flex items-start justify-between mb-4">
           <div className="rounded bg-background-dark p-3 text-primary border border-surface-accent group-hover:text-white group-hover:bg-primary/20 transition-colors">
@@ -54,7 +55,13 @@ function ProjectCard({ project, variant }) {
           </div>
           <div className="flex gap-2">
             {isValidLink(project.codeUrl) ? (
-              <a href={project.codeUrl} aria-label={`View code for ${project.title}`}>
+              <a
+                href={project.codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View code for ${project.title}`}
+                className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              >
                 <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
                   code
                 </span>
@@ -66,6 +73,7 @@ function ProjectCard({ project, variant }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open live project ${project.title}`}
+                className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
               >
                 <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
                   open_in_new
@@ -74,7 +82,7 @@ function ProjectCard({ project, variant }) {
             ) : null}
           </div>
         </div>
-        <h3 className="font-mono text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+        <h3 className="font-display text-xl font-black tracking-tight text-white mb-2 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
         <p className="text-text-muted text-sm leading-relaxed mb-4 h-20 overflow-hidden text-ellipsis">

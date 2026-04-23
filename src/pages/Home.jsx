@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import profileImage from '../assets/profile-960.webp';
+import { useMemo, useRef } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
 import StackColumn from '../components/StackColumn';
@@ -16,8 +16,38 @@ import {
 import { contactChannels } from '../data/contactChannels';
 import { projects } from '../data/projects';
 import { stackColumns } from '../data/stack';
+import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 function Home() {
+  useRevealOnScroll();
+
+  const heroRef = useRef(null);
+  const heroRafRef = useRef(null);
+
+  const heroSpotlightDefaults = useMemo(() => ({ '--mx': '22%', '--my': '18%' }), []);
+  const profileImageUrl = useMemo(() => `${import.meta.env.BASE_URL}prasanna.jpeg`, []);
+
+  const onHeroPointerMove = (e) => {
+    const el = heroRef.current;
+    if (!el) return;
+    if (heroRafRef.current) cancelAnimationFrame(heroRafRef.current);
+
+    heroRafRef.current = requestAnimationFrame(() => {
+      const rect = el.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+      el.style.setProperty('--mx', `${(x * 100).toFixed(2)}%`);
+      el.style.setProperty('--my', `${(y * 100).toFixed(2)}%`);
+    });
+  };
+
+  const onHeroPointerLeave = () => {
+    const el = heroRef.current;
+    if (!el) return;
+    el.style.setProperty('--mx', '22%');
+    el.style.setProperty('--my', '18%');
+  };
+
   return (
     <div className="w-full min-w-0 max-w-7xl px-4 pb-16 pt-8 sm:px-5 lg:px-8">
       <section
@@ -25,16 +55,30 @@ function Home() {
         className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
         aria-label="Home section"
       >
-        <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+        <div
+          ref={heroRef}
+          className="relative grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center"
+          style={heroSpotlightDefaults}
+          onPointerMove={onHeroPointerMove}
+          onPointerLeave={onHeroPointerLeave}
+        >
+          <div
+            className="pointer-events-none absolute -inset-x-4 -top-10 -bottom-8 opacity-70 sm:-inset-x-6 lg:-inset-x-10"
+            aria-hidden="true"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mx)_var(--my),rgba(212,175,55,0.14),transparent_44%),radial-gradient(circle_at_82%_32%,rgba(148,163,184,0.10),transparent_44%),linear-gradient(to_bottom,rgba(8,15,16,0.55),rgba(8,15,16,0))]" />
+            <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,rgba(148,163,184,0.9)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.9)_1px,transparent_1px)] [background-size:48px_48px]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.10),transparent_55%)] blur-2xl" />
+          </div>
           <div className="flex min-w-0 flex-col gap-6">
             <div className="inline-flex w-fit max-w-full items-center gap-2 rounded border border-surface-accent bg-surface-dark px-2 py-1 sm:px-3">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse" />
+              <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse motion-reduce:animate-none" />
               <span className="truncate font-mono text-[10px] font-bold text-primary sm:text-xs">
                 System Online // v7.0.0
               </span>
             </div>
 
-            <h1 className="text-balance break-words text-3xl font-black leading-[1.12] tracking-tight text-white font-mono sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+            <h1 className="text-balance break-words text-3xl font-black leading-[1.06] tracking-tight text-white font-display sm:text-4xl md:text-5xl lg:text-[3.35rem]">
               <span className="block text-white">
                 {bio.heroLine1}{' '}
                 <span className="bg-gradient-to-r from-primary to-yellow-200 bg-clip-text text-transparent">
@@ -88,20 +132,32 @@ function Home() {
           </div>
 
           <div className="min-w-0">
-            <TerminalWindow title="profile --card" bodyClassName="p-4 sm:p-6">
+            <TerminalWindow title="profile --card" className="terminal-window--no-filter" bodyClassName="p-4 sm:p-6">
               <div className="flex flex-col gap-4">
                 <div className="mx-auto h-56 w-56 overflow-hidden rounded-full border-2 border-surface-accent">
-                  <img src={profileImage} alt="Prasanna Warad profile" className="h-full w-full object-cover" />
+                  <img
+                    src={profileImageUrl}
+                    alt="Prasanna Warad profile"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-[86%_40%] scale-[1.18] transition-transform duration-500 hover:scale-[1.22]"
+                  />
                 </div>
                 <div className="border-t border-surface-accent pt-4 font-mono text-sm text-text-muted">
                   <p>
                     name: <span className="text-white">{bio.name}</span>
                   </p>
                   <p>
-                    email: <span className="text-primary">{bio.email}</span>
+                    email:{' '}
+                    <a href={`mailto:${bio.email}`} className="text-primary hover:underline">
+                      {bio.email}
+                    </a>
                   </p>
                   <p>
-                    phone: <span className="text-white">{bio.phone}</span>
+                    phone:{' '}
+                    <a href={`tel:${bio.phone}`} className="text-white hover:underline">
+                      {bio.phone}
+                    </a>
                   </p>
                   <p>
                     github:{' '}
@@ -118,8 +174,10 @@ function Home() {
 
       <section
         id="about"
-        className="home-main-section"
+        className="home-main-section reveal"
         aria-label="About section"
+        data-reveal
+        style={{ '--reveal-delay': '20ms' }}
       >
         <SectionHeader title="ABOUT" />
         <div className="mt-8 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-12">
@@ -240,8 +298,10 @@ function Home() {
 
       <section
         id="projects"
-        className="home-main-section"
+        className="home-main-section reveal"
         aria-label="Projects section"
+        data-reveal
+        style={{ '--reveal-delay': '60ms' }}
       >
         <SectionHeader title="PROJECTS" />
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -264,8 +324,10 @@ function Home() {
 
       <section
         id="contact"
-        className="home-main-section"
+        className="home-main-section reveal"
         aria-label="Contact section"
+        data-reveal
+        style={{ '--reveal-delay': '90ms' }}
       >
         <SectionHeader title="CONTACT" />
         <div className="mt-8">

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function TerminalWindow({ title, children, className, bodyClassName, showHeader }) {
   return (
     <div
-      className={`rounded-lg border border-surface-accent bg-code-bg overflow-hidden shadow-2xl shadow-black/50 ${className}`}
+      className={`terminal-window group relative rounded-lg border border-surface-accent bg-code-bg overflow-hidden shadow-2xl shadow-black/50 ${className}`}
     >
       {showHeader ? (
         <div className="flex items-center justify-between border-b border-surface-accent bg-surface-dark px-4 py-2">
@@ -16,7 +16,7 @@ function TerminalWindow({ title, children, className, bodyClassName, showHeader 
           <div className="w-10" />
         </div>
       ) : null}
-      <div className={bodyClassName}>{children}</div>
+      <div className={`relative ${bodyClassName}`}>{children}</div>
     </div>
   );
 }
