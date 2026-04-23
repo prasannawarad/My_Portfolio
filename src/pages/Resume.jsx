@@ -23,6 +23,10 @@ function Resume() {
   const [loadError, setLoadError] = useState(null);
 
   const resumePdfUrl = useMemo(() => `${import.meta.env.BASE_URL}resume.pdf`, []);
+  const isTouchLike = useMemo(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return false;
+    return window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(max-width: 640px)').matches;
+  }, []);
 
   const onDocumentLoadSuccess = useCallback(({ numPages: n }) => {
     setNumPages(n);
@@ -419,8 +423,8 @@ function Resume() {
                               <Page
                                 pageNumber={pageNumber}
                                 width={displayWidth}
-                                renderTextLayer
-                                renderAnnotationLayer
+                                renderTextLayer={!isTouchLike}
+                                renderAnnotationLayer={!isTouchLike}
                                 className="bg-white"
                               />
                             </div>
