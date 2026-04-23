@@ -153,6 +153,7 @@ const MODEL = 'llama-3.3-70b-versatile';
 const MAX_CONTENT = 1000;
 const MAX_MSGS = 20;
 const MAX_RPM = 10;
+const MAX_KB_CHARS = 14_000;
 const RATE_WINDOW_MS = 60_000;
 const RATE_CLEANUP_MS = 60_000;
 const ALLOWED_ROLES = new Set(['user', 'assistant']);
@@ -238,6 +239,14 @@ function validateMessages(raw) {
   return out.length ? out : null;
 }
 
+function validateKb(raw) {
+  if (raw == null) return '';
+  if (typeof raw !== 'string') return '';
+  const trimmed = raw.trim();
+  if (!trimmed) return '';
+  return trimmed.length > MAX_KB_CHARS ? trimmed.slice(0, MAX_KB_CHARS) : trimmed;
+}
+
 export default {
   async fetch(request, env) {
     const origin = resolveCorsOrigin(request, env);
@@ -262,6 +271,7 @@ export default {
 
     const userMsgs = validateMessages(body.messages);
     if (!userMsgs) return jsonError(origin, 400, 'Invalid request');
+    const clientKb = validateKb(body.kb);
     if (!env.GROQ_API_KEY) {
       console.error('GROQ_API_KEY not configured');
       return jsonError(origin, 502, 'AI service temporarily unavailable');
@@ -272,7 +282,10 @@ export default {
       return jsonError(origin, 429, 'Too many requests. Please wait a moment.');
     }
 
-    const messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...userMsgs];
+    const kbSuffix = clientKb
+      ? `\n\n---\n\n# Live portfolio data (highest priority)\nUse this as the most up-to-date source. If anything conflicts with older memory, prefer this.\n\n${clientKb}\n`
+      : '';
+    const messages = [{ role: 'system', content: `${SYSTEM_PROMPT}${kbSuffix}` }, ...userMsgs];
 
     let groqRes;
     try {
