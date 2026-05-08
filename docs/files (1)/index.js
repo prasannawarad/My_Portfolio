@@ -37,19 +37,19 @@ Use ONLY the following information when answering.
 
 ## Bio
 Name: Prasanna Kailash Warad
-Role: Software Engineer · Data Engineer · Data Analyst
+Role: Data and AI Engineer · Software Engineer · Data Engineer
 Location: Dallas, TX
 Years active (approx.): 3
-Primary focus: Data systems, analytics & backend APIs
-Status: Open to full-time SWE, data engineering & analytics roles
+Primary focus: Data pipelines, LLM workflows & ML systems
+Status: Open to full-time Data/AI engineering, data engineering & SWE roles
 
-Headline: Turning Data Into Product Decisions
+Headline: Building Data & Agentic AI Systems
 
-Elevator pitch: I build pipelines, analytics, and production-facing data systems so teams can trust the numbers — from millions of transactions to leadership-ready dashboards.
+Elevator pitch: I design ETL/ELT pipelines, LLM-orchestrated workflows, and ML systems that eliminate manual bottlenecks and move operational decisions faster.
 
-Summary: Hands-on with Python, SQL, Spark, Airflow, Tableau, and cloud data platforms. Background in retail-scale analytics and ML; MS ITM at UT Dallas (Dean's Excellence Scholar).
+Summary: Production experience with Python, SQL, Spark, Airflow, LLM orchestration, PostgreSQL, FastAPI, Docker, and AWS; MS ITM at UT Dallas with a Business Analytics & Data Mining graduate certificate.
 
-Interests: Data Pipelines, Real-time Analytics, ML Systems, Cloud Data Platforms
+Interests: Agentic AI, ETL/ELT Pipelines, ML Systems, Cloud Data Platforms
 
 ## Education
 Master of Science, Information Technology & Management
@@ -57,17 +57,22 @@ Institution: The University of Texas at Dallas
 Duration: Aug 2024 – May 2026
 Distinction: Dean's Excellence Scholar
 Extra: Graduate Certificate — Business Analytics & Data Mining
+GPA: 3.88/4.0
 
 Bachelor of Engineering, Electrical
 Institution: Savitribai Phule Pune University
 Duration: Aug 2018 – May 2022
+GPA: 3.80/4.0
 
 ## Experience
 2025-10 — Present — Cloud BC Labs
-Role: Software Engineer Intern (Current)
-  • Developed RESTful APIs in Node.js/Python to streamline data exchange; cut integration effort by 20%.
-  • Restructured Python ETL pipelines with indexing, query refactors, and batch processing to boost throughput by 25%.
-  • Analyzed application usage metrics to surface behavioral trends, reducing recurring bug reports by 15%.
+Role: Software Engineer Intern — Data & AI Engineering (Current)
+Office / location: Reston, VA
+  • Automated the full candidate assessment lifecycle using n8n agentic workflows and Groq LLM; job description submission triggers role-specific question generation and candidate email delivery with no manual steps, collapsing a 5-stage hiring process to under 2 minutes end-to-end.
+  • Designed 6 PostgreSQL schema migrations from scratch, normalizing candidates, assessments, AI scores, proctoring flags, and job requisitions into a structured schema powering real-time recruiter dashboard queries.
+  • Integrated 4 AI services — DeepFace for identity verification, Groq LLM for MCQ scoring, Groq Whisper for video transcription, and MediaPipe for behavioral proctoring — into a 6-container Docker pipeline with no manual routing between stages.
+  • Deployed RESTful APIs in FastAPI and Node.js connecting the React HR dashboard to backend AI scoring services; standardized data contracts across 4 microservices, cutting cross-service integration overhead by 20%.
+  • Instrumented an end-to-end screening funnel with usage analytics, surfacing recurring failure patterns that cut incoming bug report volume 15% and shifted sprint priorities toward the highest-impact fixes.
 
 2025-01 — 2025-10 — The University of Texas at Dallas
 Role: Student Services & Operations Manager
@@ -79,41 +84,50 @@ Role: Vice President
   • Led planning and execution for club activities with cross-functional student collaboration.
   • Supported event coordination, team alignment, and community engagement initiatives.
 
-2023-02 — 2024-07 — Client: Dollar General (HCLTech)
+2023-02 — 2024-07 — HCLTech (client: Dollar General)
 Role: Data Engineer
-  • Analyzed 2M+ retail transactions with Python and SQL to detect anomalies, improving reporting accuracy and model reliability.
-  • Boosted Oracle throughput by 30% with indexing and PL/SQL tuning for 10,000+ daily transactions.
-  • Built Spark + Airflow pipelines for reporting; reduced query latency by 28% through caching and partition pruning.
-  • Designed Tableau dashboards for leadership, reducing manual reporting effort by 40%.
-  • Developed scikit-learn/PyTorch model on AWS logs to forecast downtimes, cutting incident response time by 25%.
+Office / location: Noida, India
+  • Implemented Spark and Airflow data pipelines with partition pruning and query caching, cutting operational reporting latency 28% across Dollar General's retail analytics stack serving 19,000+ store locations.
+  • Validated 2M+ retail transaction records via Python and SQL anomaly detection, resolving data quality gaps that were degrading inventory replenishment model accuracy across Dollar General's fulfillment network.
+  • Constructed an anomaly detection and downtime forecasting model using scikit-learn and PyTorch on AWS system performance logs, cutting incident response time by 25% by flagging at-risk systems before failures reached production.
 
 Selected impact metrics:
-  • DB Throughput: +30% — Oracle indexing and PL/SQL tuning
-  • Manual Reporting: −40% — Tableau dashboard automation
-  • Query Latency: −28% — Caching and partition pruning
+  • Hiring Funnel: <2m — Agentic AI screening lifecycle from JD to candidate delivery
+  • Reporting Latency: −28% — Spark and Airflow partition pruning + query caching
+  • Retail Records: 2M+ — Python and SQL anomaly detection for transaction quality
   • Incident Response: −25% — Predictive downtime model (AWS logs)
 
 ## Projects
-Credit_Risk_Modeling — Credit risk pipeline on 255K+ lending records with SMOTE; evaluated LR/RandomForest/XGBoost (ROC-AUC 0.737, accuracy 88.5%). Tags: Python, scikit-learn, XGBoost, SMOTE. Code: https://github.com/prasannawarad
+InvestIQ — AI-powered portfolio co-pilot for beginner investors. AI agent Kuber spans a web dashboard, floating chat widget, and a Chrome extension that overlays financial news with contextual portfolio advice. Deterministic rebalance engine (drift, scenario, panic modes) surfaces transparent trade receipts without LLM hallucination; Groq-powered streaming chat with ElevenLabs voice narration. Built for the Goldman Sachs / UTD JSOM Hackathon (May 2026). Tags: Next.js, Groq AI, AI Agent, ElevenLabs, Chrome Extension. Code: https://github.com/prasannawarad. Live: https://invest-iq-kuber.netlify.app
 
-Scalable_Fleet_Risk_Analytics — Hadoop (HDFS, MapReduce) pipeline ingesting/transforming data for 300+ assets in 14 states with Power BI risk dashboards. Tags: Hadoop, HDFS, MapReduce, Power BI. Code: https://github.com/prasannawarad
+PrepAI_Pro — AI interview intelligence platform with company research, personalized STAR stories, and 5-question mock interviews with real-time AI feedback, scoring, and improvement tips. Tags: React, Gemini AI, Prompt Engineering, Gen AI. Code: https://github.com/prasannawarad/prepai-pro. Live: https://prepai-pro.netlify.app
 
-Instacart_Customer_Behavior — 3M+ grocery transactions processed via optimized SQL pipelines with Tableau dashboards for segmentation, cohorts, and demand forecasting. Tags: SQL, Tableau, Analytics. Code: https://github.com/prasannawarad
+DataDoc_AI — Natural language data analysis platform — upload CSV, ask questions in English, AI generates SQL, executes in-browser, and auto-visualizes with Plotly charts. Tags: React, Gemini AI, SQL Engine, Plotly. Code: https://github.com/prasannawarad/datadoc-ai. Live: https://datadocai.netlify.app/
+
+RAGBase — Full RAG pipeline — upload documents, build vector knowledge base with embeddings, ask questions with source-cited answers, chunk inspector, and analytics dashboard. Tags: React, RAG, Embeddings, Vector Search. Code: https://github.com/prasannawarad/ragbase. Live: https://ragbase-gamma.vercel.app/
+
+Credit_Risk_Modeling — Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC. Tags: Python, scikit-learn, XGBoost, SMOTE. Code: https://github.com/prasannawarad
+
+Scalable_Fleet_Risk_Analytics — Distributed Hadoop HDFS and MapReduce ingestion pipeline for operational datasets across 300+ assets in 14 states, paired with Power BI dashboards for risk scores and predictive maintenance flags. Tags: Hadoop, HDFS, MapReduce, Power BI. Code: https://github.com/prasannawarad
+
+Instacart_Customer_Behavior — Processed 3M+ grocery transactions through optimized SQL pipelines for segmentation, cohort retention, and demand forecasting, then surfaced product velocity, fulfillment trends, and campaign ROI in Tableau. Tags: SQL, Tableau, Python. Code: https://github.com/prasannawarad
+
+CardioRisk — Predictive health analytics pipeline in R evaluating 5 classifiers on 319K+ CDC health records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall while Random Forest ranked the top clinical predictors. Tags: R, Statistical Modeling, ML Pipeline. Code: https://github.com/prasannawarad
 
 ## Tech Stack
-Data Engineering: ETL/ELT, Airflow, Spark, Hadoop, Data Modeling, Lambda/Kappa Architecture, dbt
-Programming: Python (Pandas, NumPy, PySpark, Matplotlib, Seaborn), Scikit-learn/PyTorch, SQL (Advanced), R, C#
-Databases: MySQL, PostgreSQL, SQL Server, Oracle, MongoDB, Snowflake
-Cloud: AWS (Lambda, Redshift), GCP (BigQuery), Azure (Synapse, Databricks), Snowflake
-Analytics: Tableau, Power BI, KNIME, Feature Engineering, Time-Series Analysis, Figma
-Dev Tooling: Docker, Git/GitHub, REST APIs, Node.js, CSS/React
+Agentic AI & LLM: n8n, Groq API, Ollama, LLaMA 3.3-70b, LLM Orchestration, RAG, Prompt Engineering, Whisper (OpenAI), Pinecone
+Data Engineering: ETL/ELT, Apache Spark, Apache Airflow, Apache Kafka, Hadoop (HDFS/MapReduce), dbt, Databricks, Data Modeling
+Programming: Python, TypeScript, SQL (Advanced), PySpark, FastAPI, Flask, Node.js, Express.js, Pandas, NumPy, scikit-learn, PyTorch, XGBoost, R
+Computer Vision & AI Services: OpenCV, DeepFace, MediaPipe
+Databases & Cloud: PostgreSQL, Redis, MySQL, MongoDB, Snowflake, Microsoft SQL Server, AWS (S3, Redshift, CloudWatch), Azure Synapse Analytics
+Tools & Platforms: Docker, Terraform, Git, GitHub, CI/CD, REST APIs, Tableau, Power BI
 
 ## Certifications
+Snowflake: SnowPro Associate: Platform Certified
 Salesforce Certified: AI Associate
 KNIME Analytics: Basic Proficiency
 Domain Knowledge: HIPAA
-Snowflake: SnowPro Associate: Platform Certified
-Graduate Certificate: Business Intelligence & Data Mining
+Graduate Certificate: Business Analytics & Data Mining
 
 ## Contact / Links
 Phone: 469-766-7241
