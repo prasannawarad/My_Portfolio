@@ -27,6 +27,11 @@ CLAUDE.md
 *.sln
 *.sw?
 
+# Local/generated markdown docs (not part of app source)
+PROJECTS.md
+README_PROFILE.md
+*_PROFILE.md
+
 # Python / misc
 .venv/
 .Rhistory
