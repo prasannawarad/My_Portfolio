@@ -41,7 +41,13 @@ function ProjectCard({ project, variant }) {
           </div>
         </div>
         <div>
-          <h3 className="font-display text-xl font-black tracking-tight text-white mb-2">{project.title}</h3>
+          <h3 className="font-display text-xl font-black tracking-tight text-white mb-1">{project.title}</h3>
+          {project.award && (
+            <div className="inline-flex items-center gap-1 rounded border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-400 mb-2">
+              <span className="material-symbols-outlined text-[12px]" aria-hidden="true">emoji_events</span>
+              {project.award}
+            </div>
+          )}
           <p className="text-text-muted text-sm leading-relaxed mb-4">{project.description}</p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -93,9 +99,15 @@ function ProjectCard({ project, variant }) {
             ) : null}
           </div>
         </div>
-        <h3 className="font-display text-xl font-black tracking-tight text-white mb-2 group-hover:text-primary transition-colors">
+        <h3 className="font-display text-xl font-black tracking-tight text-white mb-1 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
+        {project.award && (
+          <div className="inline-flex items-center gap-1 rounded border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-400 mb-2">
+            <span className="material-symbols-outlined text-[12px]" aria-hidden="true">emoji_events</span>
+            {project.award}
+          </div>
+        )}
         <p className="text-text-muted text-sm leading-relaxed mb-4 max-h-[5rem] overflow-hidden transition-[max-height] duration-500 ease-in-out group-hover:max-h-[30rem]">
           {project.description}
         </p>
@@ -134,6 +146,7 @@ ProjectCard.propTypes = {
     projectUrl: PropTypes.string,
     codeUrl: PropTypes.string,
     liveUrl: PropTypes.string,
+    award: PropTypes.string,
     commit: PropTypes.string,
     commitMessage: PropTypes.string,
     updatedAt: PropTypes.string,
