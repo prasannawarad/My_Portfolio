@@ -12,19 +12,33 @@ function ProjectCard({ project, variant }) {
               {project.icon}
             </span>
           </div>
-          {isValidLink(project.projectUrl) ? (
-            <a
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open ${project.title}`}
-              className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-            >
-              <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
-                open_in_new
-              </span>
-            </a>
-          ) : null}
+          <div className="flex items-center gap-2">
+            {isValidLink(project.projectUrl) ? (
+              <a
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View code for ${project.title}`}
+                className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              >
+                <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
+                  code
+                </span>
+              </a>
+            ) : null}
+            {isValidLink(project.liveUrl) ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open live demo for ${project.title}`}
+                className="flex items-center gap-1 rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              >
+                <span className="material-symbols-outlined text-[13px]" aria-hidden="true">rocket_launch</span>
+                LIVE
+              </a>
+            ) : null}
+          </div>
         </div>
         <div>
           <h3 className="font-display text-xl font-black tracking-tight text-white mb-2">{project.title}</h3>
@@ -53,18 +67,16 @@ function ProjectCard({ project, variant }) {
               {project.icon}
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             {isValidLink(project.codeUrl) ? (
               <a
                 href={project.codeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View code for ${project.title}`}
-                className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                className="rounded p-1 text-text-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
               >
-                <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
-                  code
-                </span>
+                <span className="material-symbols-outlined text-lg leading-none">code</span>
               </a>
             ) : null}
             {isValidLink(project.liveUrl) ? (
@@ -72,12 +84,11 @@ function ProjectCard({ project, variant }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Open live project ${project.title}`}
-                className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                aria-label={`Open live demo for ${project.title}`}
+                className="flex items-center gap-1 rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
               >
-                <span className="material-symbols-outlined text-text-muted hover:text-primary transition-colors cursor-pointer text-lg">
-                  open_in_new
-                </span>
+                <span className="material-symbols-outlined text-[13px] leading-none" aria-hidden="true">open_in_new</span>
+                LIVE
               </a>
             ) : null}
           </div>
@@ -85,7 +96,7 @@ function ProjectCard({ project, variant }) {
         <h3 className="font-display text-xl font-black tracking-tight text-white mb-2 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
-        <p className="text-text-muted text-sm leading-relaxed mb-4 h-20 overflow-hidden text-ellipsis">
+        <p className="text-text-muted text-sm leading-relaxed mb-4 max-h-[5rem] overflow-hidden transition-[max-height] duration-500 ease-in-out group-hover:max-h-[30rem]">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
