@@ -52,7 +52,7 @@ Content lives in `src/data/` (e.g. `experience.js`, `projects.js`, `stack.js`, `
 
 The bot covers everything — not just work:
 
-- **Career & skills** — data engineering, pipelines, analytics, Python, SQL, Spark, Airflow, Tableau
+- **Career & skills** — data and AI engineering, ETL/ELT pipelines, LLM orchestration, Python, SQL, Spark, Airflow, FastAPI, Docker, AWS
 - **Projects** — all featured side and work projects
 - **Sports** — Cricket, Pickleball, Table Tennis, Soccer (watches games every week)
 - **Books** — Fiction and Philosophy are favorites

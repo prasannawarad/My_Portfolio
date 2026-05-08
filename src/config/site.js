@@ -8,4 +8,4 @@ export const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
 export const defaultOgDescription = bio.elevatorPitch;
 
 export const resumeOgDescription =
-  'PDF resume — data engineering, software engineering, and analytics. Python, SQL, Spark, cloud data platforms, and production systems.';
+  'PDF resume — Data and AI Engineering, ETL/ELT pipelines, LLM-orchestrated workflows, ML systems, Python, SQL, Spark, Airflow, FastAPI, Docker, and AWS.';
