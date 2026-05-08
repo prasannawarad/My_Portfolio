@@ -12,8 +12,8 @@ import {
 
 function About() {
   return (
-    <div className="w-full max-w-5xl px-4 lg:px-8 py-12">
-      <header className="mb-10 flex items-end gap-4 border-b border-surface-accent pb-4">
+    <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <header className="mb-10 flex flex-wrap items-end gap-4 border-b border-surface-accent pb-4">
         <h1 className="text-4xl md:text-5xl font-mono font-bold text-white tracking-tight">
           <span className="text-primary mr-2">$</span>whoami
         </h1>
@@ -25,9 +25,9 @@ function About() {
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10" aria-label="About content">
         <div className="lg:col-span-7 flex flex-col gap-10">
           <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-white tracking-tight">Data and AI Engineer building production workflows</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Data &amp; AI Engineer building agentic systems and data pipelines</h2>
             <p className="text-text-muted text-base leading-relaxed max-w-2xl">
-              I design ETL/ELT pipelines, LLM-orchestrated workflows, and ML systems that reduce manual work and improve operational decisions. My recent work spans agentic AI screening, PostgreSQL data models, FastAPI/Node services, Spark and Airflow pipelines, and retail-scale anomaly detection.
+              {bio.elevatorPitch}
             </p>
           </div>
 
@@ -175,7 +175,7 @@ function About() {
         </div>
 
         <aside className="lg:col-span-5 flex flex-col gap-8" aria-label="Profile and skills">
-          <div className="relative w-full aspect-square rounded-lg border border-surface-accent bg-surface-dark overflow-hidden flex items-center justify-center group">
+          <div className="relative mx-auto w-full max-w-[min(100%,20rem)] sm:max-w-none aspect-square rounded-lg border border-surface-accent bg-surface-dark overflow-hidden flex items-center justify-center group">
             <div
               className="absolute inset-0 opacity-20"
               style={{
