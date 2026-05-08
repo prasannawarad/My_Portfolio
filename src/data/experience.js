@@ -5,14 +5,14 @@ export const bio = {
   heroLine2: 'Agentic AI Systems',
   /** Plain-language line for recruiters / execs (non-terminal) */
   elevatorPitch:
-    'I design ETL/ELT pipelines, LLM-orchestrated workflows, and ML systems that eliminate manual bottlenecks and move operational decisions faster.',
+    'I design data pipelines, agentic AI workflows, and ML systems that cut manual work and surface decisions at scale — from retail ETL serving 19,000+ stores to LLM pipelines that automate 5-stage hiring processes end-to-end.',
   role: 'Data & AI Engineer · Software Engineer',
   location: 'Dallas, TX',
   yearsActive: 3,
   primaryFocus: 'Data pipelines, LLM workflows & ML systems',
   status: 'Open to full-time Data Engineering, AI Engineering & SWE roles',
   summary:
-    'Data & AI engineer with 3 years in production — Python, SQL, Spark, Airflow, and LLM orchestration. MS ITM at UT Dallas (GPA 3.88).',
+    '3 years in production across retail-scale data engineering and agentic AI systems. MS ITM at UT Dallas — Dean\'s Excellence Scholar, GPA 3.88.',
   interests: ['Agentic AI', 'ETL/ELT Pipelines', 'ML Systems', 'Cloud Data Platforms'],
   phone: '469-766-7241',
   email: 'waradprasanna@gmail.com',
