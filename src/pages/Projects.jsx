@@ -5,7 +5,7 @@ const filters = ['--all', '--data-eng', '--web-dev', '--devops', '--ml-ai'];
 
 function Projects() {
   return (
-    <div className="w-full max-w-7xl px-4 lg:px-8 py-12">
+    <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <header className="mb-10" aria-label="Projects header">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-text-muted font-mono text-sm mb-2">
@@ -50,33 +50,33 @@ function Projects() {
       </section>
 
       <nav className="mt-16 flex justify-center" aria-label="Project pagination">
-        <div className="flex items-center gap-4 text-sm font-mono">
+        <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-mono">
           <button
             type="button"
-            className="px-4 py-2 text-text-muted hover:text-primary disabled:opacity-50"
+            className="min-h-[44px] px-4 py-2 text-text-muted hover:text-primary disabled:opacity-50"
             disabled
             aria-label="Previous page"
           >
             &lt; prev
           </button>
-          <span className="text-primary font-bold">[ 1 ]</span>
+          <span className="inline-flex min-h-[44px] items-center px-2 text-primary font-bold">[ 1 ]</span>
           <button
             type="button"
-            className="px-4 py-2 text-text-muted hover:text-primary hover:bg-surface-dark rounded border border-transparent hover:border-surface-accent"
+            className="min-h-[44px] px-4 py-2 text-text-muted hover:text-primary hover:bg-surface-dark rounded border border-transparent hover:border-surface-accent"
             aria-label="Go to page 2"
           >
             2
           </button>
           <button
             type="button"
-            className="px-4 py-2 text-text-muted hover:text-primary hover:bg-surface-dark rounded border border-transparent hover:border-surface-accent"
+            className="min-h-[44px] px-4 py-2 text-text-muted hover:text-primary hover:bg-surface-dark rounded border border-transparent hover:border-surface-accent"
             aria-label="Go to page 3"
           >
             3
           </button>
           <button
             type="button"
-            className="px-4 py-2 text-text-muted hover:text-primary"
+            className="min-h-[44px] px-4 py-2 text-text-muted hover:text-primary"
             aria-label="Next page"
           >
             next &gt;
