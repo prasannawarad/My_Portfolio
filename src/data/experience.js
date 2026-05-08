@@ -1,19 +1,19 @@
 export const bio = {
   name: 'Prasanna Kailash Warad',
   /** Hero headline (two lines visually; reads as one sentence) */
-  heroLine1: 'Turning Data Into',
-  heroLine2: 'Product Decisions',
+  heroLine1: 'Building Data &',
+  heroLine2: 'Agentic AI Systems',
   /** Plain-language line for recruiters / execs (non-terminal) */
   elevatorPitch:
-    'I build pipelines, analytics, and production-facing data systems so teams can trust the numbers—from millions of transactions to leadership-ready dashboards.',
-  role: 'Software Engineer · Data Engineer · Data Analyst',
+    'I design ETL/ELT pipelines, LLM-orchestrated workflows, and ML systems that eliminate manual bottlenecks and move operational decisions faster.',
+  role: 'Data & AI Engineer · Software Engineer',
   location: 'Dallas, TX',
   yearsActive: 3,
-  primaryFocus: 'Data systems, analytics & backend APIs',
-  status: 'Open to full-time SWE, data engineering & analytics roles',
+  primaryFocus: 'Data pipelines, LLM workflows & ML systems',
+  status: 'Open to full-time Data Engineering, AI Engineering & SWE roles',
   summary:
-    'Hands-on with Python, SQL, Spark, Airflow, Tableau, and cloud data platforms. Background in retail-scale analytics and ML; MS ITM at UT Dallas (Dean’s Excellence Scholar).',
-  interests: ['Data Pipelines', 'Real-time Analytics', 'ML Systems', 'Cloud Data Platforms'],
+    'Data & AI engineer with 3 years in production — Python, SQL, Spark, Airflow, and LLM orchestration. MS ITM at UT Dallas (GPA 3.88).',
+  interests: ['Agentic AI', 'ETL/ELT Pipelines', 'ML Systems', 'Cloud Data Platforms'],
   phone: '469-766-7241',
   email: 'waradprasanna@gmail.com',
   linkedin: 'http://www.linkedin.com/in/prasannawarad',
@@ -34,14 +34,14 @@ export const experience = [
     duration: '2025-10 — Present',
     company: 'Cloud BC Labs',
     label: '// Cloud BC Labs',
-    office: 'Reston, VA (Remote)',
-    role: 'Software Engineer Intern',
+    office: 'Reston, VA',
+    role: 'Software Engineer Intern — Data & AI Engineering',
     points: [
-      'Automated the full candidate assessment lifecycle using an n8n agentic workflow and Groq LLM — job description submission triggers role-specific question generation and candidate email delivery, reducing a 5-stage process to under 2 minutes end-to-end.',
-      'Designed 6 PostgreSQL schema migrations for the hiring funnel from scratch — candidates, assessments, AI-generated scores, proctoring flags, and job requisitions normalized into a structured schema the recruiter dashboard queries directly.',
-      'Integrated 4 AI services into a single 7-container Docker pipeline — DeepFace for identity verification, Groq LLM for MCQ scoring, Groq Whisper for video transcription, and MediaPipe for behavioral proctoring.',
-      'Deployed RESTful APIs in Node.js and Python connecting the React HR dashboard to backend AI scoring services — standardizing data contracts across 4 microservices and reducing cross-service integration overhead by 20%.',
-      'Instrumented application usage metrics across the candidate screening funnel to surface behavioral trends, cutting bug report volume by 15% and directly shaping sprint prioritization.',
+      'Automated the full candidate assessment lifecycle using n8n agentic workflows and Groq LLM; job description submission triggers role-specific question generation and candidate email delivery with no manual steps, collapsing a 5-stage hiring process to under 2 minutes end-to-end.',
+      'Designed 6 PostgreSQL schema migrations from scratch, normalizing candidates, assessments, AI scores, proctoring flags, and job requisitions into a structured schema powering real-time recruiter dashboard queries.',
+      'Integrated 4 AI services — DeepFace for identity verification, Groq LLM for MCQ scoring, Groq Whisper for video transcription, and MediaPipe for behavioral proctoring — into a 6-container Docker pipeline with no manual routing between stages.',
+      'Deployed RESTful APIs in FastAPI and Node.js connecting the React HR dashboard to backend AI scoring services; standardized data contracts across 4 microservices, cutting cross-service integration overhead by 20%.',
+      'Instrumented an end-to-end screening funnel with usage analytics, surfacing recurring failure patterns that cut incoming bug report volume 15% and shifted sprint priorities toward the highest-impact fixes.',
     ],
     current: true,
     category: 'technical',
@@ -80,11 +80,9 @@ export const experience = [
     office: 'Noida, India',
     role: 'Data Engineer',
     points: [
-      'Analyzed 2M+ retail transactions with Python and SQL to detect anomalies, improving reporting accuracy and model reliability.',
-      'Boosted Oracle throughput by 30% with indexing and PL/SQL tuning for 10,000+ daily transactions.',
-      'Built Spark + Airflow pipelines for reporting; reduced query latency by 28% through caching and partition pruning.',
-      'Designed Tableau dashboards for leadership, reducing manual reporting effort by 40%.',
-      'Developed scikit-learn/PyTorch model on AWS logs to forecast downtimes, cutting incident response time by 25%.',
+      'Implemented Spark and Airflow data pipelines with partition pruning and query caching, cutting operational reporting latency 28% across Dollar General\'s retail analytics stack serving 19,000+ store locations.',
+      'Validated 2M+ retail transaction records via Python and SQL anomaly detection, resolving data quality gaps that were degrading inventory replenishment model accuracy across Dollar General\'s fulfillment network.',
+      'Constructed an anomaly detection and downtime forecasting model using scikit-learn and PyTorch on AWS system performance logs, cutting incident response time by 25% by flagging at-risk systems before failures reached production.',
     ],
     current: false,
     category: 'technical',
@@ -103,25 +101,32 @@ export const education = [
     duration: 'Aug 2024 - May 2026',
     distinction: 'Dean\'s Excellence Scholar',
     extra: 'Graduate Certificate: Business Analytics & Data Mining',
-    gpa: 'N/A',
+    gpa: '3.88/4.0',
   },
   {
     id: 'edu-2',
     degree: 'Bachelor of Engineering, Electrical',
     institution: 'Savitribai Phule Pune University',
     duration: 'Aug 2018 - May 2022',
-    gpa: 'N/A',
+    gpa: '3.80/4.0',
   },
 ];
 
 export const impactMetrics = [
-  { id: 'metric-1', label: 'DB Throughput', value: '+30%', text: 'Oracle indexing and PL/SQL tuning' },
-  { id: 'metric-2', label: 'Manual Reporting', value: '-40%', text: 'Tableau dashboard automation' },
-  { id: 'metric-3', label: 'Query Latency', value: '-28%', text: 'Caching and partition pruning' },
-  { id: 'metric-4', label: 'Incident Response', value: '-25%', text: 'Predictive downtime model (AWS logs)' },
+  { id: 'metric-1', label: 'Hiring Funnel', value: '<2m', text: 'Agentic AI screening lifecycle from JD to candidate delivery' },
+  { id: 'metric-2', label: 'Reporting Latency', value: '-28%', text: 'Spark and Airflow partition pruning + query caching' },
+  { id: 'metric-3', label: 'Retail Records', value: '2M+', text: 'Python and SQL anomaly detection for transaction quality' },
+  { id: 'metric-4', label: 'Incident Response', value: '-25%', text: 'Downtime forecasting on AWS system performance logs' },
 ];
 
 export const certifications = [
+  {
+    id: 'cert-4',
+    icon: 'ac_unit',
+    iconClass: 'text-sky-400',
+    title: 'Snowflake',
+    subtitle: 'SnowPro Associate: Platform Certified',
+  },
   {
     id: 'cert-1',
     icon: 'workspace_premium',
@@ -142,12 +147,5 @@ export const certifications = [
     iconClass: 'text-green-400',
     title: 'Domain Knowledge',
     subtitle: 'HIPAA',
-  },
-  {
-    id: 'cert-4',
-    icon: 'ac_unit',
-    iconClass: 'text-sky-400',
-    title: 'Snowflake',
-    subtitle: 'SnowPro Associate: Platform Certified',
   },
 ];
