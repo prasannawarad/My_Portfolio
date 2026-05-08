@@ -5,7 +5,7 @@ function Footer() {
   const showProjectMetrics = pathname === '/projects';
 
   return (
-    <footer className="border-t border-surface-accent bg-surface-dark py-8 px-6 text-center mt-auto w-full">
+    <footer className="border-t border-surface-accent bg-surface-dark py-8 px-4 sm:px-6 lg:px-8 text-center mt-auto w-full">
       {showProjectMetrics ? (
         <div className="mb-4 flex justify-center gap-4 text-xs font-mono text-text-muted" aria-label="System metrics">
           <span>

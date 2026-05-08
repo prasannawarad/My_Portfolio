@@ -102,7 +102,7 @@ function Contact() {
       <section className="grid grid-cols-1 lg:grid-cols-5 gap-8" aria-label="Contact content">
         <div className="lg:col-span-3">
           <form
-            className="flex flex-col gap-6 bg-surface-dark border border-surface-accent p-6 md:p-8 rounded shadow-2xl shadow-primary/5 relative overflow-hidden group"
+            className="flex flex-col gap-6 bg-surface-dark border border-surface-accent p-5 sm:p-6 md:p-8 rounded shadow-2xl shadow-primary/5 relative overflow-hidden group"
             onSubmit={handleSubmit}
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-50" />
