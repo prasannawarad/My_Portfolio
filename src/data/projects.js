@@ -2,10 +2,20 @@ const githubProfile = 'https://github.com/prasannawarad';
 
 export const homeFeaturedProjects = [
   {
+    id: 'home-8',
+    title: 'InvestIQ',
+    description:
+      'AI portfolio co-pilot for beginner investors — deterministic rebalance engine with drift, scenario, and panic modes; Groq-powered chat with ElevenLabs voice; Chrome extension that overlays financial news with contextual portfolio advice. Built for the Goldman Sachs / UTD JSOM Hackathon.',
+    icon: 'candlestick_chart',
+    tags: ['Next.js', 'Groq AI', 'AI Agent', 'ElevenLabs', 'Chrome Extension'],
+    projectUrl: githubProfile,
+    liveUrl: 'https://invest-iq-kuber.netlify.app',
+  },
+  {
     id: 'home-4',
     title: 'Credit_Risk_Modeling',
     description:
-      'Credit risk pipeline on 255K+ lending records with SMOTE for 1:7.6 imbalance and XGBoost evaluation.',
+      'Credit default prediction pipeline on 255K+ lending records with SMOTE for 1:7.6 imbalance; XGBoost reached 88.5% accuracy and 0.737 ROC-AUC.',
     icon: 'paid',
     tags: ['Python', 'scikit-learn', 'XGBoost', 'SMOTE'],
     projectUrl: githubProfile,
@@ -14,7 +24,7 @@ export const homeFeaturedProjects = [
     id: 'home-5',
     title: 'Scalable_Fleet_Risk_Analytics',
     description:
-      'Hadoop (HDFS/MapReduce) data pipeline across 300+ assets in 14 states powering Power BI risk monitoring.',
+      'Hadoop HDFS and MapReduce ingestion pipeline across 300+ assets in 14 states powering repeatable Power BI risk and maintenance analytics.',
     icon: 'local_shipping',
     tags: ['Hadoop', 'HDFS', 'MapReduce', 'Power BI'],
     projectUrl: githubProfile,
@@ -23,7 +33,7 @@ export const homeFeaturedProjects = [
     id: 'home-7',
     title: 'CardioRisk',
     description:
-      'Heart disease risk prediction pipeline in R — ingestion, feature engineering, model training, and evaluation in a single reproducible workflow with sensitivity/specificity threshold tuning.',
+      'Predictive health analytics pipeline in R across 319K+ CDC records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall.',
     icon: 'favorite',
     tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
     projectUrl: githubProfile,
@@ -32,7 +42,7 @@ export const homeFeaturedProjects = [
     id: 'home-6',
     title: 'Instacart_Customer_Behavior',
     description:
-      'SQL + Tableau dashboards on 3M+ grocery transactions for segmentation, cohorts, and demand forecasting.',
+      'Optimized SQL pipelines and Tableau dashboards across 3M+ grocery transactions for segmentation, cohort retention, demand forecasting, and KPI reporting.',
     icon: 'insights',
     tags: ['SQL', 'Tableau', 'Analytics'],
     projectUrl: githubProfile,
@@ -55,6 +65,7 @@ export const homeFeaturedProjects = [
     icon: 'table_chart',
     tags: ['React', 'Gemini AI', 'SQL Engine', 'Plotly'],
     projectUrl: 'https://github.com/prasannawarad/datadoc-ai',
+    liveUrl: 'https://datadocai.netlify.app/',
   },
   {
     id: 'home-3',
@@ -64,64 +75,75 @@ export const homeFeaturedProjects = [
     icon: 'manage_search',
     tags: ['React', 'RAG', 'Embeddings', 'Vector Search'],
     projectUrl: 'https://github.com/prasannawarad/ragbase',
+    liveUrl: 'https://ragbase-gamma.vercel.app/',
   },
 ];
 
 export const projects = [
   {
+    id: 'proj-8',
+    title: 'InvestIQ',
+    description:
+      'AI-powered portfolio co-pilot that helps non-savvy investors track holdings, understand risk in plain language, and rebalance confidently during market panics. AI agent Kuber spans a web dashboard, floating chat widget, and a Chrome extension that overlays financial news with contextual portfolio advice. Deterministic rebalance engine (drift, scenario, panic modes) surfaces transparent trade receipts — tax cost, fees, goal impact — without LLM hallucination. Built for the Goldman Sachs / UTD JSOM Hackathon (May 2026).',
+    icon: 'candlestick_chart',
+    tags: ['Next.js', 'Groq AI', 'AI Agent', 'ElevenLabs', 'Chrome Extension'],
+    commit: 'b8d3f2a',
+    commitMessage: 'feat: deterministic rebalance engine with drift and panic modes',
+    updatedAt: 'May 2026',
+    codeUrl: githubProfile,
+    liveUrl: 'https://invest-iq-kuber.netlify.app',
+    category: 'ml-ai',
+  },
+  {
     id: 'proj-4',
     title: 'Credit_Risk_Modeling',
     description:
-      'Credit risk pipeline on 255K+ lending records with SMOTE; evaluated LR/RandomForest/XGBoost (ROC-AUC 0.737, accuracy 88.5%).',
+      'Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC.',
     icon: 'paid',
     tags: ['Python', 'scikit-learn', 'XGBoost', 'SMOTE'],
     commit: 'c9f1a2b',
     commitMessage: 'model: add SMOTE + XGBoost eval for imbalanced data',
     updatedAt: 'recent',
     codeUrl: githubProfile,
-    liveUrl: '#',
     category: 'ml-ai',
   },
   {
     id: 'proj-5',
     title: 'Scalable_Fleet_Risk_Analytics',
     description:
-      'Hadoop (HDFS, MapReduce) pipeline ingesting/transforming data for 300+ assets in 14 states with Power BI risk dashboards.',
+      'Distributed Hadoop HDFS and MapReduce ingestion pipeline for operational datasets across 300+ assets in 14 states, paired with Power BI dashboards for risk scores and predictive maintenance flags.',
     icon: 'local_shipping',
     tags: ['Hadoop', 'HDFS', 'MapReduce', 'Power BI'],
     commit: 'f4c29d1',
     commitMessage: 'feat: add multi-state risk aggregation and vehicle scoring jobs',
     updatedAt: 'recent',
     codeUrl: githubProfile,
-    liveUrl: '#',
     category: 'data-eng',
   },
   {
     id: 'proj-7',
     title: 'CardioRisk',
     description:
-      'Heart disease risk prediction pipeline in R — ingestion, feature engineering, model training, and evaluation in a single reproducible workflow; adjusted decision threshold based on sensitivity/specificity tradeoffs for clinical deployment viability.',
+      'Predictive health analytics pipeline in R evaluating 5 classifiers on 319K+ CDC health records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall while Random Forest ranked the top clinical predictors.',
     icon: 'favorite',
     tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
     commit: 'd3e7f1a',
     commitMessage: 'feat: add threshold tuning and sensitivity/specificity evaluation',
     updatedAt: 'recent',
     codeUrl: githubProfile,
-    liveUrl: '#',
     category: 'ml-ai',
   },
   {
     id: 'proj-6',
     title: 'Instacart_Customer_Behavior',
     description:
-      '3M+ grocery transactions processed via optimized SQL pipelines with Tableau dashboards for segmentation, cohorts, and demand forecasting.',
+      'Processed 3M+ grocery transactions through optimized SQL pipelines for segmentation, cohort retention, and demand forecasting, then surfaced product velocity, fulfillment trends, and campaign ROI in Tableau.',
     icon: 'insights',
     tags: ['SQL', 'Tableau', 'Analytics'],
     commit: 'a92d8be',
     commitMessage: 'perf: optimize cohort query pipeline for large-order windows',
     updatedAt: 'recent',
     codeUrl: githubProfile,
-    liveUrl: '#',
     category: 'data-eng',
   },
   {
@@ -149,7 +171,7 @@ export const projects = [
     commitMessage: 'feat: NL to SQL with auto visualization',
     updatedAt: 'recent',
     codeUrl: 'https://github.com/prasannawarad/datadoc-ai',
-    liveUrl: '#',
+    liveUrl: 'https://datadocai.netlify.app/',
     category: 'data-eng',
   },
   {
@@ -163,7 +185,7 @@ export const projects = [
     commitMessage: 'feat: full RAG pipeline with cited Q&A',
     updatedAt: 'recent',
     codeUrl: 'https://github.com/prasannawarad/ragbase',
-    liveUrl: '#',
+    liveUrl: 'https://ragbase-gamma.vercel.app/',
     category: 'ml-ai',
   },
 ];
