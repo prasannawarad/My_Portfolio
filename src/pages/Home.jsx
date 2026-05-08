@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
 import StackColumn from '../components/StackColumn';
@@ -26,10 +26,9 @@ function Home() {
 
   const heroSpotlightDefaults = useMemo(() => ({ '--mx': '22%', '--my': '18%', '--hero-gold-a': '0.14' }), []);
   const profileImageUrl = useMemo(() => `${import.meta.env.BASE_URL}prasanna.jpeg`, []);
-  const isCoarsePointer = useMemo(() => {
-    if (typeof window === 'undefined' || !window.matchMedia) return false;
-    return window.matchMedia('(pointer: coarse)').matches;
-  }, []);
+  const [isCoarsePointer] = useState(
+    () => typeof window !== 'undefined' && !!window.matchMedia?.('(pointer: coarse)').matches
+  );
 
   useEffect(() => {
     return () => {
@@ -42,11 +41,11 @@ function Home() {
     const el = heroRef.current;
     if (!el) return;
     if (heroRafRef.current) cancelAnimationFrame(heroRafRef.current);
-
+    const { clientX, clientY } = e;
     heroRafRef.current = requestAnimationFrame(() => {
       const rect = el.getBoundingClientRect();
-      const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+      const x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
       el.style.setProperty('--mx', `${(x * 100).toFixed(2)}%`);
       el.style.setProperty('--my', `${(y * 100).toFixed(2)}%`);
     });
@@ -143,7 +142,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="min-w-0">
+          <div className="flex min-w-0 flex-col gap-5">
             <TerminalWindow title="profile --card" className="terminal-window--no-filter" bodyClassName="p-4 sm:p-6">
               <div className="flex flex-col gap-4">
                 <div className="mx-auto h-52 w-52 overflow-hidden rounded-full border-2 border-surface-accent sm:h-56 sm:w-56">
