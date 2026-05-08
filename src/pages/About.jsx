@@ -25,9 +25,9 @@ function About() {
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10" aria-label="About content">
         <div className="lg:col-span-7 flex flex-col gap-10">
           <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-white tracking-tight">Data Engineer building scalable systems</h2>
+            <h2 className="text-2xl font-bold text-white tracking-tight">Data and AI Engineer building production workflows</h2>
             <p className="text-text-muted text-base leading-relaxed max-w-2xl">
-              I specialize in analyzing vast datasets, optimizing enterprise pipelines, and building predictive ML models. With experience handling multi-million record datasets and improving database architectures, I focus on turning complex data challenges into robust, production-grade solutions.
+              I design ETL/ELT pipelines, LLM-orchestrated workflows, and ML systems that reduce manual work and improve operational decisions. My recent work spans agentic AI screening, PostgreSQL data models, FastAPI/Node services, Spark and Airflow pipelines, and retail-scale anomaly detection.
             </p>
           </div>
 
@@ -192,7 +192,7 @@ function About() {
               <div className="absolute inset-0 bg-transparent group-hover:bg-primary/20 mix-blend-overlay transition-all duration-500" />
             </div>
             <div className="absolute bottom-4 right-4 bg-background-dark border border-primary px-3 py-1 rounded shadow-lg">
-              <span className="text-xs font-mono text-primary font-bold">Data Engineer</span>
+              <span className="text-xs font-mono text-primary font-bold">Data & AI Engineer</span>
             </div>
           </div>
 
