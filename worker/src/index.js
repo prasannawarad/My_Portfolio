@@ -130,7 +130,7 @@ PrepAI Pro — Single-page React (Vite, React 19) for company research + mock in
 
 DataDoc_AI — Natural language data analysis platform — upload CSV, ask questions in English, AI generates SQL, executes in-browser, and auto-visualizes with Plotly charts. Tags: React, Gemini AI, SQL Engine, Plotly. Code: https://github.com/prasannawarad/datadoc-ai. Live: https://datadocai.netlify.app/
 
-RAGBase — Full RAG pipeline — upload documents, build vector knowledge base with embeddings, ask questions with source-cited answers, chunk inspector, and analytics dashboard. Tags: React, RAG, Embeddings, Vector Search. Code: https://github.com/prasannawarad/ragbase. Live: https://ragbase-gamma.vercel.app/
+RAGBase — Production RAG (Next.js 15, React 19, TypeScript): PDF/TXT/MD/CSV ingest, server-side Gemini embeddings (text-embedding-004, 768-dim), Supabase pgvector, hybrid search BM25 + vector + RRF, streaming chat Groq primary + Gemini fallback, sources drawer and chunk inspector. Tags: Next.js 15, React 19, Supabase pgvector, Hybrid search RRF, Groq + Gemini. Code: https://github.com/prasannawarad/ragbase. Live: https://ragbase.prasannawarad.com (fallback https://ragbase-gamma.vercel.app)
 
 Credit_Risk_Modeling — Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC. Tags: Python, scikit-learn, XGBoost, SMOTE. Code: https://github.com/prasannawarad
 
