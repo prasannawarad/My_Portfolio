@@ -4,41 +4,48 @@ function ProjectCard({ project, variant }) {
   const isValidLink = (url) => typeof url === 'string' && url.trim() !== '' && url.trim() !== '#';
 
   if (variant === 'featured') {
+    const showFeaturedActions =
+      isValidLink(project.projectUrl) || isValidLink(project.liveUrl);
+
     return (
       <article className="group relative flex flex-col gap-4 rounded border border-surface-accent bg-surface-dark p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-within:ring-2 focus-within:ring-primary/35">
-        <div className="flex items-start justify-between">
-          <div className="rounded bg-background-dark p-3 text-primary border border-surface-accent">
+        <div className="flex w-full min-w-0 items-center gap-3">
+          <div className="shrink-0 rounded border border-surface-accent bg-background-dark p-3 text-primary">
             <span className="material-symbols-outlined text-3xl" aria-hidden="true">
               {project.icon}
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            {isValidLink(project.projectUrl) ? (
-              <a
-                href={project.projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View code for ${project.title}`}
-                className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-              >
-                <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors cursor-pointer">
-                  code
-                </span>
-              </a>
-            ) : null}
-            {isValidLink(project.liveUrl) ? (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open live demo for ${project.title}`}
-                className="flex items-center gap-1 rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-              >
-                <span className="material-symbols-outlined text-[13px]" aria-hidden="true">rocket_launch</span>
-                LIVE
-              </a>
-            ) : null}
-          </div>
+          {showFeaturedActions ? (
+            <div className="ml-auto flex shrink-0 items-center gap-2">
+              {isValidLink(project.projectUrl) ? (
+                <a
+                  href={project.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View code for ${project.title}`}
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded text-text-muted transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                >
+                  <span className="material-symbols-outlined text-[22px] leading-none" aria-hidden="true">
+                    code
+                  </span>
+                </a>
+              ) : null}
+              {isValidLink(project.liveUrl) ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open live demo for ${project.title}`}
+                  className="inline-flex h-9 shrink-0 items-center gap-1 rounded border border-primary/30 bg-primary/10 px-2 font-mono text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                >
+                  <span className="material-symbols-outlined text-[13px] leading-none" aria-hidden="true">
+                    rocket_launch
+                  </span>
+                  LIVE
+                </a>
+              ) : null}
+            </div>
+          ) : null}
         </div>
         <div>
           <h3 className="font-display text-xl font-black tracking-tight text-white mb-1">{project.title}</h3>
@@ -64,40 +71,48 @@ function ProjectCard({ project, variant }) {
     );
   }
 
+  const showFullActions = isValidLink(project.codeUrl) || isValidLink(project.liveUrl);
+
   return (
     <article className="group relative flex flex-col gap-0 rounded border border-surface-accent bg-surface-dark transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 overflow-hidden focus-within:ring-2 focus-within:ring-primary/35">
       <div className="p-6 pb-4">
-        <div className="flex items-start justify-between mb-4">
-          <div className="rounded bg-background-dark p-3 text-primary border border-surface-accent group-hover:text-white group-hover:bg-primary/20 transition-colors">
+        <div className="mb-4 flex w-full min-w-0 items-center gap-3">
+          <div className="shrink-0 rounded border border-surface-accent bg-background-dark p-3 text-primary transition-colors group-hover:bg-primary/20 group-hover:text-white">
             <span className="material-symbols-outlined text-3xl" aria-hidden="true">
               {project.icon}
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            {isValidLink(project.codeUrl) ? (
-              <a
-                href={project.codeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View code for ${project.title}`}
-                className="rounded p-1 text-text-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-              >
-                <span className="material-symbols-outlined text-lg leading-none">code</span>
-              </a>
-            ) : null}
-            {isValidLink(project.liveUrl) ? (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open live demo for ${project.title}`}
-                className="flex items-center gap-1 rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-              >
-                <span className="material-symbols-outlined text-[13px] leading-none" aria-hidden="true">open_in_new</span>
-                LIVE
-              </a>
-            ) : null}
-          </div>
+          {showFullActions ? (
+            <div className="ml-auto flex shrink-0 items-center gap-2">
+              {isValidLink(project.codeUrl) ? (
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View code for ${project.title}`}
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded text-text-muted transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                >
+                  <span className="material-symbols-outlined text-[22px] leading-none" aria-hidden="true">
+                    code
+                  </span>
+                </a>
+              ) : null}
+              {isValidLink(project.liveUrl) ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open live demo for ${project.title}`}
+                  className="inline-flex h-9 shrink-0 items-center gap-1 rounded border border-primary/30 bg-primary/10 px-2 font-mono text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-background-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                >
+                  <span className="material-symbols-outlined text-[13px] leading-none" aria-hidden="true">
+                    rocket_launch
+                  </span>
+                  LIVE
+                </a>
+              ) : null}
+            </div>
+          ) : null}
         </div>
         <h3 className="font-display text-xl font-black tracking-tight text-white mb-1 group-hover:text-primary transition-colors">
           {project.title}
