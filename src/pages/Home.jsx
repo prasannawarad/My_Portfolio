@@ -351,13 +351,16 @@ function Home() {
                 className="group flex min-h-[11.5rem] flex-col rounded border border-surface-accent bg-surface-dark p-5 transition-all hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/5"
                 aria-label={`${ch.title}: ${ch.value}`}
               >
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex w-full min-w-0 items-center justify-between gap-3">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded border border-primary/35 bg-primary/10 text-primary">
                     <span className="material-symbols-outlined text-[22px]" aria-hidden="true">
                       {ch.icon}
                     </span>
                   </div>
-                  <span className="material-symbols-outlined text-lg text-text-muted opacity-60 transition-opacity group-hover:opacity-100 group-hover:text-primary" aria-hidden="true">
+                  <span
+                    className="material-symbols-outlined shrink-0 text-lg text-text-muted opacity-60 transition-opacity group-hover:opacity-100 group-hover:text-primary"
+                    aria-hidden="true"
+                  >
                     {ch.external ? 'open_in_new' : 'arrow_forward'}
                   </span>
                 </div>
