@@ -1,15 +1,15 @@
 # Prasanna's Portfolio
 
-A single-page portfolio with a dedicated Resume route, built with **React** and **Vite**. The home experience is one scrollable page with section anchors (About, Projects, Contact, and more), plus a fully personalized **AI chat widget** (Prasanna AI) backed by a **Cloudflare Worker** and powered by **Groq**.
+A portfolio frontend built with **React** and **Vite**. The main experience is one scrollable **Home** page with section anchors (About, Projects, Contact). Routes such as `/about`, `/projects`, and `/contact` render the same page and scroll to the matching section; **`/resume`** lazy-loads in-browser PDF viewing. A floating **Prasanna AI** chat widget calls a **Cloudflare Worker** backed by **Groq**.
 
 ## Features
 
-- **Single-page layout** — Hero, experience, projects, skills stack, and contact on one home view with hash navigation
+- **Single-page layout** — Hero, experience, projects, skills stack, and contact on one home view; hash and path routes (`/`, `/about`, `/projects`, `/contact`) scroll to sections via `HashScrollHandler`
 - **Resume page** — Lazy-loaded route with in-browser PDF viewing (`react-pdf`)
 - **Prasanna AI** — Floating chat assistant that knows Prasanna's career, projects, AND personal life (sports, shows, books, anime, and more). Backed by a Cloudflare Worker + Groq LLM.
 - **Responsive design** — Mobile-first layout with Tailwind CSS; chat panel goes fullscreen on mobile
 - **SEO** — `react-helmet-async` for meta tags
-- **Hosting** — GitHub Pages–ready; Netlify config included
+- **Hosting** — GitHub Actions deploy to **GitHub Pages** (primary); `netlify.toml` and `public/_redirects` available if you mirror on Netlify
 
 ## Tech Stack
 
@@ -18,7 +18,7 @@ A single-page portfolio with a dedicated Resume route, built with **React** and 
 | Technology | Role |
 |------------|------|
 | **React 18** | UI, hooks, client-side app |
-| **React Router v6** | `/` and `/resume`, layout wrapper |
+| **React Router v6** | `/`, `/about`, `/projects`, `/contact` → Home; `/resume` → lazy PDF viewer; layout wrapper |
 | **Vite 5** | Dev server, production build, `@` → `src` alias |
 | **react-helmet-async** | Document head / SEO |
 | **react-pdf** | Resume PDF rendering |
@@ -33,7 +33,9 @@ A single-page portfolio with a dedicated Resume route, built with **React** and 
 
 ### App Data & Content
 
-Content lives in `src/data/` (e.g. `experience.js`, `projects.js`, `stack.js`, `contactChannels.js`, `chatbot-knowledge.js`). Skill categories shown on the site are defined in **`stack.js`** — edit that file to update the "tech stack" sections on the page.
+Content lives in `src/data/` — for example `experience.js`, **`projects.js`** (featured + grid cards, live URLs, tags, terminal-style git footer), **`stack.js`**, `contactChannels.js`, and `chatbot-knowledge.js`. Skill categories are defined in **`stack.js`**.
+
+When you change project summaries or links for the chatbot, keep **`worker/src/index.js`** (embedded knowledge base) in sync with `projects.js` where they overlap, then redeploy the Worker.
 
 ### Chat API
 
@@ -60,7 +62,7 @@ The bot covers everything — not just work:
 - **Entertainment** — Big Marvel movie fan, big Anime watcher
 - **Side projects** — loves building random ideas that help in everyday work
 
-> **After any system prompt change:** redeploy the Cloudflare Worker (`wrangler deploy`) so Groq picks up the new instructions.
+> **After any system prompt or project-blurb change:** redeploy the Cloudflare Worker (`wrangler deploy`) so clients get the updated instructions and facts.
 
 ### Tooling & Quality
 
@@ -87,6 +89,17 @@ cd PortFolio
 npm install
 npm run dev
 ```
+
+### Frontend environment (chat widget)
+
+The chat client reads **`VITE_CHAT_API_URL`** at build time (Worker origin, no trailing slash required). For local dev, create `.env` or `.env.development.local`:
+
+```bash
+# Example: local Wrangler dev (see worker section below)
+VITE_CHAT_API_URL=http://localhost:8787
+```
+
+Production builds use `.env.production` and/or CI: the GitHub Pages workflow passes the repo secret **`VITE_CHAT_API_URL`** into the build when set (see `.github/workflows/deploy-pages.yml`). If that secret is empty, the committed `.env.production` value is used.
 
 ### Cloudflare Worker (chat backend)
 
@@ -144,7 +157,7 @@ PortFolio/
 │   └── src/
 │       └── index.js        # System prompt, knowledge base, Groq call
 ├── src/
-│   ├── components/         # Layout, Navbar, Footer, chat UI, etc.
+│   ├── components/         # Layout, Navbar, Footer, HashScrollHandler, chat UI, …
 │   │   └── chat/
 │   │       ├── ChatWidget.jsx    # Floating launcher + teaser bubble
 │   │       ├── ChatPanel.jsx     # Open chat panel (pops up from FAB)
@@ -173,6 +186,7 @@ PortFolio/
 ## Customization
 
 - **Copy & sections:** `src/data/` and page components under `src/pages/`
+- **Project cards (titles, descriptions, tags, live/code links, git footer):** `src/data/projects.js`
 - **Skills columns:** `src/data/stack.js`
 - **AI knowledge base:** `src/data/chatbot-knowledge.js` (frontend) and `worker/src/index.js` (authoritative — what the bot actually uses)
 - **Resume file:** replace `public/resume.pdf`
