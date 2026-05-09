@@ -20,7 +20,7 @@ export const homeFeaturedProjects = [
     icon: 'manage_search',
     tags: ['React', 'RAG', 'Embeddings', 'Vector Search'],
     projectUrl: 'https://github.com/prasannawarad/ragbase',
-    liveUrl: 'https://ragbase-gamma.vercel.app/',
+    liveUrl: 'https://ragbase.prasannawarad.com/',
   },
   {
     id: 'home-1',
@@ -30,7 +30,7 @@ export const homeFeaturedProjects = [
     icon: 'smart_toy',
     tags: ['React', 'Gemini AI', 'Prompt Engineering', 'Gen AI'],
     projectUrl: 'https://github.com/prasannawarad/prepai-pro',
-    liveUrl: 'https://prepai-pro.netlify.app',
+    liveUrl: 'https://prepai.prasannawarad.com',
   },
   {
     id: 'home-2',
@@ -107,7 +107,7 @@ export const projects = [
     commitMessage: 'feat: full RAG pipeline with cited Q&A',
     updatedAt: 'Apr 2025',
     codeUrl: 'https://github.com/prasannawarad/ragbase',
-    liveUrl: 'https://ragbase-gamma.vercel.app/',
+    liveUrl: 'https://ragbase.prasannawarad.com/',
     category: 'ml-ai',
   },
   {
@@ -121,7 +121,7 @@ export const projects = [
     commitMessage: 'feat: upgrade to Gemini 2.5 Flash, embed API config, clean UI',
     updatedAt: 'Mar 2025',
     codeUrl: 'https://github.com/prasannawarad/prepai-pro',
-    liveUrl: 'https://prepai-pro.netlify.app',
+    liveUrl: 'https://prepai.prasannawarad.com',
     category: 'ml-ai',
   },
   {
