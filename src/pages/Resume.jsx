@@ -93,6 +93,11 @@ function Resume() {
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      // Don't hijack typing in inputs/textareas (e.g. the chat widget).
+      const t = e.target;
+      if (t instanceof HTMLElement && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName))) {
+        return;
+      }
       const n = numPagesRef.current;
       const cur = activePageRef.current;
       if (!n) return;
