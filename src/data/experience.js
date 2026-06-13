@@ -31,7 +31,7 @@ export function experienceCompanyName(item) {
 export const experience = [
   {
     id: 'exp-1',
-    duration: '2025-10 — Present',
+    duration: '2025-10 — 2026-05',
     company: 'Cloud BC Labs',
     label: '// Cloud BC Labs',
     office: 'Reston, VA',
@@ -43,7 +43,7 @@ export const experience = [
       'Deployed RESTful APIs in FastAPI and Node.js connecting the React HR dashboard to backend AI scoring services; standardized data contracts across 4 microservices, cutting cross-service integration overhead by 20%.',
       'Instrumented an end-to-end screening funnel with usage analytics, surfacing recurring failure patterns that cut incoming bug report volume 15% and shifted sprint priorities toward the highest-impact fixes.',
     ],
-    current: true,
+    current: false,
     category: 'technical',
   },
   {
