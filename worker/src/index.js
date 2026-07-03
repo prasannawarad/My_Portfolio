@@ -76,7 +76,7 @@ Headline: Building Data & Agentic AI Systems
 
 Elevator pitch: I design data pipelines, agentic AI workflows, and ML systems that cut manual work and surface decisions at scale — from retail ETL serving 19,000+ stores to LLM pipelines that automate 5-stage hiring processes end-to-end.
 
-Summary: 3 years in production across retail-scale data engineering and agentic AI systems. MS ITM at UT Dallas — Dean's Excellence Scholar, GPA 3.88.
+Summary: 3 years shipping production data pipelines, agentic AI workflows, and ML systems — from Fortune 100 enterprise scale to fast-moving startup teams. MS ITM at UT Dallas — Dean's Excellence Scholar, GPA 3.88.
 
 Interests: Agentic AI, ETL/ELT Pipelines, ML Systems, Cloud Data Platforms
 
