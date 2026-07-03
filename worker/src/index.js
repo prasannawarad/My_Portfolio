@@ -76,7 +76,7 @@ Headline: Building Data & Agentic AI Systems
 
 Elevator pitch: I design data pipelines, agentic AI workflows, and ML systems that cut manual work and surface decisions at scale — from retail ETL serving 19,000+ stores to LLM pipelines that automate 5-stage hiring processes end-to-end.
 
-Summary: 3 years shipping production data pipelines, agentic AI workflows, and ML systems — from Fortune 100 enterprise scale to fast-moving startup teams. MS ITM at UT Dallas — Dean's Excellence Scholar, GPA 3.88.
+Summary: 3 years shipping production data pipelines, agentic AI workflows, and ML systems — most recently building agentic AI hiring automation at a US startup. MS ITM at UT Dallas — Dean's Excellence Scholar, GPA 3.88.
 
 Interests: Agentic AI, ETL/ELT Pipelines, ML Systems, Cloud Data Platforms
 
@@ -122,7 +122,7 @@ Role: Vice President
   • Led planning and execution for club activities with cross-functional student collaboration.
   • Supported event coordination, team alignment, and community engagement initiatives.
 
-2023-02 — 2024-07 — HCLTech (client: Dollar General, Fortune 100 Retailer)
+2023-02 — 2024-07 — HCLTech (client: Dollar General, Fortune 500 Retailer)
 Role: Data Engineer
 Office / location: Noida, India
   • Implemented Spark and Airflow data pipelines with partition pruning and query caching, cutting operational reporting latency 28% across Dollar General's retail analytics stack serving 19,000+ store locations.

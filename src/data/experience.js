@@ -12,7 +12,7 @@ export const bio = {
   primaryFocus: 'Data pipelines, LLM workflows & ML systems',
   status: 'Open to full-time Data Engineering, AI Engineering & SWE roles',
   summary:
-    '3 years shipping production data pipelines, agentic AI workflows, and ML systems — from Fortune 100 enterprise scale to fast-moving startup teams. MS ITM at UT Dallas — Dean\'s Excellence Scholar, GPA 3.88.',
+    '3 years shipping production data pipelines, agentic AI workflows, and ML systems — most recently building agentic AI hiring automation at a US startup. MS ITM at UT Dallas — Dean\'s Excellence Scholar, GPA 3.88.',
   interests: ['Agentic AI', 'ETL/ELT Pipelines', 'ML Systems', 'Cloud Data Platforms'],
   phone: '469-766-7241',
   email: 'waradprasanna@gmail.com',
@@ -80,8 +80,8 @@ export const experience = [
   {
     id: 'exp-4',
     duration: '2023-02 — 2024-07',
-    company: 'HCLTech — Client: Dollar General (Fortune 100 Retailer)',
-    label: '// HCLTech (client: Dollar General, Fortune 100)',
+    company: 'HCLTech — Client: Dollar General (Fortune 500 Retailer)',
+    label: '// HCLTech (client: Dollar General, Fortune 500)',
     office: 'Noida, India',
     role: 'Data Engineer',
     points: [

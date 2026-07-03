@@ -12,7 +12,7 @@ import { stackColumns } from './stack.js';
 
 /** Hobbies & life beyond work — keep in sync with worker/src/index.js SYSTEM_PROMPT */
 export const personalBeyondWork = {
-  sportsPlay: ['Cricket', 'Pickleball', 'Table Tennis'],
+  sportsPlay: ['Cricket', 'Pickleball', 'Table Tennis', 'Soccer'],
   sportsWatch: 'Loves soccer; watches games every single week',
   reading: 'Reads often; fiction and philosophy are favorite genres',
   showsTop: ['Suits', 'Billions', 'Modern Family'],
