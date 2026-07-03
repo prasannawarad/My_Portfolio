@@ -16,10 +16,17 @@ export const bio = {
   interests: ['Agentic AI', 'ETL/ELT Pipelines', 'ML Systems', 'Cloud Data Platforms'],
   phone: '469-766-7241',
   email: 'waradprasanna@gmail.com',
-  linkedin: 'http://www.linkedin.com/in/prasannawarad',
+  linkedin: 'https://www.linkedin.com/in/prasannawarad',
   github: 'https://github.com/prasannawarad',
   timezone: 'UTC-6 (CST)',
 };
+
+/** Hero social-proof strip — short, verifiable wins. */
+export const highlights = [
+  { id: 'hl-1', icon: 'emoji_events', text: '5th Place · Goldman Sachs / UTD Hackathon' },
+  { id: 'hl-2', icon: 'school', text: 'Dean\'s Excellence Scholar · GPA 3.88' },
+  { id: 'hl-3', icon: 'ac_unit', text: 'SnowPro Platform Certified' },
+];
 
 /** Plain company name for UI (falls back to stripping `//` from `label`). */
 export function experienceCompanyName(item) {
@@ -53,8 +60,7 @@ export const experience = [
     office: 'Richardson, TX',
     role: 'Student Services & Operations Manager',
     points: [
-      'Coordinated student services and operations workflows across student-facing processes.',
-      'Improved communication and execution across teams through structured process tracking.',
+      'Ran day-to-day student services operations, streamlining student-facing processes and cross-team handoffs through structured process tracking.',
     ],
     current: false,
     category: 'leadership',
@@ -66,8 +72,7 @@ export const experience = [
     office: 'Richardson, TX',
     role: 'Vice President',
     points: [
-      'Led planning and execution for club activities with cross-functional student collaboration.',
-      'Supported event coordination, team alignment, and community engagement initiatives.',
+      'Led event planning and execution end to end, aligning cross-functional student teams and driving member engagement and community outreach.',
     ],
     current: false,
     category: 'leadership',
@@ -75,8 +80,8 @@ export const experience = [
   {
     id: 'exp-4',
     duration: '2023-02 — 2024-07',
-    company: 'HCLTech — Client: Dollar General',
-    label: '// HCLTech (client: Dollar General)',
+    company: 'HCLTech — Client: Dollar General (Fortune 100 Retailer)',
+    label: '// HCLTech (client: Dollar General, Fortune 100)',
     office: 'Noida, India',
     role: 'Data Engineer',
     points: [

@@ -75,6 +75,17 @@ function ProjectCard({ project, variant }) {
 
   return (
     <article className="group relative flex flex-col gap-0 rounded border border-surface-accent bg-surface-dark transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 overflow-hidden focus-within:ring-2 focus-within:ring-primary/35">
+      {project.screenshot ? (
+        <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-surface-accent bg-background-dark">
+          <img
+            src={`${import.meta.env.BASE_URL}${project.screenshot}`}
+            alt={`${project.title} screenshot`}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        </div>
+      ) : null}
       <div className="p-6 pb-4">
         <div className="mb-4 flex w-full min-w-0 items-center gap-3">
           <div className="shrink-0 rounded border border-surface-accent bg-background-dark p-3 text-primary transition-colors group-hover:bg-primary/20 group-hover:text-white">
@@ -138,14 +149,25 @@ function ProjectCard({ project, variant }) {
         </div>
       </div>
       <div className="mt-auto border-t border-surface-accent bg-code-bg p-4 font-mono text-xs">
-        <div className="flex items-center gap-2 text-text-muted opacity-70 mb-1">
-          <span className="material-symbols-outlined text-xs" aria-hidden="true">
-            history
-          </span>
-          <span>git log -1</span>
-        </div>
-        <div className="text-green-500">commit {project.commit}</div>
-        <div className="text-text-muted truncate">{project.commitMessage}</div>
+        {project.commit ? (
+          <>
+            <div className="flex items-center gap-2 text-text-muted opacity-70 mb-1">
+              <span className="material-symbols-outlined text-xs" aria-hidden="true">
+                history
+              </span>
+              <span>git log -1</span>
+            </div>
+            <div className="text-green-500">commit {project.commit}</div>
+            <div className="text-text-muted truncate">{project.commitMessage}</div>
+          </>
+        ) : (
+          <div className="flex items-center gap-2 text-text-muted opacity-70 mb-1">
+            <span className="material-symbols-outlined text-xs" aria-hidden="true">
+              history
+            </span>
+            <span>academic project</span>
+          </div>
+        )}
         <div className="text-text-muted text-[10px] mt-1">{project.updatedAt}</div>
       </div>
     </article>
@@ -162,6 +184,7 @@ ProjectCard.propTypes = {
     codeUrl: PropTypes.string,
     liveUrl: PropTypes.string,
     award: PropTypes.string,
+    screenshot: PropTypes.string,
     commit: PropTypes.string,
     commitMessage: PropTypes.string,
     updatedAt: PropTypes.string,

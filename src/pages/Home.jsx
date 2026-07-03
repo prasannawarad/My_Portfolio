@@ -9,6 +9,7 @@ import {
   certifications,
   education,
   experienceCompanyName,
+  highlights,
   impactMetrics,
   leadershipExperience,
   technicalExperience,
@@ -25,7 +26,7 @@ function Home() {
   const heroRafRef = useRef(null);
 
   const heroSpotlightDefaults = useMemo(() => ({ '--mx': '22%', '--my': '18%', '--hero-gold-a': '0.14' }), []);
-  const profileImageUrl = useMemo(() => `${import.meta.env.BASE_URL}prasanna.jpeg`, []);
+  const profileImageUrl = useMemo(() => `${import.meta.env.BASE_URL}prasanna.webp`, []);
   const [isCoarsePointer] = useState(
     () => typeof window !== 'undefined' && !!window.matchMedia?.('(pointer: coarse)').matches
   );
@@ -102,6 +103,20 @@ function Home() {
               {bio.elevatorPitch}
             </p>
 
+            <ul className="flex max-w-2xl flex-wrap gap-2" aria-label="Highlights">
+              {highlights.map((item) => (
+                <li
+                  key={item.id}
+                  className="inline-flex items-center gap-1.5 rounded border border-primary/30 bg-primary/5 px-2.5 py-1 font-mono text-[11px] font-bold text-primary/90"
+                >
+                  <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  {item.text}
+                </li>
+              ))}
+            </ul>
+
             <p className="max-w-2xl text-base leading-relaxed text-text-muted md:text-lg">
               {bio.summary}
             </p>
@@ -149,7 +164,8 @@ function Home() {
                   <img
                     src={profileImageUrl}
                     alt="Prasanna Warad profile"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     decoding="async"
                     className="h-full w-full object-cover object-[86%_40%] scale-[1.18] transition-transform duration-500 hover:scale-[1.22]"
                   />

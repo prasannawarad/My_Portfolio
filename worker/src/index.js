@@ -122,7 +122,7 @@ Role: Vice President
   • Led planning and execution for club activities with cross-functional student collaboration.
   • Supported event coordination, team alignment, and community engagement initiatives.
 
-2023-02 — 2024-07 — HCLTech (client: Dollar General)
+2023-02 — 2024-07 — HCLTech (client: Dollar General, Fortune 100 Retailer)
 Role: Data Engineer
 Office / location: Noida, India
   • Implemented Spark and Airflow data pipelines with partition pruning and query caching, cutting operational reporting latency 28% across Dollar General's retail analytics stack serving 19,000+ store locations.
@@ -136,21 +136,25 @@ Selected impact metrics:
   • Incident Response: −25% — Predictive downtime model (AWS logs)
 
 ## Projects
-InvestIQ — AI-powered portfolio co-pilot for beginner investors. AI agent Kuber spans a web dashboard, floating chat widget, and a Chrome extension that overlays financial news with contextual portfolio advice. Deterministic rebalance engine (drift, scenario, panic modes) surfaces transparent trade receipts without LLM hallucination; Groq-powered streaming chat with ElevenLabs voice narration. Built for the Goldman Sachs / UTD JSOM Hackathon (May 2026) — placed 5th overall. Tags: Next.js, Groq AI, AI Agent, ElevenLabs, Chrome Extension. Code: https://github.com/prasannawarad. Live: https://invest-iq-kuber.netlify.app
+InvestIQ — AI-powered portfolio co-pilot for beginner investors. AI agent Kuber spans a web dashboard, floating chat widget, and a Chrome extension that overlays financial news with contextual portfolio advice. Deterministic rebalance engine (drift, scenario, panic modes) surfaces transparent trade receipts without LLM hallucination; Groq-powered streaming chat with ElevenLabs voice narration. Built for the Goldman Sachs / UTD JSOM Hackathon (May 2026) — placed 5th overall. Tags: Next.js, Groq AI, AI Agent, ElevenLabs, Chrome Extension. Code: https://github.com/prasannawarad/InvestIQ. Live: https://invest-iq-kuber.netlify.app
 
 PrepAI Pro — Single-page React (Vite, React 19) for company research + mock interviews; tabbed dossier and optional STAR stories from resume (.txt/.md or paste); five-question mocks with scorecard. Gemini 2.5 Flash + Google Search grounding. Vercel + prepai.prasannawarad.com. Tags: React 19, Vite, Gemini 2.5 Flash, Prompt engineering. Code: https://github.com/prasannawarad/prepai-pro. Live: https://prepai.prasannawarad.com
 
-DataDoc_AI — Natural language data analysis platform — upload CSV, ask questions in English, AI generates SQL, executes in-browser, and auto-visualizes with Plotly charts. Tags: React, Gemini AI, SQL Engine, Plotly. Code: https://github.com/prasannawarad/datadoc-ai. Live: https://datadocai.netlify.app/
+DataDoc_AI — Natural language data analysis platform — upload CSV, ask questions in English, AI generates SQL, executes in-browser, and auto-visualizes with Plotly charts. Tags: React, Gemini AI, SQL Engine, Plotly. Code: https://github.com/prasannawarad/DataDoc_AI. Live: https://datadocai.netlify.app/
 
-RAGBase — Production RAG (Next.js 15, React 19, TypeScript): PDF/TXT/MD/CSV ingest, server-side Gemini embeddings (text-embedding-004, 768-dim), Supabase pgvector, hybrid search BM25 + vector + RRF, streaming chat Groq primary + Gemini fallback, sources drawer and chunk inspector. Tags: Next.js 15, React 19, Supabase pgvector, Hybrid search RRF, Groq + Gemini. Code: https://github.com/prasannawarad/ragbase. Live: https://ragbase.prasannawarad.com (fallback https://ragbase-gamma.vercel.app)
+RAGBase — Production RAG (Next.js 15, React 19, TypeScript): PDF/TXT/MD/CSV ingest, server-side Gemini embeddings (text-embedding-004, 768-dim), Supabase pgvector, hybrid search BM25 + vector + RRF, streaming chat Groq primary + Gemini fallback, sources drawer and chunk inspector. Tags: Next.js 15, React 19, Supabase pgvector, Hybrid search RRF, Groq + Gemini. Code: https://github.com/prasannawarad/RAGbase. Live: https://ragbase.prasannawarad.com (fallback https://ragbase-gamma.vercel.app)
 
-Credit_Risk_Modeling — Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC. Tags: Python, scikit-learn, XGBoost, SMOTE. Code: https://github.com/prasannawarad
+SEC_RAG_Intel — Production-grade RAG system that lets analysts query SEC 10-K/10-Q filings in natural language and get grounded, cited answers ([AAPL 2024 10-K — Risk Factors]). SEC EDGAR ingestion, BeautifulSoup parsing, local BAAI/bge-small embeddings (zero API cost), ChromaDB/Pinecone toggle, MMR retrieval with metadata filters, LangChain LCEL, Groq Llama 3.3 70B, RAGAS evaluation (faithfulness, answer relevancy, context recall) to quantitatively catch hallucinations. FastAPI backend + Streamlit UI. Tags: Python, LangChain, Pinecone + ChromaDB, RAGAS, FastAPI. Code: https://github.com/prasannawarad/sec-rag-intel
 
-Scalable_Fleet_Risk_Analytics — Distributed Hadoop HDFS and MapReduce ingestion pipeline for operational datasets across 300+ assets in 14 states, paired with Power BI dashboards for risk scores and predictive maintenance flags. Tags: Hadoop, HDFS, MapReduce, Power BI. Code: https://github.com/prasannawarad
+Credit_Risk_Modeling — Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC; proposed a hybrid deployment strategy from precision-recall tradeoffs to catch high-risk defaults without over-flagging creditworthy borrowers. Tags: Python, scikit-learn, XGBoost, SMOTE. Code: https://github.com/prasannawarad/credit-risk-default-prediction
 
-Instacart_Customer_Behavior — Processed 3M+ grocery transactions through optimized SQL pipelines for segmentation, cohort retention, and demand forecasting, then surfaced product velocity, fulfillment trends, and campaign ROI in Tableau. Tags: SQL, Tableau, Python. Code: https://github.com/prasannawarad
+Scalable_Fleet_Risk_Analytics — Distributed Hadoop HDFS and MapReduce ingestion pipeline for operational datasets across 300+ assets in 14 states, paired with Power BI dashboards for risk scores and predictive maintenance flags. Tags: Hadoop, HDFS, MapReduce, Power BI. (Academic project — code not published.)
 
-CardioRisk — Predictive health analytics pipeline in R evaluating 5 classifiers on 319K+ CDC health records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall while Random Forest ranked the top clinical predictors. Tags: R, Statistical Modeling, ML Pipeline. Code: https://github.com/prasannawarad
+Instacart_Customer_Behavior — Processed 3M+ grocery transactions through optimized SQL pipelines for segmentation, cohort retention, and demand forecasting, then surfaced product velocity, fulfillment trends, and campaign ROI in Tableau. Tags: SQL, Tableau, Python. (Academic project — code not published.)
+
+CardioRisk — Predictive health analytics pipeline in R evaluating 5 classifiers on 319K+ CDC health records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall while Random Forest ranked the top clinical predictors; flagged Decision Tree overfitting (matching accuracy vs a 0.50 AUC) as a clinical deployment-readiness signal. Tags: R, Statistical Modeling, ML Pipeline. Code: https://github.com/prasannawarad/CardioRisk
+
+Airflow_ETL_Pipeline — End-to-end ETL pipeline built with Apache Airflow and Astro that automates data extraction, transformation, and loading with scheduled, monitored DAG runs — hands-on build of the same orchestration stack used in production at Dollar General. Tags: Apache Airflow, Astro, Python, ETL. Code: https://github.com/prasannawarad/End-To-End-ETL-Pipeline-Using-AirFlow-And-Astro
 
 ## Tech Stack
 Agentic AI & LLM: Agentic Workflow Design, LLM Orchestration, RAG (Retrieval-Augmented Generation), Prompt Engineering, LangChain, LangGraph, Vector Embeddings, n8n, Groq API, Ollama, Pinecone, Weaviate, Whisper (OpenAI)
