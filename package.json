@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "postbuild": "mkdir -p dist/resume && cp dist/index.html dist/resume/index.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist --dotfiles"
   },
