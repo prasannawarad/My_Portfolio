@@ -105,28 +105,23 @@ function formatExperience() {
 }
 
 function formatProjects() {
-  const fmt = (list, title) => {
-    const body = list
-      .map((p) => {
-        const bits = [
-          `${p.title}`,
-          p.description,
-          `Tags: ${Array.isArray(p.tags) ? p.tags.join(', ') : ''}`,
-        ];
-        if (p.category) bits.push(`Category: ${p.category}`);
-        if (p.codeUrl) bits.push(`Code: ${p.codeUrl}`);
-        if (p.projectUrl) bits.push(`Link: ${p.projectUrl}`);
-        if (p.liveUrl && p.liveUrl !== '#') bits.push(`Live: ${p.liveUrl}`);
-        return bits.filter(Boolean).join('\n');
-      })
-      .join('\n\n---\n\n');
-    return `${title}\n${body}`;
-  };
-  return [
-    fmt(homeFeaturedProjects, 'Featured (home):'),
-    '',
-    fmt(projects, 'Full project list:'),
-  ].join('\n');
+  // Featured (home) projects are a subset of the full list — emit only the full
+  // list so the KB stays under the worker's MAX_KB_CHARS cap.
+  const featuredTitles = new Set(homeFeaturedProjects.map((p) => p.title));
+  const body = projects
+    .map((p) => {
+      const bits = [
+        featuredTitles.has(p.title) ? `${p.title} (featured)` : `${p.title}`,
+        p.description,
+        `Tags: ${Array.isArray(p.tags) ? p.tags.join(', ') : ''}`,
+      ];
+      if (p.category) bits.push(`Category: ${p.category}`);
+      if (p.codeUrl) bits.push(`Code: ${p.codeUrl}`);
+      if (p.liveUrl && p.liveUrl !== '#') bits.push(`Live: ${p.liveUrl}`);
+      return bits.filter(Boolean).join('\n');
+    })
+    .join('\n\n---\n\n');
+  return `Full project list:\n${body}`;
 }
 
 function formatStack() {

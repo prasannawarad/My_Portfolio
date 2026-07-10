@@ -1,5 +1,15 @@
 export const homeFeaturedProjects = [
   {
+    id: 'home-10',
+    title: 'CodeLens AI',
+    description:
+      'AI code audit and technical-debt tracking platform — deterministic static metrics (complexity, duplication, function length) fused with Gemini LLM analysis into a weighted 0–100 debt score. Audits run async on a BullMQ/Redis queue with incremental re-audits (content-hash diff — only changed files hit the LLM), GitHub repo import, an audit-on-PR GitHub Action, and an LLM eval harness that scores the auditor on precision/recall/F1 in CI. Live on Vercel + Railway.',
+    icon: 'troubleshoot',
+    tags: ['React', 'Node.js + Express', 'Gemini', 'BullMQ + Redis', 'Prisma + Postgres'],
+    projectUrl: 'https://github.com/prasannawarad/codelens-ai',
+    liveUrl: 'https://codelens-ai-olive.vercel.app',
+  },
+  {
     id: 'home-8',
     title: 'InvestIQ',
     description:
@@ -14,7 +24,7 @@ export const homeFeaturedProjects = [
     id: 'home-3',
     title: 'RAGBase',
     description:
-      'Production-grade full-stack RAG on Next.js 15 (App Router) and TypeScript: ingest PDF, TXT, MD, or CSV with sentence-aware chunking, server-side Gemini embeddings (text-embedding-004, 768-dim), and persistent storage on Supabase Postgres + pgvector. Hybrid retrieval merges BM25, vector similarity, and RRF; chat streams via Groq (SSE) with automatic Gemini fallback, with clickable source citations, a sources drawer (Esc to close, focus trap), semantic chunk inspector, and analytics dashboard (Recharts). Live on Vercel at ragbase.prasannawarad.com with ragbase-gamma.vercel.app as fallback.',
+      'Production-grade full-stack RAG on Next.js 15 (App Router) and TypeScript: ingest PDF, TXT, MD, or CSV with sentence-aware chunking, server-side Gemini embeddings (gemini-embedding-001, 768-dim, L2-normalized), and persistent storage on Supabase Postgres + pgvector. Hybrid retrieval merges BM25, vector similarity, and RRF; chat streams via Groq (SSE) with an automatic Gemini 2.0 Flash fallback chain, with clickable source citations, a sources drawer (Esc to close, focus trap), semantic chunk inspector, and analytics dashboard (Recharts). Live on Vercel at ragbase.prasannawarad.com with ragbase-gamma.vercel.app as fallback.',
     icon: 'manage_search',
     tags: ['Next.js 15', 'React 19', 'Supabase pgvector', 'Hybrid search · RRF', 'Groq + Gemini'],
     projectUrl: 'https://github.com/prasannawarad/RAGbase',
@@ -24,7 +34,7 @@ export const homeFeaturedProjects = [
     id: 'home-9',
     title: 'SEC_RAG_Intel',
     description:
-      'Production-grade RAG system for querying SEC 10-K/10-Q filings in natural language with grounded, cited answers — local BGE embeddings, ChromaDB/Pinecone vector store toggle, MMR retrieval, LangChain LCEL, Groq Llama 3.3 70B, and RAGAS evaluation to quantitatively catch hallucinations. FastAPI backend + Streamlit UI.',
+      'Production-grade RAG system for querying SEC 10-K/10-Q filings in natural language with grounded, cited answers — local BGE embeddings, ChromaDB/Pinecone vector store toggle, MMR retrieval, LangChain LCEL, Groq Llama 3.3 70B, and RAGAS evaluation to quantitatively catch hallucinations. Free-tier quota engineered as a production constraint: persisted daily token budgets, an answer cache serving repeats at zero token cost, and graceful retrieval-only degradation. FastAPI backend + Streamlit UI.',
     icon: 'account_balance',
     tags: ['Python', 'LangChain', 'Pinecone + ChromaDB', 'RAGAS', 'FastAPI'],
     projectUrl: 'https://github.com/prasannawarad/sec-rag-intel',
@@ -87,6 +97,20 @@ export const homeFeaturedProjects = [
 
 export const projects = [
   {
+    id: 'proj-11',
+    title: 'CodeLens AI',
+    description:
+      'AI code audit and technical-debt tracking platform — SonarQube-style static metrics (cyclomatic complexity, duplication %, function length) fused with Gemini LLM analysis into a weighted 0–100 debt score and per-file issue list. Audits run asynchronously on a BullMQ/Redis queue; re-audits are incremental via content-hash diffing so only changed files hit the LLM. GitHub repo import via Octokit, an audit-on-PR GitHub Action that comments scores on pull requests, JWT auth with AES-256-GCM-encrypted GitHub PATs, and an LLM eval harness — hand-labeled golden dataset scored on precision/recall/F1, re-run in CI as a regression gate. 131 unit tests + browser e2e; deployed on Railway (API, worker, Postgres, Redis) and Vercel.',
+    icon: 'troubleshoot',
+    tags: ['React', 'Node.js + Express', 'Gemini', 'BullMQ + Redis', 'Prisma + Postgres'],
+    commit: 'dd335da',
+    commitMessage: 'fix(api): redirect bare domain to /health',
+    updatedAt: 'Jul 2026',
+    codeUrl: 'https://github.com/prasannawarad/codelens-ai',
+    liveUrl: 'https://codelens-ai-olive.vercel.app',
+    category: 'ml-ai',
+  },
+  {
     id: 'proj-8',
     title: 'InvestIQ',
     description:
@@ -105,13 +129,13 @@ export const projects = [
     id: 'proj-3',
     title: 'RAGBase',
     description:
-      'Production-grade full-stack RAG on Next.js 15 (App Router) and TypeScript: ingest PDF, TXT, MD, or CSV with sentence-aware chunking, server-side Gemini embeddings (text-embedding-004, 768-dim), and persistent storage on Supabase Postgres + pgvector. Hybrid retrieval merges BM25, vector similarity, and RRF; chat streams via Groq (SSE) with automatic Gemini fallback, with clickable source citations, a sources drawer (Esc to close, focus trap), semantic chunk inspector, and analytics dashboard (Recharts). Live on Vercel at ragbase.prasannawarad.com with ragbase-gamma.vercel.app as fallback.',
+      'Production-grade full-stack RAG on Next.js 15 (App Router) and TypeScript: ingest PDF, TXT, MD, or CSV with sentence-aware chunking, server-side Gemini embeddings (gemini-embedding-001, 768-dim, L2-normalized), and persistent storage on Supabase Postgres + pgvector. Hybrid retrieval merges BM25, vector similarity, and RRF; chat streams via Groq (SSE) with an automatic Gemini 2.0 Flash fallback chain, with clickable source citations, a sources drawer (Esc to close, focus trap), semantic chunk inspector, and analytics dashboard (Recharts). Live on Vercel at ragbase.prasannawarad.com with ragbase-gamma.vercel.app as fallback.',
     icon: 'manage_search',
     tags: ['Next.js 15', 'React 19', 'Supabase pgvector', 'Hybrid search · RRF', 'Groq + Gemini'],
     screenshot: 'screenshots/ragbase.webp',
-    commit: '59057cd',
-    commitMessage: 'Document both live demo domains',
-    updatedAt: 'May 2026',
+    commit: '3103d1b',
+    commitMessage: 'new additional changes to Ragbase till phase 2',
+    updatedAt: 'Jul 2026',
     codeUrl: 'https://github.com/prasannawarad/RAGbase',
     liveUrl: 'https://ragbase.prasannawarad.com',
     category: 'ml-ai',
@@ -120,12 +144,12 @@ export const projects = [
     id: 'proj-9',
     title: 'SEC_RAG_Intel',
     description:
-      'Production-grade RAG system that lets analysts query SEC 10-K/10-Q filings in natural language and get answers strictly grounded in the filings, with citations like [AAPL 2024 10-K — Risk Factors]. Pipeline: SEC EDGAR ingestion → BeautifulSoup parsing → sentence-aware chunking → local BAAI/bge-small embeddings (zero API cost) → ChromaDB (local) / Pinecone (prod) toggle → MMR retrieval with metadata filters → LangChain LCEL → Groq Llama 3.3 70B. Hallucinations are caught quantitatively with RAGAS (faithfulness, answer relevancy, context recall). FastAPI backend, Streamlit UI, CI sync to HuggingFace Spaces.',
+      'Production-grade RAG system that lets analysts query SEC 10-K/10-Q filings in natural language and get answers strictly grounded in the filings, with citations like [AAPL 2024 10-K — Risk Factors]. Pipeline: SEC EDGAR ingestion → BeautifulSoup parsing → sentence-aware chunking → local BAAI/bge-small embeddings (zero API cost) → ChromaDB (local) / Pinecone (prod) toggle → MMR retrieval with metadata filters → LangChain LCEL → Groq Llama 3.3 70B. Hallucinations are caught quantitatively with RAGAS (faithfulness, answer relevancy, context recall). Free-tier quota engineered as a production constraint: persisted daily token/request budgets, a requests-per-minute throttle, an answer cache serving repeat questions at zero token cost, and graceful degradation to retrieval-only excerpts when the budget is spent. FastAPI backend, Streamlit UI, CI sync to HuggingFace Spaces.',
     icon: 'account_balance',
     tags: ['Python', 'LangChain', 'Pinecone + ChromaDB', 'RAGAS', 'FastAPI'],
-    commit: 'c864ab9',
-    commitMessage: 'fix(ci): skip HF Spaces sync when HF_TOKEN is missing',
-    updatedAt: 'Apr 2026',
+    commit: 'dba901f',
+    commitMessage: 'docs(readme): add UI screenshots; clarify deploy activates with HF_TOKEN',
+    updatedAt: 'Jul 2026',
     codeUrl: 'https://github.com/prasannawarad/sec-rag-intel',
     category: 'ml-ai',
   },
