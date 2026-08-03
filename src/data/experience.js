@@ -5,14 +5,14 @@ export const bio = {
   heroLine2: 'Agentic AI Systems',
   /** Plain-language line for recruiters / execs (non-terminal) */
   elevatorPitch:
-    'I design data pipelines, agentic AI workflows, and ML systems that cut manual work and surface decisions at scale — from retail ETL serving 19,000+ stores to LLM pipelines that automate 5-stage hiring processes end-to-end.',
+    'I build production LLM, RAG, and data systems with measurable outcomes — from hybrid retrieval and quantitative evaluation to retail ETL serving 19,000+ stores and agentic hiring workflows that complete a 5-stage process in under 2 minutes.',
   role: 'Data & AI Engineer · Software Engineer',
   location: 'Dallas, TX',
-  yearsActive: 3,
+  yearsActive: 1.5,
   primaryFocus: 'Data pipelines, LLM workflows & ML systems',
   status: 'Open to full-time Data Engineering, AI Engineering & SWE roles',
   summary:
-    '3 years shipping production data pipelines, agentic AI workflows, and ML systems — most recently building agentic AI hiring automation at a US startup. MS ITM at UT Dallas — Dean\'s Excellence Scholar, GPA 3.88.',
+    'Data and AI Engineer with 1.5 years of production experience across ETL pipelines, ML models, and LLM systems. MS ITM from UT Dallas — Dean\'s Excellence Scholar, GPA 3.88.',
   interests: ['Agentic AI', 'ETL/ELT Pipelines', 'ML Systems', 'Cloud Data Platforms'],
   phone: '469-766-7241',
   email: 'waradprasanna@gmail.com',
@@ -42,13 +42,12 @@ export const experience = [
     company: 'Cloud BC Labs',
     label: '// Cloud BC Labs',
     office: 'Reston, VA',
-    role: 'Software Engineer Intern — Data & AI Engineering',
+    role: 'Software Engineer Intern — AI & Data Engineering',
     points: [
       'Automated the full candidate assessment lifecycle using n8n agentic workflows and Groq LLM; job description submission triggers role-specific question generation and candidate email delivery with no manual steps, collapsing a 5-stage hiring process to under 2 minutes end-to-end.',
       'Designed 6 PostgreSQL schema migrations from scratch, normalizing candidates, assessments, AI scores, proctoring flags, and job requisitions into a structured schema powering real-time recruiter dashboard queries.',
-      'Integrated 4 AI services — DeepFace for identity verification, Groq LLM for MCQ scoring, Groq Whisper for video transcription, and MediaPipe for behavioral proctoring — into a 6-container Docker pipeline with no manual routing between stages.',
-      'Deployed RESTful APIs in FastAPI and Node.js connecting the React HR dashboard to backend AI scoring services; standardized data contracts across 4 microservices, cutting cross-service integration overhead by 20%.',
-      'Instrumented an end-to-end screening funnel with usage analytics, surfacing recurring failure patterns that cut incoming bug report volume 15% and shifted sprint priorities toward the highest-impact fixes.',
+      'Orchestrated 4 AI services — DeepFace identity verification, Groq LLM MCQ scoring, Whisper transcription, and MediaPipe behavioral proctoring — into a 6-container Docker Compose pipeline with Ollama fallback nodes.',
+      'Built FastAPI, Flask, and Node.js/Express REST APIs with JWT auth linking a React/TypeScript dashboard to AI scoring services; standardized contracts across 4 microservices and cut integration overhead 20% through GitHub Actions CI/CD.',
     ],
     current: false,
     category: 'technical',
@@ -80,8 +79,8 @@ export const experience = [
   {
     id: 'exp-4',
     duration: '2023-02 — 2024-07',
-    company: 'HCLTech — Client: Dollar General (Fortune 500 Retailer)',
-    label: '// HCLTech (client: Dollar General, Fortune 500)',
+    company: 'HCLTech Ltd — Client: Dollar General (Fortune 100 Retailer)',
+    label: '// HCLTech Ltd (client: Dollar General, Fortune 100)',
     office: 'Noida, India',
     role: 'Data Engineer',
     points: [
@@ -119,9 +118,18 @@ export const education = [
 
 export const impactMetrics = [
   { id: 'metric-1', label: 'Hiring Funnel', value: '<2m', text: 'Agentic AI screening lifecycle from JD to candidate delivery' },
-  { id: 'metric-2', label: 'Reporting Latency', value: '-28%', text: 'Spark and Airflow partition pruning + query caching' },
-  { id: 'metric-3', label: 'Retail Records', value: '2M+', text: 'Python and SQL anomaly detection for transaction quality' },
-  { id: 'metric-4', label: 'Incident Response', value: '-25%', text: 'Downtime forecasting on AWS system performance logs' },
+  { id: 'metric-2', label: 'AI Pipeline', value: '4 / 6', text: 'AI services orchestrated across a 6-container Docker Compose system' },
+  { id: 'metric-3', label: 'Integration Overhead', value: '-20%', text: 'Standardized contracts across 4 AI microservices with CI/CD' },
+  { id: 'metric-4', label: 'Reporting Latency', value: '-28%', text: 'Spark and Airflow partition pruning plus query caching' },
+  { id: 'metric-5', label: 'Retail Footprint', value: '19K+', text: 'Store locations served by the retail analytics stack' },
+  { id: 'metric-6', label: 'Data Quality', value: '2M+', text: 'Transaction records validated with Python and SQL anomaly detection' },
+  { id: 'metric-7', label: 'Incident Response', value: '-25%', text: 'Downtime forecasting on AWS CloudWatch system logs' },
+];
+
+export const careerProofs = [
+  { id: 'proof-1', value: '6', label: 'PostgreSQL migrations designed for AI screening workflows' },
+  { id: 'proof-2', value: '20', label: 'Question golden dataset used for RAGAS evaluation in CI' },
+  { id: 'proof-3', value: '131', label: 'CodeLens AI unit tests, plus browser end-to-end coverage' },
 ];
 
 export const certifications = [

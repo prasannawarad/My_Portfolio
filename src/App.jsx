@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Projects from './pages/Projects';
 import { SECTION_IDS } from './utils/scrollToAnchor';
 
 const Resume = lazy(() => import('./pages/Resume'));
@@ -27,9 +28,10 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          {SECTION_IDS.filter((id) => id !== 'home').map((id) => (
+          {SECTION_IDS.filter((id) => id !== 'home' && id !== 'projects').map((id) => (
             <Route key={id} path={`/${id}`} element={<Home />} />
           ))}
+          <Route path="/projects" element={<Projects />} />
           <Route path="/resume" element={<ResumeRoute />} />
         </Route>
       </Routes>

@@ -9,6 +9,24 @@ import {
 
 const HOME_TITLE = 'Prasanna Warad — Portfolio';
 const RESUME_TITLE = 'Resume — Prasanna Warad';
+const PROJECTS_TITLE = 'Projects — Prasanna Warad';
+const ABOUT_TITLE = 'About — Prasanna Warad';
+const CONTACT_TITLE = 'Contact — Prasanna Warad';
+
+const routeMetadata = {
+  '/projects': {
+    title: PROJECTS_TITLE,
+    description: 'Selected data engineering, AI, and software projects by Prasanna Warad, including production RAG systems, analytics, and private case studies.',
+  },
+  '/about': {
+    title: ABOUT_TITLE,
+    description: 'About Prasanna Warad, a data and AI engineer focused on reliable data systems, LLM applications, and analytics.',
+  },
+  '/contact': {
+    title: CONTACT_TITLE,
+    description: 'Contact Prasanna Warad for data engineering, AI engineering, and software opportunities.',
+  },
+};
 
 function buildAbsoluteUrl(pathname) {
   if (pathname === '/' || pathname === '') return SITE_URL;
@@ -24,8 +42,9 @@ function Seo() {
   const { pathname } = useLocation();
   const isResume = pathname === '/resume';
 
-  const title = isResume ? RESUME_TITLE : HOME_TITLE;
-  const description = isResume ? resumeOgDescription : defaultOgDescription;
+  const metadata = routeMetadata[pathname];
+  const title = isResume ? RESUME_TITLE : metadata?.title ?? HOME_TITLE;
+  const description = isResume ? resumeOgDescription : metadata?.description ?? defaultOgDescription;
   const url = buildAbsoluteUrl(pathname);
 
   return (

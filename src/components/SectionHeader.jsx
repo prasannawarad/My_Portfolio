@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function SectionHeader({ title, as: HeadingTag }) {
+function SectionHeader({ title, as: HeadingTag = 'h2' }) {
   return (
     <div className="flex items-center gap-4">
       <div className="flex items-baseline gap-3 min-w-0">
@@ -22,10 +22,6 @@ function SectionHeader({ title, as: HeadingTag }) {
 SectionHeader.propTypes = {
   title: PropTypes.string.isRequired,
   as: PropTypes.elementType,
-};
-
-SectionHeader.defaultProps = {
-  as: 'h2',
 };
 
 export default SectionHeader;

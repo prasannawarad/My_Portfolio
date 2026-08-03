@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 
-function TerminalWindow({ title, children, className, bodyClassName, showHeader }) {
+function TerminalWindow({
+  title = 'terminal',
+  children,
+  className = '',
+  bodyClassName = 'p-6',
+  showHeader = true,
+}) {
   return (
     <div
       className={`terminal-window group relative rounded-lg border border-surface-accent bg-code-bg overflow-hidden shadow-2xl shadow-black/50 ${className}`}
@@ -27,13 +33,6 @@ TerminalWindow.propTypes = {
   className: PropTypes.string,
   bodyClassName: PropTypes.string,
   showHeader: PropTypes.bool,
-};
-
-TerminalWindow.defaultProps = {
-  title: 'terminal',
-  className: '',
-  bodyClassName: 'p-6',
-  showHeader: true,
 };
 
 export default TerminalWindow;

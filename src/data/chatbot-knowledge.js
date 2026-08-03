@@ -1,5 +1,6 @@
 import {
   bio,
+  careerProofs,
   experience,
   technicalExperience,
   leadershipExperience,
@@ -32,6 +33,7 @@ export const profileData = {
   education,
   certifications,
   impactMetrics,
+  careerProofs,
   homeFeaturedProjects,
   projects,
   stackColumns,
@@ -100,6 +102,9 @@ function formatExperience() {
     '',
     'Selected impact metrics (from prior roles):',
     impactMetrics.map((m) => `  • ${m.label}: ${m.value} — ${m.text}`).join('\n'),
+    '',
+    'Engineering proof points:',
+    careerProofs.map((proof) => `  • ${proof.value}: ${proof.label}`).join('\n'),
   ];
   return blocks.join('\n');
 }

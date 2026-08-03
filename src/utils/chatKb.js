@@ -1,5 +1,6 @@
 import {
   bio,
+  careerProofs,
   certifications,
   education,
   impactMetrics,
@@ -47,6 +48,8 @@ export const chatKb = [
 
   section('Impact metrics', safeList(impactMetrics, (m) => `${line(m.label)}: ${line(m.value)} — ${line(m.text)}`)),
 
+  section('Engineering proof points', safeList(careerProofs, (proof) => `${line(proof.value)} — ${line(proof.label)}`)),
+
   section(
     'Projects',
     safeList(projects, (p) => `${line(p.title)} — ${line(p.description)} (tags: ${(p.tags || []).slice(0, 8).join(', ')})`),
@@ -72,4 +75,3 @@ export const chatKb = [
     safeList(contactChannels, (c) => `${line(c.title)}: ${line(c.value)} (${line(c.href)})`),
   ),
 ].join('\n\n');
-

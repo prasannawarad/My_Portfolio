@@ -12,7 +12,7 @@ function HashScrollHandler() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    const homeSectionPathnames = new Set(['/', ...SECTION_IDS.map((id) => `/${id}`)]);
+    const homeSectionPathnames = new Set(['/', ...SECTION_IDS.filter((id) => id !== 'projects').map((id) => `/${id}`)]);
     if (!homeSectionPathnames.has(pathname)) return;
 
     const hashId = hash?.replace(/^#/, '') ?? '';

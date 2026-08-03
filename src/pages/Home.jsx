@@ -6,6 +6,7 @@ import StackColumn from '../components/StackColumn';
 import TerminalWindow from '../components/TerminalWindow';
 import {
   bio,
+  careerProofs,
   certifications,
   education,
   experienceCompanyName,
@@ -15,7 +16,7 @@ import {
   technicalExperience,
 } from '../data/experience';
 import { contactChannels } from '../data/contactChannels';
-import { projects } from '../data/projects';
+import { homeFeaturedProjects } from '../data/projects';
 import { stackColumns } from '../data/stack';
 import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
@@ -165,7 +166,6 @@ function Home() {
                     src={profileImageUrl}
                     alt="Prasanna Warad profile"
                     loading="eager"
-                    fetchPriority="high"
                     decoding="async"
                     className="h-full w-full object-cover object-[86%_40%] scale-[1.18] transition-transform duration-500 hover:scale-[1.22]"
                   />
@@ -222,6 +222,15 @@ function Home() {
                 </code>
               </pre>
             </TerminalWindow>
+
+            <section className="grid grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Engineering proof points">
+              {careerProofs.map((proof) => (
+                <article key={proof.id} className="border-l-2 border-primary/60 bg-surface-dark px-4 py-3">
+                  <p className="font-mono text-2xl font-black text-primary">{proof.value}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-text-muted">{proof.label}</p>
+                </article>
+              ))}
+            </section>
 
             <div className="rounded border border-surface-accent bg-surface-dark p-6">
               <h3 className="mb-6 font-mono text-lg font-bold text-white">tail -f Professional_Experience.log</h3>
@@ -297,6 +306,7 @@ function Home() {
                     <p className="text-white">{item.degree}</p>
                     <p>{item.institution}</p>
                     <p className="text-primary">{item.duration}</p>
+                    {item.extra ? <p className="mt-1 text-xs leading-relaxed text-text-muted">{item.extra}</p> : null}
                   </article>
                 ))}
               </div>
@@ -332,8 +342,8 @@ function Home() {
       >
         <SectionHeader title="PROJECTS" />
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} variant="full" />
+          {homeFeaturedProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} variant="featured" />
           ))}
         </div>
 

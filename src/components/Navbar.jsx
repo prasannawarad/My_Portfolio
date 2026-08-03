@@ -10,7 +10,7 @@ const navItems = [
   { id: 'contact', label: 'Contact' },
 ];
 
-function ProfileSocialLinks({ onNavigate }) {
+function ProfileSocialLinks({ onNavigate = undefined }) {
   const after = onNavigate ? { onClick: onNavigate } : {};
 
   return (
@@ -47,16 +47,14 @@ ProfileSocialLinks.propTypes = {
   onNavigate: PropTypes.func,
 };
 
-ProfileSocialLinks.defaultProps = {
-  onNavigate: undefined,
-};
-
 function Navbar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const isResumePage = pathname === '/resume';
+  const isProjectsPage = pathname === '/projects';
+  const isStandalonePage = isResumePage || isProjectsPage;
 
   useEffect(() => {
     setIsOpen(false);
@@ -87,7 +85,7 @@ function Navbar() {
       .filter(Boolean);
 
     if (sections.length === 0) {
-      if (isResumePage) setActiveSection('');
+      setActiveSection(isProjectsPage ? 'projects' : '');
       return undefined;
     }
 
@@ -110,20 +108,20 @@ function Navbar() {
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [isResumePage]);
+  }, [isProjectsPage]);
 
   const scrollToSection = (sectionId) => {
     setIsOpen(false);
     const targetPath = sectionId === 'home' ? '/' : `/${sectionId}`;
-    navigate(targetPath, { replace: !isResumePage });
-    if (!isResumePage) {
+    navigate(targetPath, { replace: !isStandalonePage });
+    if (!isStandalonePage) {
       setActiveSection(sectionId);
     }
   };
 
   const homeClick = () => {
     setIsOpen(false);
-    navigate('/', { replace: !isResumePage });
+    navigate('/', { replace: !isStandalonePage });
   };
 
   const linkClasses = (isActive, layout = 'inline') =>
@@ -159,13 +157,13 @@ function Navbar() {
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
-              className={linkClasses(!isResumePage && activeSection === item.id)}
+              className={linkClasses(!isStandalonePage && activeSection === item.id || isProjectsPage && item.id === 'projects')}
               aria-label={`Scroll to ${item.label}`}
-              aria-current={!isResumePage && activeSection === item.id ? 'page' : undefined}
+              aria-current={!isStandalonePage && activeSection === item.id || isProjectsPage && item.id === 'projects' ? 'page' : undefined}
             >
               <span
                 className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                  !isResumePage && activeSection === item.id ? 'bg-primary' : 'bg-surface-accent'
+                  !isStandalonePage && activeSection === item.id || isProjectsPage && item.id === 'projects' ? 'bg-primary' : 'bg-surface-accent'
                 }`}
                 aria-hidden="true"
               />
@@ -227,13 +225,13 @@ function Navbar() {
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
-              className={`min-h-[44px] rounded px-1 py-2 text-left ${linkClasses(!isResumePage && activeSection === item.id, 'block')}`}
+              className={`min-h-[44px] rounded px-1 py-2 text-left ${linkClasses(!isStandalonePage && activeSection === item.id || isProjectsPage && item.id === 'projects', 'block')}`}
               aria-label={`Scroll to ${item.label}`}
-              aria-current={!isResumePage && activeSection === item.id ? 'page' : undefined}
+              aria-current={!isStandalonePage && activeSection === item.id || isProjectsPage && item.id === 'projects' ? 'page' : undefined}
             >
               <span
                 className={`inline-flex h-1.5 w-1.5 shrink-0 rounded-full ${
-                  !isResumePage && activeSection === item.id ? 'bg-primary' : 'bg-surface-accent'
+                  !isStandalonePage && activeSection === item.id || isProjectsPage && item.id === 'projects' ? 'bg-primary' : 'bg-surface-accent'
                 }`}
                 aria-hidden="true"
               />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MAX_LEN = 500;
 
-function ChatInput({ onSend, disabled }) {
+function ChatInput({ onSend, disabled = false }) {
   const [value, setValue] = useState('');
 
   const submit = useCallback(() => {
@@ -32,7 +32,7 @@ function ChatInput({ onSend, disabled }) {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={onKeyDown}
         disabled={disabled}
-        placeholder="Ask about work, life, hobbies…"
+        placeholder="Ask about experience, projects, or interests…"
         aria-label="Chat message"
         autoComplete="off"
         className="min-h-[2.5rem] min-w-0 flex-1 rounded-lg border border-surface-accent bg-surface-dark px-3 py-2 text-sm text-text-main placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
@@ -55,10 +55,6 @@ function ChatInput({ onSend, disabled }) {
 ChatInput.propTypes = {
   onSend: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-};
-
-ChatInput.defaultProps = {
-  disabled: false,
 };
 
 export default ChatInput;

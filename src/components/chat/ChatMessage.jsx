@@ -21,7 +21,7 @@ function LoadingDots() {
   );
 }
 
-function ChatMessage({ role, content, isLoading }) {
+function ChatMessage({ role, content, isLoading = false }) {
   const isUser = role === 'user';
 
   if (isUser) {
@@ -58,10 +58,6 @@ ChatMessage.propTypes = {
   role: PropTypes.oneOf(['user', 'assistant']).isRequired,
   content: PropTypes.string.isRequired,
   isLoading: PropTypes.bool,
-};
-
-ChatMessage.defaultProps = {
-  isLoading: false,
 };
 
 export default ChatMessage;

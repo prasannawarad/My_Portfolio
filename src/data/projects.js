@@ -1,5 +1,15 @@
 export const homeFeaturedProjects = [
   {
+    id: 'home-3',
+    title: 'RAGBase',
+    description:
+      'Production-grade full-stack RAG on Next.js 15 and TypeScript: document ingest, server-side Gemini embeddings, pgvector persistence, hybrid BM25/vector retrieval with RRF, streamed Groq chat with Gemini fallback, source citations, and analytics. Live on Vercel.',
+    icon: 'manage_search',
+    tags: ['Next.js 15', 'React 19', 'Supabase pgvector', 'Hybrid search · RRF', 'Groq + Gemini'],
+    projectUrl: 'https://github.com/prasannawarad/RAGbase',
+    liveUrl: 'https://ragbase.prasannawarad.com',
+  },
+  {
     id: 'home-10',
     title: 'CodeLens AI',
     description:
@@ -10,31 +20,10 @@ export const homeFeaturedProjects = [
     liveUrl: 'https://codelens-ai-olive.vercel.app',
   },
   {
-    id: 'home-8',
-    title: 'InvestIQ',
-    description:
-      'AI portfolio co-pilot for beginner investors — deterministic rebalance engine with drift, scenario, and panic modes; Groq-powered chat with ElevenLabs voice; Chrome extension that overlays financial news with contextual portfolio advice. Built for the Goldman Sachs / UTD JSOM Hackathon — placed 5th overall.',
-    icon: 'candlestick_chart',
-    tags: ['Next.js', 'Groq AI', 'AI Agent', 'ElevenLabs', 'Chrome Extension'],
-    award: '5th Place · Goldman Sachs Hackathon',
-    projectUrl: 'https://github.com/prasannawarad/InvestIQ',
-    liveUrl: 'https://invest-iq-kuber.netlify.app',
-  },
-  {
-    id: 'home-3',
-    title: 'RAGBase',
-    description:
-      'Production-grade full-stack RAG on Next.js 15 (App Router) and TypeScript: ingest PDF, TXT, MD, or CSV with sentence-aware chunking, server-side Gemini embeddings (gemini-embedding-001, 768-dim, L2-normalized), and persistent storage on Supabase Postgres + pgvector. Hybrid retrieval merges BM25, vector similarity, and RRF; chat streams via Groq (SSE) with an automatic Gemini 2.0 Flash fallback chain, with clickable source citations, a sources drawer (Esc to close, focus trap), semantic chunk inspector, and analytics dashboard (Recharts). Live on Vercel at ragbase.prasannawarad.com with ragbase-gamma.vercel.app as fallback.',
-    icon: 'manage_search',
-    tags: ['Next.js 15', 'React 19', 'Supabase pgvector', 'Hybrid search · RRF', 'Groq + Gemini'],
-    projectUrl: 'https://github.com/prasannawarad/RAGbase',
-    liveUrl: 'https://ragbase.prasannawarad.com',
-  },
-  {
     id: 'home-9',
     title: 'SEC_RAG_Intel',
     description:
-      'Production-grade RAG system for querying SEC 10-K/10-Q filings in natural language with grounded, cited answers — local BGE embeddings, ChromaDB/Pinecone vector store toggle, MMR retrieval, LangChain LCEL, Groq Llama 3.3 70B, and RAGAS evaluation to quantitatively catch hallucinations. Free-tier quota engineered as a production constraint: persisted daily token budgets, an answer cache serving repeats at zero token cost, and graceful retrieval-only degradation. FastAPI backend + Streamlit UI.',
+      'RAG system for SEC 10-K/10-Q filings with grounded citations, local BGE embeddings, ChromaDB/Pinecone, MMR retrieval, LangChain LCEL, Groq, and RAGAS evaluation. Cost guardrails include daily budgets, throttling, caching, and retrieval-only degradation.',
     icon: 'account_balance',
     tags: ['Python', 'LangChain', 'Pinecone + ChromaDB', 'RAGAS', 'FastAPI'],
     projectUrl: 'https://github.com/prasannawarad/sec-rag-intel',
@@ -43,17 +32,28 @@ export const homeFeaturedProjects = [
     id: 'home-1',
     title: 'PrepAI Pro',
     description:
-      'Single-page React app for company research and mock interviews: tabbed dossier (History, Products & market, Culture, Latest news, Interview playbook) with optional STAR stories when a resume is pasted or uploaded as .txt/.md (plain text only; PDF not supported yet). Mock interviews run five questions, then a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding; inputs stay in-browser until you call the API; shipped on Vercel at prepai.prasannawarad.com.',
+      'Single-page React app for company research and mock interviews: a tabbed dossier with optional STAR stories generated from pasted text or uploaded TXT, Markdown, and PDF resumes. Mock interviews run five questions, then produce a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding, Groq Whisper voice transcription, and a browser dictation fallback; shipped on Vercel at prepai.prasannawarad.com.',
     icon: 'smart_toy',
     tags: ['React 19', 'Vite', 'Gemini 2.5 Flash', 'Prompt engineering'],
     projectUrl: 'https://github.com/prasannawarad/prepai-pro',
     liveUrl: 'https://prepai.prasannawarad.com',
   },
   {
+    id: 'home-8',
+    title: 'InvestIQ',
+    description:
+      'AI portfolio co-pilot for beginner investors with a deterministic rebalance engine, Groq-powered chat, ElevenLabs voice, and a contextual-news Chrome extension. Built for the Goldman Sachs / UTD JSOM Hackathon — placed 5th overall.',
+    icon: 'candlestick_chart',
+    tags: ['Next.js', 'Groq AI', 'AI Agent', 'ElevenLabs', 'Chrome Extension'],
+    award: '5th Place · Goldman Sachs Hackathon',
+    projectUrl: 'https://github.com/prasannawarad/InvestIQ',
+    liveUrl: 'https://invest-iq-kuber.netlify.app',
+  },
+  {
     id: 'home-2',
     title: 'DataDoc_AI',
     description:
-      'Natural language data analysis platform — upload CSV, ask questions in English, AI generates SQL, executes in-browser, and auto-visualizes with Plotly charts.',
+      'AI data debugging workspace — upload a CSV to profile data quality, identify and explain issues, generate suggested SQL fixes, explore natural-language questions, and visualize results with Plotly.',
     icon: 'table_chart',
     tags: ['React', 'Gemini AI', 'SQL Engine', 'Plotly'],
     projectUrl: 'https://github.com/prasannawarad/DataDoc_AI',
@@ -63,7 +63,7 @@ export const homeFeaturedProjects = [
     id: 'home-7',
     title: 'CardioRisk',
     description:
-      'Predictive health analytics pipeline in R across 319K+ CDC records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall.',
+      'Predictive health analytics pipeline in R across roughly 300K CDC records. The documented champion, Naive Bayes, reached about 91% accuracy and a 0.81 AUC while the pipeline compares multiple classifiers and produces reproducible artifacts.',
     icon: 'favorite',
     tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
     projectUrl: 'https://github.com/prasannawarad/CardioRisk',
@@ -72,7 +72,7 @@ export const homeFeaturedProjects = [
     id: 'home-4',
     title: 'Credit_Risk_Modeling',
     description:
-      'Credit default prediction pipeline on 255K+ lending records with SMOTE for 1:7.6 imbalance; XGBoost reached 88.5% accuracy and 0.737 ROC-AUC.',
+      'Credit default prediction pipeline on 255K+ lending records with SMOTE for 1:7.6 imbalance; XGBoost reached 88.57% accuracy, 0.7414 ROC-AUC, and 0.3077 PR-AUC.',
     icon: 'paid',
     tags: ['Python', 'scikit-learn', 'XGBoost', 'SMOTE'],
     projectUrl: 'https://github.com/prasannawarad/credit-risk-default-prediction',
@@ -97,35 +97,6 @@ export const homeFeaturedProjects = [
 
 export const projects = [
   {
-    id: 'proj-11',
-    title: 'CodeLens AI',
-    description:
-      'AI code audit and technical-debt tracking platform — SonarQube-style static metrics (cyclomatic complexity, duplication %, function length) fused with Gemini LLM analysis into a weighted 0–100 debt score and per-file issue list. Audits run asynchronously on a BullMQ/Redis queue; re-audits are incremental via content-hash diffing so only changed files hit the LLM. GitHub repo import via Octokit, an audit-on-PR GitHub Action that comments scores on pull requests, JWT auth with AES-256-GCM-encrypted GitHub PATs, and an LLM eval harness — hand-labeled golden dataset scored on precision/recall/F1, re-run in CI as a regression gate. 131 unit tests + browser e2e; deployed on Railway (API, worker, Postgres, Redis) and Vercel.',
-    icon: 'troubleshoot',
-    tags: ['React', 'Node.js + Express', 'Gemini', 'BullMQ + Redis', 'Prisma + Postgres'],
-    commit: 'dd335da',
-    commitMessage: 'fix(api): redirect bare domain to /health',
-    updatedAt: 'Jul 2026',
-    codeUrl: 'https://github.com/prasannawarad/codelens-ai',
-    liveUrl: 'https://codelens-ai-olive.vercel.app',
-    category: 'ml-ai',
-  },
-  {
-    id: 'proj-8',
-    title: 'InvestIQ',
-    description:
-      'AI-powered portfolio co-pilot that helps non-savvy investors track holdings, understand risk in plain language, and rebalance confidently during market panics. AI agent Kuber spans a web dashboard, floating chat widget, and a Chrome extension that overlays financial news with contextual portfolio advice. Deterministic rebalance engine (drift, scenario, panic modes) surfaces transparent trade receipts — tax cost, fees, goal impact — without LLM hallucination. Built for the Goldman Sachs / UTD JSOM Hackathon (May 2026) — placed 5th overall.',
-    icon: 'candlestick_chart',
-    tags: ['Next.js', 'Groq AI', 'AI Agent', 'ElevenLabs', 'Chrome Extension'],
-    award: '5th Place · Goldman Sachs Hackathon',
-    commit: '30cae5b',
-    commitMessage: 'style(web): enlarge health gauge and adjust stat copy',
-    updatedAt: 'May 2026',
-    codeUrl: 'https://github.com/prasannawarad/InvestIQ',
-    liveUrl: 'https://invest-iq-kuber.netlify.app',
-    category: 'ml-ai',
-  },
-  {
     id: 'proj-3',
     title: 'RAGBase',
     description:
@@ -138,6 +109,20 @@ export const projects = [
     updatedAt: 'Jul 2026',
     codeUrl: 'https://github.com/prasannawarad/RAGbase',
     liveUrl: 'https://ragbase.prasannawarad.com',
+    category: 'ml-ai',
+  },
+  {
+    id: 'proj-11',
+    title: 'CodeLens AI',
+    description:
+      'AI code audit and technical-debt tracking platform — SonarQube-style static metrics fused with Gemini LLM analysis into a weighted 0–100 debt score and per-file issue list. Audits run asynchronously on BullMQ/Redis; content-hash diffing sends only changed files to the LLM. Includes GitHub import, an audit-on-PR GitHub Action, encrypted PATs, and an evaluation harness that measures precision, recall, and F1 in CI alongside 131 unit tests and browser e2e.',
+    icon: 'troubleshoot',
+    tags: ['React', 'Node.js + Express', 'Gemini', 'BullMQ + Redis', 'Prisma + Postgres'],
+    commit: 'dd335da',
+    commitMessage: 'fix(api): redirect bare domain to /health',
+    updatedAt: 'Jul 2026',
+    codeUrl: 'https://github.com/prasannawarad/codelens-ai',
+    liveUrl: 'https://codelens-ai-olive.vercel.app',
     category: 'ml-ai',
   },
   {
@@ -157,21 +142,36 @@ export const projects = [
     id: 'proj-1',
     title: 'PrepAI Pro',
     description:
-      'Single-page React app for company research and mock interviews: tabbed dossier (History, Products & market, Culture, Latest news, Interview playbook) with optional STAR stories when a resume is pasted or uploaded as .txt/.md (plain text only; PDF not supported yet). Mock interviews run five questions, then a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding; inputs stay in-browser until you call the API; shipped on Vercel at prepai.prasannawarad.com.',
+      'Single-page React app for company research and mock interviews: a tabbed dossier with optional STAR stories generated from pasted text or uploaded TXT, Markdown, and PDF resumes. Mock interviews run five questions, then produce a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding, Groq Whisper voice transcription, and a browser dictation fallback; shipped on Vercel at prepai.prasannawarad.com.',
     icon: 'smart_toy',
     tags: ['React 19', 'Vite', 'Gemini 2.5 Flash', 'Prompt engineering'],
-    commit: '8391d2c',
-    commitMessage: 'chore: switch hosting from Netlify to Vercel',
-    updatedAt: 'May 2026',
+    commit: '178787b',
+    commitMessage: 'feat: guardrails, general interviewer persona, Whisper-first voice',
+    updatedAt: 'Jul 2026',
     codeUrl: 'https://github.com/prasannawarad/prepai-pro',
     liveUrl: 'https://prepai.prasannawarad.com',
+    category: 'ml-ai',
+  },
+  {
+    id: 'proj-8',
+    title: 'InvestIQ',
+    description:
+      'AI-powered portfolio co-pilot that helps beginner investors track holdings, understand risk, and rebalance with confidence. Kuber spans a web dashboard, chat widget, and Chrome extension; its deterministic rebalance engine produces transparent trade receipts without relying on LLM judgment. Built for the Goldman Sachs / UTD JSOM Hackathon — placed 5th overall.',
+    icon: 'candlestick_chart',
+    tags: ['Next.js', 'Groq AI', 'AI Agent', 'ElevenLabs', 'Chrome Extension'],
+    award: '5th Place · Goldman Sachs Hackathon',
+    commit: '34f09d0',
+    commitMessage: 'Merge pull request #21 from prasannawarad/adarsh',
+    updatedAt: 'May 2026',
+    codeUrl: 'https://github.com/prasannawarad/InvestIQ',
+    liveUrl: 'https://invest-iq-kuber.netlify.app',
     category: 'ml-ai',
   },
   {
     id: 'proj-2',
     title: 'DataDoc_AI',
     description:
-      'Natural language data analysis platform — upload CSV, ask questions in English, AI generates SQL, executes in-browser, and auto-visualizes with Plotly charts.',
+      'AI data debugging workspace for CSV files: profile data quality, detect and explain issues, generate suggested SQL fixes, ask natural-language questions, and visualize results with Plotly. It makes the data-cleaning step visible before analysis begins.',
     icon: 'table_chart',
     tags: ['React', 'Gemini AI', 'SQL Engine', 'Plotly'],
     screenshot: 'screenshots/datadoc.webp',
@@ -183,23 +183,10 @@ export const projects = [
     category: 'data-eng',
   },
   {
-    id: 'proj-10',
-    title: 'Airflow_ETL_Pipeline',
-    description:
-      'End-to-end ETL pipeline built with Apache Airflow and Astro that automates data extraction, transformation, and loading with scheduled, monitored DAG runs — a hands-on build of the same orchestration stack used in production at Dollar General.',
-    icon: 'conveyor_belt',
-    tags: ['Apache Airflow', 'Astro', 'Python', 'ETL'],
-    commit: '54a76ea',
-    commitMessage: 'Add files via upload',
-    updatedAt: 'Dec 2024',
-    codeUrl: 'https://github.com/prasannawarad/End-To-End-ETL-Pipeline-Using-AirFlow-And-Astro',
-    category: 'data-eng',
-  },
-  {
     id: 'proj-7',
     title: 'CardioRisk',
     description:
-      'Predictive health analytics pipeline in R evaluating 5 classifiers on 319K+ CDC health records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall while Random Forest ranked the top clinical predictors. Flagged Decision Tree overfitting (matching accuracy vs a 0.50 AUC) as a clinical deployment-readiness signal.',
+      'Predictive health analytics pipeline in R evaluating multiple classifiers on roughly 300K CDC health records. The documented champion model is Naive Bayes at about 91% accuracy and 0.81 AUC; the project emphasizes deterministic execution, centralized configuration, and reproducible analysis artifacts.',
     icon: 'favorite',
     tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
     commit: 'd2636af',
@@ -212,7 +199,7 @@ export const projects = [
     id: 'proj-4',
     title: 'Credit_Risk_Modeling',
     description:
-      'Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC. Proposed a hybrid deployment strategy from precision-recall tradeoffs to catch high-risk defaults without over-flagging creditworthy borrowers.',
+      'Applied SMOTE to a 1:7.6 class imbalance across 255K+ lending records, then benchmarked logistic regression, random forest, and XGBoost with 5-fold cross-validation. XGBoost led at 88.57% accuracy, 0.7414 ROC-AUC, and 0.3077 PR-AUC; precision-recall tradeoffs informed a proposed hybrid deployment strategy.',
     icon: 'paid',
     tags: ['Python', 'scikit-learn', 'XGBoost', 'SMOTE'],
     commit: '3458f55',
@@ -240,5 +227,18 @@ export const projects = [
     tags: ['SQL', 'Tableau', 'Analytics'],
     updatedAt: 'Jan 2024',
     category: 'data-eng',
+  },
+  {
+    id: 'proj-10',
+    title: 'Airflow_ETL_Pipeline',
+    description:
+      'Learning implementation of an Apache Airflow and Astro ETL workflow. The repository is based on an upstream example and currently has limited project documentation, so it is kept here as an archived learning project rather than a representative production case study.',
+    icon: 'conveyor_belt',
+    tags: ['Apache Airflow', 'Astro', 'Python', 'ETL'],
+    commit: '54a76ea',
+    commitMessage: 'Add files via upload',
+    updatedAt: 'Dec 2024',
+    codeUrl: 'https://github.com/prasannawarad/End-To-End-ETL-Pipeline-Using-AirFlow-And-Astro',
+    category: 'archive',
   },
 ];

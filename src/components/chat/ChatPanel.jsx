@@ -108,7 +108,7 @@ function ChatPanel({ open, onClose }) {
             Prasanna AI
           </p>
           <p id="chat-panel-subtitle" className="text-[11px] text-text-muted">
-            Ask me anything — work, life, or everything in between
+            Grounded answers about my work, projects, and interests
           </p>
         </div>
         <button

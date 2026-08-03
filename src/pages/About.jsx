@@ -3,6 +3,7 @@ import Button from '../components/Button';
 import TerminalWindow from '../components/TerminalWindow';
 import {
   bio,
+  careerProofs,
   certifications,
   education,
   experience,
@@ -29,6 +30,14 @@ function About() {
             <p className="text-text-muted text-base leading-relaxed max-w-2xl">
               {bio.elevatorPitch}
             </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Engineering proof points">
+              {careerProofs.map((proof) => (
+                <div key={proof.id} className="border-l-2 border-primary/60 bg-surface-dark px-3 py-3">
+                  <p className="font-mono text-2xl font-black text-primary">{proof.value}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-text-muted">{proof.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <TerminalWindow title="bio.json" bodyClassName="p-6 font-mono text-sm leading-relaxed overflow-x-auto terminal-scrollbar">
@@ -110,6 +119,12 @@ function About() {
                       <span>
                         ,
                         {'\n    '}<span className="text-primary">&quot;distinction&quot;</span>: <span className="text-green-400">&quot;{item.distinction}&quot;</span>
+                      </span>
+                    ) : null}
+                    {item.extra ? (
+                      <span>
+                        ,
+                        {'\n    '}<span className="text-primary">&quot;additional_credential&quot;</span>: <span className="text-green-400">&quot;{item.extra}&quot;</span>
                       </span>
                     ) : null}
                     {'\n  }'}

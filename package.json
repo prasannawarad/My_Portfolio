@@ -1,9 +1,9 @@
 {
-  "name": "boilerplate-react",
+  "name": "prasannawarad-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://prasannawarad.github.io/PortFolio",
+  "homepage": "https://prasannawarad.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

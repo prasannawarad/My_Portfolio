@@ -11,14 +11,14 @@ const variantClasses = {
 
 function Button({
   children,
-  to,
-  href,
-  type,
-  onClick,
-  className,
-  variant,
-  ariaLabel,
-  icon,
+  to = undefined,
+  href = undefined,
+  type = 'button',
+  onClick = undefined,
+  className = '',
+  variant = 'primary',
+  ariaLabel = undefined,
+  icon = null,
 }) {
   const baseClasses =
     'inline-flex h-10 items-center justify-center gap-2 rounded px-6 text-sm font-mono font-bold transition-all';
@@ -60,17 +60,6 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'solid', 'outline']),
   ariaLabel: PropTypes.string,
   icon: PropTypes.node,
-};
-
-Button.defaultProps = {
-  to: undefined,
-  href: undefined,
-  type: 'button',
-  onClick: undefined,
-  className: '',
-  variant: 'primary',
-  ariaLabel: undefined,
-  icon: null,
 };
 
 export default Button;

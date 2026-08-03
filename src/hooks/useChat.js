@@ -2,9 +2,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { sendChat, streamChat } from '../utils/chatApi';
 
 const MAX_MESSAGES = 50;
-/** Worker accepts at most 20 chat messages per request */
-const MAX_API_MESSAGES = 20;
-const MAX_API_MESSAGE_CONTENT = 400;
+/** Worker accepts a compact user-only conversation to prevent client role injection. */
+const MAX_API_MESSAGES = 12;
+const MAX_API_MESSAGE_CONTENT = 500;
 
 function trimMessageContent(content) {
   return content.length > MAX_API_MESSAGE_CONTENT
@@ -59,7 +59,8 @@ export function useChat() {
       let apiMessages;
       setMessages((prev) => {
         apiMessages = [...prev, userMsg]
-          .map(({ role, content }) => ({ role, content: trimMessageContent(content) }))
+          .filter(({ role }) => role === 'user')
+          .map(({ content }) => ({ role: 'user', content: trimMessageContent(content) }))
           .slice(-MAX_API_MESSAGES);
         return [...prev, userMsg, asstMsg].slice(-MAX_MESSAGES);
       });

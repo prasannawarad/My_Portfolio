@@ -2,8 +2,6 @@
  * Worker chat API. Set `VITE_CHAT_API_URL` (no trailing slash required).
  */
 
-import { chatKb } from './chatKb';
-
 function chatUrl() {
   const base = import.meta.env.VITE_CHAT_API_URL;
   if (!base || typeof base !== 'string') {
@@ -43,7 +41,7 @@ export async function* streamChat(messages) {
     res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages, kb: chatKb }),
+      body: JSON.stringify({ messages }),
     });
   } catch {
     throw new Error('Could not reach the chat service');

@@ -5,6 +5,7 @@ const PRESETS = [
   "What's your work experience?",
   'Show me your projects',
   'What are your skills?',
+  'What impact have you delivered?',
   'What do you do outside work?',
   'How can I reach you?',
 ];

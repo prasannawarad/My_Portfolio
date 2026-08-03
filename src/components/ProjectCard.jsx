@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function ProjectCard({ project, variant }) {
+function ProjectCard({ project, variant = 'full' }) {
   const isValidLink = (url) => typeof url === 'string' && url.trim() !== '' && url.trim() !== '#';
 
   if (variant === 'featured') {
@@ -49,6 +49,12 @@ function ProjectCard({ project, variant }) {
         </div>
         <div>
           <h3 className="font-display text-xl font-black tracking-tight text-white mb-1">{project.title}</h3>
+          {project.visibility ? (
+            <div className="mb-2 inline-flex items-center gap-1 rounded border border-sky-400/35 bg-sky-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-sky-300">
+              <span className="material-symbols-outlined text-[12px]" aria-hidden="true">lock</span>
+              {project.visibility}
+            </div>
+          ) : null}
           {project.award && (
             <div className="inline-flex items-center gap-1 rounded border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-400 mb-2">
               <span className="material-symbols-outlined text-[12px]" aria-hidden="true">emoji_events</span>
@@ -128,6 +134,12 @@ function ProjectCard({ project, variant }) {
         <h3 className="font-display text-xl font-black tracking-tight text-white mb-1 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
+        {project.visibility ? (
+          <div className="mb-2 inline-flex items-center gap-1 rounded border border-sky-400/35 bg-sky-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-sky-300">
+            <span className="material-symbols-outlined text-[12px]" aria-hidden="true">lock</span>
+            {project.visibility}
+          </div>
+        ) : null}
         {project.award && (
           <div className="inline-flex items-center gap-1 rounded border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-400 mb-2">
             <span className="material-symbols-outlined text-[12px]" aria-hidden="true">emoji_events</span>
@@ -184,16 +196,13 @@ ProjectCard.propTypes = {
     codeUrl: PropTypes.string,
     liveUrl: PropTypes.string,
     award: PropTypes.string,
+    visibility: PropTypes.string,
     screenshot: PropTypes.string,
     commit: PropTypes.string,
     commitMessage: PropTypes.string,
     updatedAt: PropTypes.string,
   }).isRequired,
   variant: PropTypes.oneOf(['featured', 'full']),
-};
-
-ProjectCard.defaultProps = {
-  variant: 'full',
 };
 
 export default ProjectCard;
