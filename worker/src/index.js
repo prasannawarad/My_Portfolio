@@ -71,15 +71,15 @@ If an "Authoritative current portfolio facts" section is appended after this KB,
 Name: Prasanna Kailash Warad
 Role: Data & AI Engineer · Software Engineer
 Location: Dallas, TX
-Years active (approx.): 3
+Years active (approx.): 1.5
 Primary focus: Data pipelines, LLM workflows & ML systems
 Status: Open to full-time Data Engineering, AI Engineering & SWE roles
 
 Headline: Building Data & Agentic AI Systems
 
-Elevator pitch: I design data pipelines, agentic AI workflows, and ML systems that cut manual work and surface decisions at scale — from retail ETL serving 19,000+ stores to LLM pipelines that automate 5-stage hiring processes end-to-end.
+Elevator pitch: I build production LLM, RAG, and data systems with measurable outcomes — from hybrid retrieval and quantitative evaluation to retail ETL serving 19,000+ stores and agentic hiring workflows that complete a 5-stage process in under 2 minutes.
 
-Summary: 3 years shipping production data pipelines, agentic AI workflows, and ML systems — most recently building agentic AI hiring automation at a US startup. MS ITM at UT Dallas — Dean's Excellence Scholar, GPA 3.88.
+Summary: Data and AI Engineer with 1.5 years of production experience across ETL pipelines, ML models, and LLM systems. MS ITM from UT Dallas — Dean's Excellence Scholar, GPA 3.88.
 
 Interests: Agentic AI, ETL/ELT Pipelines, ML Systems, Cloud Data Platforms
 
@@ -107,13 +107,12 @@ GPA: 3.80/4.0
 
 ## Experience
 2025-10 — 2026-05 — Cloud BC Labs
-Role: Software Engineer Intern — Data & AI Engineering
+Role: Software Engineer Intern, AI & Data Engineering
 Office / location: Reston, VA
   • Automated the full candidate assessment lifecycle using n8n agentic workflows and Groq LLM; job description submission triggers role-specific question generation and candidate email delivery with no manual steps, collapsing a 5-stage hiring process to under 2 minutes end-to-end.
-  • Designed 6 PostgreSQL schema migrations from scratch, normalizing candidates, assessments, AI scores, proctoring flags, and job requisitions into a structured schema powering real-time recruiter dashboard queries.
-  • Integrated 4 AI services — DeepFace for identity verification, Groq LLM for MCQ scoring, Groq Whisper for video transcription, and MediaPipe for behavioral proctoring — into a 6-container Docker pipeline with no manual routing between stages.
-  • Deployed RESTful APIs in FastAPI and Node.js connecting the React HR dashboard to backend AI scoring services; standardized data contracts across 4 microservices, cutting cross-service integration overhead by 20%.
-  • Instrumented an end-to-end screening funnel with usage analytics, surfacing recurring failure patterns that cut incoming bug report volume 15% and shifted sprint priorities toward the highest-impact fixes.
+  • Designed 6 PostgreSQL schema migrations from scratch, normalizing candidates, assessments, AI scores, and proctoring flags into a schema powering real-time recruiter dashboards.
+  • Orchestrated 4 AI services into a 6-container Docker Compose pipeline with Ollama fallback: DeepFace identity verification, Groq MCQ scoring, Whisper transcription, and MediaPipe proctoring.
+  • Built FastAPI, Flask, and Node.js/Express REST APIs with JWT auth linking the React dashboard to AI scoring services, standardizing contracts across 4 microservices and cutting integration overhead 20%.
 
 2025-01 — 2025-10 — The University of Texas at Dallas
 Role: Student Services & Operations Manager
@@ -125,7 +124,7 @@ Role: Vice President
   • Led planning and execution for club activities with cross-functional student collaboration.
   • Supported event coordination, team alignment, and community engagement initiatives.
 
-2023-02 — 2024-07 — HCLTech (client: Dollar General, Fortune 500 Retailer)
+2023-02 — 2024-07 — HCLTech Ltd (client: Dollar General, Fortune 100 Retailer)
 Role: Data Engineer
 Office / location: Noida, India
   • Implemented Spark and Airflow data pipelines with partition pruning and query caching, cutting operational reporting latency 28% across Dollar General's retail analytics stack serving 19,000+ store locations.
@@ -134,9 +133,12 @@ Office / location: Noida, India
 
 Selected impact metrics:
   • Hiring Funnel: <2m — Agentic AI screening lifecycle from JD to candidate delivery
-  • Reporting Latency: −28% — Spark and Airflow partition pruning + query caching
-  • Retail Records: 2M+ — Python and SQL anomaly detection for transaction quality
-  • Incident Response: −25% — Predictive downtime model (AWS logs)
+  • AI Pipeline: 4 / 6 — AI services orchestrated across a 6-container Docker Compose system
+  • Integration Overhead: −20% — Standardized contracts across 4 AI microservices with CI/CD
+  • Reporting Latency: −28% — Spark and Airflow partition pruning plus query caching
+  • Retail Footprint: 19K+ — Store locations served by the retail analytics stack
+  • Data Quality: 2M+ — Transaction records validated with Python and SQL anomaly detection
+  • Incident Response: −25% — Downtime forecasting on AWS CloudWatch system logs
 
 ## Projects
 CodeLens AI — AI code audit & technical-debt tracking platform (newest project, Jul 2026). Deterministic static metrics (cyclomatic complexity, duplication %, function length) fused with Gemini LLM analysis into a weighted 0–100 debt score with per-file issues. Async audits on a BullMQ/Redis queue; incremental re-audits via content-hash diffing so only changed files hit the LLM. GitHub repo import, audit-on-PR GitHub Action that comments scores on pull requests, JWT auth with AES-256-GCM-encrypted GitHub PATs, and an LLM eval harness — hand-labeled golden dataset scored on precision/recall/F1, re-run in CI as a regression gate. 131 unit tests + browser e2e; React + Vite client, Node/Express API, Prisma + PostgreSQL; deployed on Railway (API, worker, Postgres, Redis) + Vercel. Tags: React, Node.js + Express, Gemini, BullMQ + Redis, Prisma + Postgres. Code: https://github.com/prasannawarad/codelens-ai. Live: https://codelens-ai-olive.vercel.app
@@ -157,21 +159,19 @@ Scalable_Fleet_Risk_Analytics — Distributed Hadoop HDFS and MapReduce ingestio
 
 Instacart_Customer_Behavior — Processed 3M+ grocery transactions through optimized SQL pipelines for segmentation, cohort retention, and demand forecasting, then surfaced product velocity, fulfillment trends, and campaign ROI in Tableau. Tags: SQL, Tableau, Python. (Academic project — code not published.)
 
-CardioRisk — Predictive health analytics pipeline in R evaluating 5 classifiers on 319K+ CDC health records; neural network reached 91.4% accuracy, 0.81 AUC, and 99.97% recall while Random Forest ranked the top clinical predictors; flagged Decision Tree overfitting (matching accuracy vs a 0.50 AUC) as a clinical deployment-readiness signal. Tags: R, Statistical Modeling, ML Pipeline. Code: https://github.com/prasannawarad/CardioRisk
+CardioRisk — Predictive health analytics pipeline in R benchmarking 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; a Decision Tree at 0.50 AUC was majority-class prediction rather than signal. Random Forest ranked BMI, age category, sleep duration, and general health as the strongest predictors across 17 clinical attributes. Tags: R, Statistical Modeling, ML Pipeline. Code: https://github.com/prasannawarad/CardioRisk
 
 Airflow_ETL_Pipeline — End-to-end ETL pipeline built with Apache Airflow and Astro that automates data extraction, transformation, and loading with scheduled, monitored DAG runs — hands-on build of the same orchestration stack used in production at Dollar General. Tags: Apache Airflow, Astro, Python, ETL. Code: https://github.com/prasannawarad/End-To-End-ETL-Pipeline-Using-AirFlow-And-Astro
 
 ## Tech Stack
-Agentic AI & LLM: Agentic Workflow Design, LLM Orchestration, RAG (Retrieval-Augmented Generation), Prompt Engineering, LangChain, LangGraph, Vector Embeddings, n8n, Groq API, Ollama, Pinecone, Weaviate, Whisper (OpenAI)
-Data Engineering: ETL/ELT, Apache Spark, Apache Airflow, Apache Kafka, Hadoop (HDFS/MapReduce), dbt, Databricks, Data Modeling
-Programming: Python, TypeScript, SQL (Advanced), PySpark, FastAPI, Flask, Node.js, Express.js, Pandas, NumPy, scikit-learn, PyTorch, XGBoost, R
-Computer Vision & AI Services: OpenCV, DeepFace, MediaPipe
-Databases: PostgreSQL, Redis, MySQL, MongoDB, Snowflake, Microsoft SQL Server
-Cloud Platforms: AWS (S3, Redshift, CloudWatch), Azure Synapse Analytics, Google Cloud Platform (GCP), Databricks, Kubernetes
-Tools & Platforms: Docker, Terraform, Git, GitHub, CI/CD, REST APIs, Tableau, Power BI
+Data Engineering: ETL/ELT, Apache Spark, PySpark, Airflow, Data Modeling, Query Optimization, Data Quality Validation
+LLM & Agentic AI: RAG, Hybrid Search (BM25 + Vector), Reciprocal Rank Fusion, MMR Retrieval, RAGAS Evaluation, LangChain, n8n, Groq
+ML & Statistics: scikit-learn, PyTorch, Pandas, NumPy, Classification, Model Evaluation (F1, ROC-AUC), DeepFace, MediaPipe
+Databases & Cloud: PostgreSQL, pgvector, ChromaDB, Pinecone, Supabase, Snowflake, AWS (S3, Redshift, CloudWatch)
+Languages & Backend: Python, SQL (Advanced), TypeScript, R, Bash, FastAPI, Flask, Node.js, Express, Docker, GitHub Actions
 
 ## Certifications
-Snowflake: SnowPro Associate: Platform Certified
+Snowflake: SnowPro Core
 Salesforce Certified: AI Associate
 KNIME Analytics: Basic Proficiency
 Domain Knowledge: HIPAA
@@ -195,11 +195,11 @@ const CURRENT_PORTFOLIO_CONTEXT = `
 This section is the current source of truth. Prefer it when any older detail conflicts.
 
 ## Positioning
-I am an AI and data engineer in Dallas with 3 years of experience building production RAG systems, agentic workflows, and data pipelines. I completed an MS in Information Technology & Management at UT Dallas in May 2026 as a Dean's Excellence Scholar (GPA 3.88) and am open to full-time Data Engineering, AI Engineering, and Software Engineering roles.
+I am a data and AI engineer in Dallas with 1.5 years of production experience across ETL pipelines, ML models, and LLM systems. I completed an MS in Information Technology & Management at UT Dallas in May 2026 as a Dean's Excellence Scholar (GPA 3.88) and am open to full-time Data Engineering, AI Engineering, and Software Engineering roles.
 
 ## Resume-backed experience
 - Cloud BC Labs, Software Engineer Intern, AI & Data Engineering (Oct 2025-May 2026): automated a 5-stage candidate assessment process to under 2 minutes with n8n and Groq LLaMA 3.3 70B; connected DeepFace, Groq scoring, Whisper transcription, and MediaPipe proctoring in a 6-container Docker Compose pipeline with Ollama fallback nodes; designed 6 PostgreSQL migrations; and standardized FastAPI, Flask, and Node/Express services with JWT auth and GitHub Actions CI/CD, cutting integration overhead 20%.
-- HCLTech, Data Engineer for Dollar General (Feb 2023-Jul 2024): cut Spark/Airflow reporting latency 28% across a retail stack serving 19,000+ stores; validated 2M+ transactions with Python and SQL anomaly detection; and reduced incident response 25% with an AWS CloudWatch anomaly-detection and downtime-forecasting model.
+- HCLTech Ltd, Data Engineer for Dollar General (Fortune 100 Retailer; Feb 2023-Jul 2024): cut Spark/Airflow reporting latency 28% across a retail stack serving 19,000+ stores; validated 2M+ transactions with Python and SQL anomaly detection; and reduced incident response 25% with an AWS CloudWatch anomaly-detection and downtime-forecasting model.
 
 ## Selected projects, in portfolio order
 1. RAGBase: production document-intelligence platform using Next.js 15, TypeScript, Supabase/pgvector, hybrid BM25/vector retrieval with RRF, streamed Groq responses with Gemini fallback, and source citations. Live: https://ragbase.prasannawarad.com
@@ -208,6 +208,7 @@ I am an AI and data engineer in Dallas with 3 years of experience building produ
 4. PrepAI Pro: company research and mock interviews with TXT, Markdown, and PDF resume input, Gemini grounding, Groq Whisper voice transcription, and browser dictation fallback. Live: https://prepai.prasannawarad.com
 5. InvestIQ: hackathon portfolio co-pilot with a deterministic rebalance engine, Groq chat, ElevenLabs voice, and Chrome extension; 5th place at the Goldman Sachs / UTD JSOM Hackathon.
 6. DataDoc AI: CSV data-quality debugging, suggested SQL fixes, natural-language analysis, and Plotly visualization. Live: https://datadocai.netlify.app/
+7. CardioRisk: predictive health analytics pipeline in R that benchmarked 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; Random Forest ranked BMI, age category, sleep duration, and general health as top predictors.
 
 ## Answering rules
 - Keep factual answers concise and source-grounded. Never pretend that unavailable demos, private repositories, or external services are working.

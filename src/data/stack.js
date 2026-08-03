@@ -37,7 +37,8 @@ export const stackColumns = [
       'PyTorch',
       'Pandas',
       'NumPy',
-      'Classification & Model Evaluation',
+      'Classification',
+      'Model Evaluation (F1, ROC-AUC)',
       'DeepFace & MediaPipe',
     ],
   },
@@ -58,7 +59,7 @@ export const stackColumns = [
     icon: 'verified_user',
     title: 'Certifications & Domain',
     items: [
-      'SnowPro Associate: Platform Certified',
+      'SnowPro Core',
       'Graduate Certificate: Business Analytics & Data Mining',
       'Salesforce AI Associate',
       'HIPAA Awareness',

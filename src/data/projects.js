@@ -63,7 +63,7 @@ export const homeFeaturedProjects = [
     id: 'home-7',
     title: 'CardioRisk',
     description:
-      'Predictive health analytics pipeline in R across roughly 300K CDC records. The documented champion, Naive Bayes, reached about 91% accuracy and a 0.81 AUC while the pipeline compares multiple classifiers and produces reproducible artifacts.',
+      'Predictive health analytics pipeline in R benchmarking 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; Random Forest identified BMI, age category, sleep duration, and general health as the strongest predictors.',
     icon: 'favorite',
     tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
     projectUrl: 'https://github.com/prasannawarad/CardioRisk',
@@ -186,7 +186,7 @@ export const projects = [
     id: 'proj-7',
     title: 'CardioRisk',
     description:
-      'Predictive health analytics pipeline in R evaluating multiple classifiers on roughly 300K CDC health records. The documented champion model is Naive Bayes at about 91% accuracy and 0.81 AUC; the project emphasizes deterministic execution, centralized configuration, and reproducible analysis artifacts.',
+      'Predictive health analytics pipeline in R benchmarking 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; a Decision Tree at 0.50 AUC was identified as majority-class prediction rather than signal. Random Forest ranked BMI, age category, sleep duration, and general health as the strongest predictors across 17 clinical attributes.',
     icon: 'favorite',
     tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
     commit: 'd2636af',

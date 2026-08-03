@@ -138,7 +138,7 @@ export const certifications = [
     icon: 'ac_unit',
     iconClass: 'text-sky-400',
     title: 'Snowflake',
-    subtitle: 'SnowPro Associate: Platform Certified',
+    subtitle: 'SnowPro Core',
   },
   {
     id: 'cert-1',
