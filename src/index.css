@@ -10,6 +10,7 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
     /* Fallback when JS scroll runs; pairs with sticky header */
     scroll-padding-top: 4rem;
   }
@@ -26,6 +27,7 @@
     background-image:
       radial-gradient(circle at 15% 12%, rgba(212, 175, 55, 0.08), transparent 30%),
       radial-gradient(circle at 85% 2%, rgba(148, 163, 184, 0.08), transparent 26%);
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {
@@ -37,6 +39,56 @@
     min-height: 100vh;
     min-height: 100dvh;
     min-width: 0;
+  }
+}
+
+/* iOS ergonomics: avoid focus zoom and give browser gestures precedence. */
+@media (max-width: 767px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    touch-action: manipulation;
+  }
+
+  .site-header {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+    padding-inline-start: max(1rem, env(safe-area-inset-left));
+    padding-inline-end: max(1rem, env(safe-area-inset-right));
+  }
+
+  .mobile-nav {
+    top: max(4rem, calc(env(safe-area-inset-top) + 3.25rem));
+    max-height: min(32rem, calc(100dvh - max(4rem, calc(env(safe-area-inset-top) + 3.25rem))));
+  }
+
+  .chat-widget {
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .site-footer {
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    padding-inline-start: max(1rem, env(safe-area-inset-left));
+    padding-inline-end: max(1rem, env(safe-area-inset-right));
+  }
+
+  .safe-page {
+    padding-inline-start: max(1rem, env(safe-area-inset-left));
+    padding-inline-end: max(1rem, env(safe-area-inset-right));
+  }
+
+  .mobile-code-wrap {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 

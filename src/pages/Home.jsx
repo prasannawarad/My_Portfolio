@@ -62,7 +62,7 @@ function Home() {
   };
 
   return (
-    <div className="w-full min-w-0 max-w-7xl px-4 pb-16 pt-8 sm:px-5 lg:px-8">
+    <div className="safe-page w-full min-w-0 max-w-7xl px-4 pb-16 pt-8 sm:px-5 lg:px-8">
       <section
         id="home"
         className="scroll-mt-20 pt-6 pb-6 sm:scroll-mt-24 sm:pt-8 sm:pb-8 md:pt-14 md:pb-14"
@@ -210,7 +210,7 @@ function Home() {
         <div className="mt-8 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="flex min-w-0 flex-col gap-8 lg:col-span-7">
             <TerminalWindow title="bio.json" bodyClassName="p-6 font-mono text-sm leading-relaxed overflow-x-auto terminal-scrollbar">
-              <pre>
+              <pre className="mobile-code-wrap">
                 <code className="text-text-muted">
                   {'{'}
                   {'\n'}  <span className="text-primary">&quot;name&quot;</span>: <span className="text-green-400">&quot;{bio.name}&quot;</span>,

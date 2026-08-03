@@ -77,7 +77,7 @@ function Contact() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-5xl flex flex-col gap-12 px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+    <div className="safe-page mx-auto w-full max-w-5xl flex flex-col gap-12 px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
       <header
         className="w-full max-w-3xl flex flex-col gap-5 border-l-4 border-primary pl-6 py-2 min-w-0"
         aria-label="Contact header"

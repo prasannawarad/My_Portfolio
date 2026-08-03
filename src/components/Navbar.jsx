@@ -131,7 +131,7 @@ function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-surface-accent bg-background-dark/90 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4 lg:px-10">
+      <header className="site-header sticky top-0 z-50 w-full border-b border-surface-accent bg-background-dark/90 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4 lg:px-10">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 sm:gap-6">
         <button
           type="button"
@@ -215,7 +215,7 @@ function Navbar() {
           />
           <nav
             id="mobile-nav"
-            className="fixed left-0 right-0 top-16 z-50 flex max-h-[calc(100dvh-4rem)] flex-col gap-2 overflow-y-auto overscroll-y-contain border-t border-surface-accent bg-background-dark px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 shadow-2xl sm:top-[4.5rem] sm:max-h-[calc(100dvh-4.5rem)] md:hidden"
+            className="mobile-nav fixed left-0 right-0 top-16 z-50 flex max-h-[calc(100dvh-4rem)] flex-col gap-2 overflow-y-auto overscroll-y-contain border-t border-surface-accent bg-background-dark px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 shadow-2xl sm:top-[4.5rem] sm:max-h-[calc(100dvh-4.5rem)] md:hidden"
             aria-label="Mobile navigation"
             role="dialog"
             aria-modal="true"

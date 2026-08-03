@@ -13,7 +13,7 @@ import {
 
 function About() {
   return (
-    <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="safe-page w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <header className="mb-10 flex flex-wrap items-end gap-4 border-b border-surface-accent pb-4">
         <h1 className="text-4xl md:text-5xl font-mono font-bold text-white tracking-tight">
           <span className="text-primary mr-2">$</span>whoami
@@ -41,7 +41,7 @@ function About() {
           </div>
 
           <TerminalWindow title="bio.json" bodyClassName="p-6 font-mono text-sm leading-relaxed overflow-x-auto terminal-scrollbar">
-            <pre>
+              <pre className="mobile-code-wrap">
               <code className="language-json text-text-muted">
                 {'{'}
                 {'\n'}  <span className="text-primary">&quot;name&quot;</span>: <span className="text-green-400">&quot;{bio.name}&quot;</span>,

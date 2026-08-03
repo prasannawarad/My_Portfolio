@@ -147,7 +147,7 @@ function Resume() {
   const thumbWidth = 124;
 
   return (
-    <div className="w-full min-w-0 bg-background-dark px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-6 sm:px-6 lg:px-8">
+    <div className="safe-page w-full min-w-0 bg-background-dark px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-6 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-6xl">
         <header className="mb-6 rounded-2xl border border-surface-accent/80 bg-surface-dark px-4 py-3 shadow-lg shadow-black/20">
           <div className="flex flex-wrap items-center justify-between gap-4">
