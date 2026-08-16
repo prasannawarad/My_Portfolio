@@ -86,7 +86,19 @@ export function useChat() {
         }
         if (pending) flush();
         if (!gotAny || !acc.trim()) throw new Error('Empty response');
-      } catch {
+      } catch (streamErr) {
+        // A 4xx is a verdict, not a blip: retrying burns another rate-limit slot and
+        // fails identically. Surface the server's own wording instead of the generic
+        // "couldn't reach" copy, which read as an outage when it was really a cooldown.
+        if (streamErr?.status && streamErr.status >= 400 && streamErr.status < 500) {
+          setError(streamErr.message || friendlyError);
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.id === asstId && !last.content) return prev.slice(0, -1);
+            return prev;
+          });
+          return;
+        }
         try {
           const full = await sendChat(apiMessages);
           if (full && full.trim()) {

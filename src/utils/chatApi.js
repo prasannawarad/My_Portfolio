@@ -55,7 +55,9 @@ export async function* streamChat(messages) {
     } catch {
       /* keep default */
     }
-    throw new Error(message);
+    const err = new Error(message);
+    err.status = res.status;
+    throw err;
   }
 
   if (!res.body) {
