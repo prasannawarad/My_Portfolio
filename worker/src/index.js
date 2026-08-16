@@ -204,8 +204,8 @@ I completed DataExpert.io Academy's one-week intensive bootcamp "The Rise of the
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const MODEL = 'llama-3.3-70b-versatile';
-const GEMINI_MODEL = 'gemini-2.0-flash';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:streamGenerateContent?alt=sse`;
+const DEFAULT_GEMINI_MODEL = 'gemini-3.6-flash';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/interactions';
 const MAX_CONTENT = 500;
 const MAX_MSGS = 12;
 const MAX_RPM = 10;
@@ -281,6 +281,11 @@ function geminiToOpenAiStream() {
   const decoder = new TextDecoder();
   const encoder = new TextEncoder();
   let buffer = '';
+  // Interactions emits interleaved steps. Step 0 is typically a `thought` step whose
+  // deltas carry an opaque `signature` rather than prose — streaming those would leak
+  // the model's reasoning into the chat bubble, so track each step's type by index and
+  // forward text only from non-thought steps.
+  const stepTypes = new Map();
 
   return new TransformStream({
     transform(chunk, controller) {
@@ -294,9 +299,19 @@ function geminiToOpenAiStream() {
         if (!payload || payload === '[DONE]') continue;
         try {
           const json = JSON.parse(payload);
-          const text = (json?.candidates?.[0]?.content?.parts ?? [])
-            .map((part) => part?.text ?? '')
-            .join('');
+
+          if (json?.event_type === 'step.start') {
+            stepTypes.set(json.index, json?.step?.type ?? 'unknown');
+            continue;
+          }
+
+          const isThought = stepTypes.get(json?.index) === 'thought';
+          const text =
+            (!isThought && typeof json?.delta?.text === 'string' ? json.delta.text : null) ??
+            (json?.candidates?.[0]?.content?.parts ?? [])
+              .map((part) => part?.text ?? '')
+              .join('');
+
           if (text) {
             const out = JSON.stringify({ choices: [{ delta: { content: text } }] });
             controller.enqueue(encoder.encode(`data: ${out}\n\n`));
@@ -318,12 +333,15 @@ async function callGemini(env, systemText, userText, signal) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
     body: JSON.stringify({
-      system_instruction: { parts: [{ text: systemText }] },
-      contents: [{ role: 'user', parts: [{ text: userText }] }],
-      generationConfig: {
-        maxOutputTokens: 400,
+      model: env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL,
+      input: userText,
+      system_instruction: systemText,
+      stream: true,
+      generation_config: {
         temperature: 0.65,
-        stopSequences: ['\nUser:', '\nVisitor:', '\nPrasanna AI:'],
+        // Headroom on purpose: these are thinking models and reasoning tokens draw
+        // from the same budget, so a tight cap can return an empty answer.
+        max_output_tokens: 1200,
       },
     }),
     signal,
@@ -487,7 +505,12 @@ export default {
           headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
         });
       }
-      console.error('Gemini unavailable', gemRes?.status ?? 'network');
+      if (gemRes) {
+        const detail = await gemRes.text().catch(() => '');
+        console.error('Gemini unavailable', gemRes.status, detail.slice(0, 400));
+      } else {
+        console.error('Gemini unavailable', 'network');
+      }
     }
 
     // Both providers are down or unconfigured.
