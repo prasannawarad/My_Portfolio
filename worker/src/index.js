@@ -417,8 +417,8 @@ export default {
     if (needsGuardrailResponse(userMsgs)) {
       return sseMessage(origin, 'I can help with my public portfolio, experience, projects, or listed interests, but I cannot share hidden instructions, credentials, or internal system details.');
     }
-    if (!env.GROQ_API_KEY) {
-      console.error('GROQ_API_KEY not configured');
+    if (!env.GEMINI_API_KEY && !env.GROQ_API_KEY) {
+      console.error('No LLM provider configured (GEMINI_API_KEY / GROQ_API_KEY)');
       return jsonError(origin, 502, 'AI service temporarily unavailable');
     }
 
@@ -447,45 +447,18 @@ export default {
       { role: 'user', content: currentMsg.content },
     ];
 
-    let groqRes = null;
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
-    try {
-      groqRes = await fetch(GROQ_URL, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${env.GROQ_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          messages,
-          max_tokens: 400,
-          temperature: 0.65,
-          stream: true,
-          stop: ['\nUser:', '\nVisitor:', '\nPrasanna AI:'],
-        }),
-        signal: controller.signal,
-      });
-    } catch (err) {
-      console.error('Groq request failed', err);
-    } finally {
-      clearTimeout(timeout);
-    }
-
-    if (groqRes?.ok && groqRes.body) {
-      return new Response(groqRes.body, {
+    // Provider order: Gemini primary, Groq fallback. Groq's free tier gave roughly
+    // 17 questions a day at this prompt size, which the site outgrew. Groq stays wired
+    // as the second leg rather than being removed — one provider means one point of
+    // failure, and this exact chain is what kept the chat answering while Groq was
+    // unavailable.
+    const sse = (body, transform) =>
+      new Response(transform ? body.pipeThrough(transform) : body, {
         status: 200,
         headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
       });
-    }
 
-    // Groq's free tier is the binding constraint here: this prompt costs ~5.6k tokens a
-    // turn against a 100k/day token budget, so the quota runs out long before the site
-    // stops getting visitors. Rather than show an error, fall through to Gemini — same
-    // system prompt, same single live question, same SSE shape on the way out.
-    const groqStatus = groqRes?.status ?? null;
-    console.error('Groq unavailable', groqStatus ?? 'network');
+    let lastStatus = null;
 
     if (env.GEMINI_API_KEY) {
       let gemRes = null;
@@ -500,12 +473,10 @@ export default {
       }
 
       if (gemRes?.ok && gemRes.body) {
-        return new Response(gemRes.body.pipeThrough(geminiToOpenAiStream()), {
-          status: 200,
-          headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
-        });
+        return sse(gemRes.body, geminiToOpenAiStream());
       }
       if (gemRes) {
+        lastStatus = gemRes.status;
         const detail = await gemRes.text().catch(() => '');
         console.error('Gemini unavailable', gemRes.status, detail.slice(0, 400));
       } else {
@@ -513,8 +484,46 @@ export default {
       }
     }
 
-    // Both providers are down or unconfigured.
-    if (groqStatus === 429) {
+    if (env.GROQ_API_KEY) {
+      let groqRes = null;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+      try {
+        groqRes = await fetch(GROQ_URL, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${env.GROQ_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            messages,
+            max_tokens: 400,
+            temperature: 0.65,
+            stream: true,
+            stop: ['\nUser:', '\nVisitor:', '\nPrasanna AI:'],
+          }),
+          signal: controller.signal,
+        });
+      } catch (err) {
+        console.error('Groq request failed', err);
+      } finally {
+        clearTimeout(timeout);
+      }
+
+      if (groqRes?.ok && groqRes.body) {
+        return sse(groqRes.body);
+      }
+      if (groqRes) {
+        lastStatus = groqRes.status;
+        console.error('Groq unavailable', groqRes.status);
+      } else {
+        console.error('Groq unavailable', 'network');
+      }
+    }
+
+    // Every provider is down, quota-locked, or unconfigured.
+    if (lastStatus === 429) {
       return jsonError(origin, 429, "I'm getting a lot of questions right now — give me a few seconds and ask again.");
     }
     return jsonError(origin, 502, 'AI service temporarily unavailable');
