@@ -280,7 +280,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4 [&>*]:min-w-0">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 [&>*]:min-w-0">
               {certifications.map((certification) => (
                 <div
                   key={certification.id}
@@ -292,7 +292,7 @@ function Home() {
                     </span>
                   </div>
                   <div className="w-full min-w-0">
-                    <p className="text-balance font-mono text-xs font-bold text-white">{certification.title}</p>
+                    <p className="hyphens-none text-balance break-normal font-mono text-xs font-bold text-white">{certification.title}</p>
                     <p className="mt-1 text-balance font-mono text-xs leading-snug text-white/80">{certification.subtitle}</p>
                   </div>
                 </div>
@@ -341,6 +341,9 @@ function Home() {
         style={{ '--reveal-delay': '60ms' }}
       >
         <SectionHeader title="PROJECTS" />
+        {/* Ranking lives in the array order alone. Every card carries the same shell,
+            so no single card looks unfinished next to a styled one — equal cells also
+            keep every row flush at each breakpoint. */}
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {homeFeaturedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} variant="featured" />

@@ -8,7 +8,7 @@ function ProjectCard({ project, variant = 'full' }) {
       isValidLink(project.projectUrl) || isValidLink(project.liveUrl);
 
     return (
-      <article className="group relative flex flex-col gap-4 rounded border border-surface-accent bg-surface-dark p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-within:ring-2 focus-within:ring-primary/35">
+      <article className="group relative flex h-full flex-col gap-4 rounded border border-primary/35 bg-gradient-to-br from-surface-dark via-surface-dark to-code-bg p-6 shadow-lg shadow-primary/5 transition-all hover:-translate-y-1 hover:border-primary/60 hover:shadow-primary/10 focus-within:ring-2 focus-within:ring-primary/35">
         <div className="flex w-full min-w-0 items-center gap-3">
           <div className="shrink-0 rounded border border-surface-accent bg-background-dark p-3 text-primary">
             <span className="material-symbols-outlined text-3xl" aria-hidden="true">
@@ -56,8 +56,8 @@ function ProjectCard({ project, variant = 'full' }) {
             </div>
           ) : null}
           {project.award && (
-            <div className="inline-flex items-center gap-1 rounded border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-400 mb-2">
-              <span className="material-symbols-outlined text-[12px]" aria-hidden="true">emoji_events</span>
+            <div className={`inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[10px] font-bold mb-2 border-amber-400/40 bg-amber-400/10 text-amber-400`}>
+              <span className="material-symbols-outlined text-[12px]" aria-hidden="true">{project.awardIcon || 'emoji_events'}</span>
               {project.award}
             </div>
           )}
@@ -80,7 +80,7 @@ function ProjectCard({ project, variant = 'full' }) {
   const showFullActions = isValidLink(project.codeUrl) || isValidLink(project.liveUrl);
 
   return (
-    <article className="group relative flex flex-col gap-0 rounded border border-surface-accent bg-surface-dark transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 overflow-hidden focus-within:ring-2 focus-within:ring-primary/35">
+    <article className="group relative flex flex-col gap-0 overflow-hidden rounded border border-primary/35 bg-gradient-to-br from-surface-dark via-surface-dark to-code-bg shadow-lg shadow-primary/5 transition-all hover:-translate-y-1 hover:border-primary/60 hover:shadow-primary/10 focus-within:ring-2 focus-within:ring-primary/35">
       {project.screenshot ? (
         <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-surface-accent bg-background-dark">
           <img
@@ -141,8 +141,8 @@ function ProjectCard({ project, variant = 'full' }) {
           </div>
         ) : null}
         {project.award && (
-          <div className="inline-flex items-center gap-1 rounded border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-400 mb-2">
-            <span className="material-symbols-outlined text-[12px]" aria-hidden="true">emoji_events</span>
+          <div className={`inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[10px] font-bold mb-2 border-amber-400/40 bg-amber-400/10 text-amber-400`}>
+            <span className="material-symbols-outlined text-[12px]" aria-hidden="true">{project.awardIcon || 'emoji_events'}</span>
             {project.award}
           </div>
         )}
@@ -196,6 +196,7 @@ ProjectCard.propTypes = {
     codeUrl: PropTypes.string,
     liveUrl: PropTypes.string,
     award: PropTypes.string,
+    awardIcon: PropTypes.string,
     visibility: PropTypes.string,
     screenshot: PropTypes.string,
     commit: PropTypes.string,

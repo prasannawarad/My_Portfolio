@@ -230,7 +230,7 @@ function About() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 [&>*]:min-w-0">
+          <div className="grid grid-cols-2 gap-4 [&>*]:min-w-0 [&>*:last-child:nth-child(odd)]:col-span-2">
             {certifications.map((certification) => (
               <div
                 key={certification.id}
@@ -245,7 +245,7 @@ function About() {
                   </span>
                 </div>
                 <div className="w-full min-w-0">
-                  <p className="text-balance font-mono text-xs font-bold text-white">{certification.title}</p>
+                  <p className="hyphens-none text-balance break-normal font-mono text-xs font-bold text-white">{certification.title}</p>
                   <p className="mt-1 text-balance font-mono text-xs leading-snug text-white/80">{certification.subtitle}</p>
                 </div>
               </div>
