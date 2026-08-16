@@ -5,4 +5,7 @@ node_modules
 .env
 .env.*
 .dev.vars
-worker/.wrangler/
+
+# Local miniflare/wrangler state. Path is relative to this file, so no `worker/`
+# prefix — that pattern silently matched nothing and let the cache get committed.
+.wrangler/

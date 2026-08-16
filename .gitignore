@@ -32,6 +32,18 @@ PROJECTS.md
 README_PROFILE.md
 *_PROFILE.md
 
+# Environment files — never commit. `.env.example` is the tracked template.
+# Vite inlines VITE_* values into the client bundle at build time, so nothing
+# secret belongs in these files either way; server-side keys (GROQ_API_KEY)
+# live only as Wrangler secrets.
+.env
+.env.*
+!.env.example
+
+# Wrangler / Cloudflare local state
+worker/.wrangler/
+.wrangler/
+
 # Python / misc
 .venv/
 .Rhistory
