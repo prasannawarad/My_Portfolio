@@ -202,7 +202,12 @@ PortFolio/
 
 ## License
 
-This project is open source. Add a `LICENSE` file at the repo root if you want a standard license (e.g. MIT) linked from here.
+Code is released under the [MIT License](LICENSE) — fork it, learn from it, build on it.
+
+The **personal content is not**. The résumé and PDF, bio and summary copy, project
+write-ups, screenshots, and the chatbot knowledge base in `src/data/` describe a real
+person and are excluded from that grant. If you reuse this project, swap that content
+for your own rather than republishing mine.
 
 ---
 
