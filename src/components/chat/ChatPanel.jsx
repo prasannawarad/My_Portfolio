@@ -88,12 +88,17 @@ function ChatPanel({ open, onClose }) {
     };
   }, [open]);
 
+  // `inert` when closed keeps Tab out of the hidden panel — `pointer-events-none`
+  // stops the mouse but not the keyboard — and clears the focusable-content-inside-
+  // aria-hidden violation. React 18 has no boolean `inert` prop (that landed in 19),
+  // so pass an empty string; any value marks the subtree inert.
   return (
     <div
       ref={panelRef}
       role="dialog"
       aria-modal={open ? 'true' : undefined}
       aria-hidden={!open ? 'true' : undefined}
+      inert={open ? undefined : ''}
       aria-labelledby="chat-panel-title"
       aria-describedby="chat-panel-subtitle"
       className={`relative z-[1] flex w-[360px] max-w-[min(360px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out

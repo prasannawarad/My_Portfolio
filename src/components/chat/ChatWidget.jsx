@@ -55,15 +55,23 @@ function ChatWidget() {
 
   const showTeaser = !open && showBubble;
 
+  // The wrapper is a fixed box sized by its children (on desktop that is the full
+  // 360x520 panel even while closed), so with default hit-testing it swallowed
+  // clicks on whatever sat beneath it — project cards, footer links — at all times.
+  // It stays click-through at every breakpoint; the panel and the button row opt
+  // back in individually via pointer-events-auto.
   return (
-    <div className="chat-widget fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3" aria-live="polite">
+    <div
+      className="chat-widget pointer-events-none fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3"
+      aria-live="polite"
+    >
       <ChatPanel
         open={open}
         onClose={() => {
           setOpen(false);
         }}
       />
-      <div className="flex max-w-[min(100%,calc(100vw-2rem))] flex-row items-center gap-3">
+      <div className="pointer-events-auto flex max-w-[min(100%,calc(100vw-2rem))] flex-row items-center gap-3">
         {showTeaser ? (
           <div
             className={`max-w-[min(16rem,calc(100vw-8rem))] overflow-visible ${
