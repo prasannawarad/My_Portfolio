@@ -7,7 +7,6 @@ const filters = [
   { value: 'all', label: '--all' },
   { value: 'ml-ai', label: '--ml-ai' },
   { value: 'data-eng', label: '--data-eng' },
-  { value: 'archive', label: '--archive' },
 ];
 
 function Projects() {

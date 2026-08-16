@@ -139,7 +139,12 @@ function formatStack() {
 }
 
 function formatCertifications() {
-  return certifications.map((c) => `${c.title}: ${c.subtitle}`).join('\n');
+  return certifications
+    .map((c) => {
+      const line = `${c.title}: ${c.subtitle}`;
+      return c.detail ? `${line}\n  ${c.detail}` : line;
+    })
+    .join('\n');
 }
 
 function formatContact() {

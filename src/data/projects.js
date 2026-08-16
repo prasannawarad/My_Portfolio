@@ -10,10 +10,19 @@ export const homeFeaturedProjects = [
     liveUrl: 'https://ragbase.prasannawarad.com',
   },
   {
+    id: 'home-12',
+    title: 'Market Research Copilot',
+    description:
+      'AI stock-research assistant on Databricks: a serverless Spark pipeline computes technical features and news-price signals, embeds article chunks via a distributed pandas UDF, and serves them from partitioned Delta plus Lakebase pgvector to a FastMCP agent.',
+    icon: 'query_stats',
+    tags: ['Databricks', 'PySpark', 'Delta + Unity Catalog', 'Lakebase pgvector', 'MCP'],
+    projectUrl: 'https://github.com/prasannawarad/market-research-copilot',
+  },
+  {
     id: 'home-10',
     title: 'CodeLens AI',
     description:
-      'AI code audit and technical-debt tracking platform — deterministic static metrics (complexity, duplication, function length) fused with Gemini LLM analysis into a weighted 0–100 debt score. Audits run async on a BullMQ/Redis queue with incremental re-audits (content-hash diff — only changed files hit the LLM), GitHub repo import, an audit-on-PR GitHub Action, and an LLM eval harness that scores the auditor on precision/recall/F1 in CI. Live on Vercel + Railway.',
+      'AI code-audit platform fusing deterministic static metrics with Gemini analysis into a weighted 0–100 debt score. Async BullMQ audits, content-hash incremental re-audits, an audit-on-PR GitHub Action, and an eval harness scoring precision, recall, and F1 in CI.',
     icon: 'troubleshoot',
     tags: ['React', 'Node.js + Express', 'Gemini', 'BullMQ + Redis', 'Prisma + Postgres'],
     projectUrl: 'https://github.com/prasannawarad/codelens-ai',
@@ -29,14 +38,22 @@ export const homeFeaturedProjects = [
     projectUrl: 'https://github.com/prasannawarad/sec-rag-intel',
   },
   {
-    id: 'home-1',
-    title: 'PrepAI Pro',
+    id: 'home-14',
+    title: 'Weather Prediction MCP Agent',
     description:
-      'Single-page React app for company research and mock interviews: a tabbed dossier with optional STAR stories generated from pasted text or uploaded TXT, Markdown, and PDF resumes. Mock interviews run five questions, then produce a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding, Groq Whisper voice transcription, and a browser dictation fallback; shipped on Vercel at prepai.prasannawarad.com.',
-    icon: 'smart_toy',
-    tags: ['React 19', 'Vite', 'Gemini 2.5 Flash', 'Prompt engineering'],
-    projectUrl: 'https://github.com/prasannawarad/prepai-pro',
-    liveUrl: 'https://prepai.prasannawarad.com',
+      'FastMCP server deployed as a Databricks App and registered as an external MCP tool source for an Agent Bricks supervisor agent — structured tool responses, explicit error handling, and Lakebase-backed request logging.',
+    icon: 'hub',
+    tags: ['MCP', 'FastMCP', 'Databricks Apps', 'Agent Bricks', 'Python'],
+    projectUrl: 'https://github.com/prasannawarad/databricks-weather-prediction-mcp-agent',
+  },
+  {
+    id: 'home-13',
+    title: 'Weather Intelligence Retrieval',
+    description:
+      'Databricks App turning free-text National Weather Service alerts into a searchable corpus — normalized into Lakebase Postgres, chunked and embedded with all-MiniLM-L6-v2, then served from pgvector by cosine similarity behind a Flask REST API.',
+    icon: 'thunderstorm',
+    tags: ['Databricks', 'Lakebase', 'pgvector', 'Sentence Transformers', 'Flask'],
+    projectUrl: 'https://github.com/prasannawarad/weather-intelligence-retrieval-service',
   },
   {
     id: 'home-8',
@@ -50,6 +67,16 @@ export const homeFeaturedProjects = [
     liveUrl: 'https://invest-iq-kuber.netlify.app',
   },
   {
+    id: 'home-1',
+    title: 'PrepAI Pro',
+    description:
+      'Company research and mock interviews in one React app — a tabbed dossier with STAR stories generated from your resume, then five-question mocks that produce a scored feedback card. Gemini 2.5 Flash with Google Search grounding.',
+    icon: 'smart_toy',
+    tags: ['React 19', 'Vite', 'Gemini 2.5 Flash', 'Prompt engineering'],
+    projectUrl: 'https://github.com/prasannawarad/prepai-pro',
+    liveUrl: 'https://prepai.prasannawarad.com',
+  },
+  {
     id: 'home-2',
     title: 'DataDoc_AI',
     description:
@@ -58,6 +85,24 @@ export const homeFeaturedProjects = [
     tags: ['React', 'Gemini AI', 'SQL Engine', 'Plotly'],
     projectUrl: 'https://github.com/prasannawarad/DataDoc_AI',
     liveUrl: 'https://datadocai.netlify.app/',
+  },
+  {
+    id: 'home-15',
+    title: 'Lakebase Support Desk',
+    description:
+      'Ticketing app on Databricks Apps with all operational state in Lakebase Postgres. Status and priority are CHECK constraints in the database rather than app conventions, so a bad value is rejected even when the app has a bug.',
+    icon: 'confirmation_number',
+    tags: ['Databricks Apps', 'Lakebase Postgres', 'Flask', 'SQL Constraints'],
+    projectUrl: 'https://github.com/prasannawarad/databricks-support-desk-prasanna',
+  },
+  {
+    id: 'home-4',
+    title: 'Credit_Risk_Modeling',
+    description:
+      'Credit default prediction across 255K+ lending records using SMOTE to correct a 1:7.6 class imbalance. XGBoost led at 88.57% accuracy, 0.7414 ROC-AUC, and 0.3077 PR-AUC under 5-fold cross-validation.',
+    icon: 'paid',
+    tags: ['Python', 'scikit-learn', 'XGBoost', 'SMOTE'],
+    projectUrl: 'https://github.com/prasannawarad/credit-risk-default-prediction',
   },
   {
     id: 'home-7',
@@ -69,19 +114,10 @@ export const homeFeaturedProjects = [
     projectUrl: 'https://github.com/prasannawarad/CardioRisk',
   },
   {
-    id: 'home-4',
-    title: 'Credit_Risk_Modeling',
-    description:
-      'Credit default prediction pipeline on 255K+ lending records with SMOTE for 1:7.6 imbalance; XGBoost reached 88.57% accuracy, 0.7414 ROC-AUC, and 0.3077 PR-AUC.',
-    icon: 'paid',
-    tags: ['Python', 'scikit-learn', 'XGBoost', 'SMOTE'],
-    projectUrl: 'https://github.com/prasannawarad/credit-risk-default-prediction',
-  },
-  {
     id: 'home-5',
     title: 'Scalable_Fleet_Risk_Analytics',
     description:
-      'Hadoop HDFS and MapReduce ingestion pipeline across 300+ assets in 14 states powering repeatable Power BI risk and maintenance analytics.',
+      'Distributed Hadoop HDFS and MapReduce ingestion pipeline for operational data across 300+ assets in 14 states, feeding Power BI dashboards for risk scoring and predictive maintenance flags.',
     icon: 'local_shipping',
     tags: ['Hadoop', 'HDFS', 'MapReduce', 'Power BI'],
   },
@@ -89,7 +125,7 @@ export const homeFeaturedProjects = [
     id: 'home-6',
     title: 'Instacart_Customer_Behavior',
     description:
-      'Optimized SQL pipelines and Tableau dashboards across 3M+ grocery transactions for segmentation, cohort retention, demand forecasting, and KPI reporting.',
+      'Processed 3M+ grocery transactions through optimized SQL pipelines for segmentation, cohort retention, and demand forecasting, then surfaced product velocity and campaign ROI in Tableau dashboards.',
     icon: 'insights',
     tags: ['SQL', 'Tableau', 'Analytics'],
   },
@@ -110,6 +146,19 @@ export const projects = [
     codeUrl: 'https://github.com/prasannawarad/RAGbase',
     liveUrl: 'https://ragbase.prasannawarad.com',
     category: 'ml-ai',
+  },
+  {
+    id: 'proj-12',
+    title: 'Market_Research_Copilot',
+    description:
+      'AI stock-research assistant built on Databricks. A serverless Spark pipeline ingests market bars and news, derives technical features with window functions (returns, MA5/MA20, 20-day volatility, volume z-score, drawdown, trend), joins news against price movement into a news_price_signals table, and embeds article chunks through a distributed pandas UDF. Output lands in partitioned Delta tables on Unity Catalog for analytics and is upserted into Lakebase Postgres (pgvector + HNSW) for low-latency serving. Two Databricks Apps sit on top: a Flask research console for humans, and a FastMCP server exposing 10 tools — 4 of them writes — so an Agent Bricks agent reaches exactly the same data a person does.',
+    icon: 'query_stats',
+    tags: ['Databricks', 'PySpark', 'Delta + Unity Catalog', 'Lakebase pgvector', 'MCP'],
+    commit: '40b3a40',
+    commitMessage: 'Pipeline ticker changes',
+    updatedAt: 'Aug 2026',
+    codeUrl: 'https://github.com/prasannawarad/market-research-copilot',
+    category: 'data-eng',
   },
   {
     id: 'proj-11',
@@ -139,17 +188,29 @@ export const projects = [
     category: 'ml-ai',
   },
   {
-    id: 'proj-1',
-    title: 'PrepAI Pro',
+    id: 'proj-14',
+    title: 'Weather_Prediction_MCP_Agent',
     description:
-      'Single-page React app for company research and mock interviews: a tabbed dossier with optional STAR stories generated from pasted text or uploaded TXT, Markdown, and PDF resumes. Mock interviews run five questions, then produce a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding, Groq Whisper voice transcription, and a browser dictation fallback; shipped on Vercel at prepai.prasannawarad.com.',
-    icon: 'smart_toy',
-    tags: ['React 19', 'Vite', 'Gemini 2.5 Flash', 'Prompt engineering'],
-    commit: '178787b',
-    commitMessage: 'feat: guardrails, general interviewer persona, Whisper-first voice',
-    updatedAt: 'Jul 2026',
-    codeUrl: 'https://github.com/prasannawarad/prepai-pro',
-    liveUrl: 'https://prepai.prasannawarad.com',
+      'FastMCP server deployed as a Databricks App and registered as an external MCP tool source for an Agent Bricks supervisor agent. Exposes forecast and recommendation tools through @mcp.tool with structured responses and explicit error handling for bad inputs and upstream API failures, plus optional Lakebase-backed request logging and a dashboard. The point of the build is the integration contract — an LLM agent calling real tools over streamable HTTP rather than an API wrapped in a prompt.',
+    icon: 'hub',
+    tags: ['MCP', 'FastMCP', 'Databricks Apps', 'Agent Bricks', 'Python'],
+    commit: '6badd94',
+    commitMessage: 'Update README for weather MCP agent',
+    updatedAt: 'Aug 2026',
+    codeUrl: 'https://github.com/prasannawarad/databricks-weather-prediction-mcp-agent',
+    category: 'ml-ai',
+  },
+  {
+    id: 'proj-13',
+    title: 'Weather_Intelligence_Retrieval',
+    description:
+      'Databricks App that turns free-text National Weather Service alerts and forecasts into a searchable semantic corpus. Harvests narrative weather text, normalizes it into weather_documents on Lakebase Postgres, chunks at 800 characters with 100-character overlap, embeds with sentence-transformers/all-MiniLM-L6-v2 (384-dim), and stores the vectors in pgvector for cosine-similarity retrieval behind a Flask REST API and web UI. NWS was chosen deliberately: no API key, and its narrative alert text is genuinely unstructured, which makes it a fair test of retrieval rather than a keyword lookup.',
+    icon: 'thunderstorm',
+    tags: ['Databricks', 'Lakebase', 'pgvector', 'Sentence Transformers', 'Flask'],
+    commit: '22fb339',
+    commitMessage: 'feat: polish Day 2 weather intelligence app',
+    updatedAt: 'Aug 2026',
+    codeUrl: 'https://github.com/prasannawarad/weather-intelligence-retrieval-service',
     category: 'ml-ai',
   },
   {
@@ -168,6 +229,20 @@ export const projects = [
     category: 'ml-ai',
   },
   {
+    id: 'proj-1',
+    title: 'PrepAI Pro',
+    description:
+      'Single-page React app for company research and mock interviews: a tabbed dossier with optional STAR stories generated from pasted text or uploaded TXT, Markdown, and PDF resumes. Mock interviews run five questions, then produce a scorecard with overall score, strengths, improvements, and per-question feedback. Powered by Gemini 2.5 Flash with Google Search grounding, Groq Whisper voice transcription, and a browser dictation fallback; shipped on Vercel at prepai.prasannawarad.com.',
+    icon: 'smart_toy',
+    tags: ['React 19', 'Vite', 'Gemini 2.5 Flash', 'Prompt engineering'],
+    commit: '178787b',
+    commitMessage: 'feat: guardrails, general interviewer persona, Whisper-first voice',
+    updatedAt: 'Jul 2026',
+    codeUrl: 'https://github.com/prasannawarad/prepai-pro',
+    liveUrl: 'https://prepai.prasannawarad.com',
+    category: 'ml-ai',
+  },
+  {
     id: 'proj-2',
     title: 'DataDoc_AI',
     description:
@@ -183,17 +258,17 @@ export const projects = [
     category: 'data-eng',
   },
   {
-    id: 'proj-7',
-    title: 'CardioRisk',
+    id: 'proj-15',
+    title: 'Lakebase_Support_Desk',
     description:
-      'Predictive health analytics pipeline in R benchmarking 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; a Decision Tree at 0.50 AUC was identified as majority-class prediction rather than signal. Random Forest ranked BMI, age category, sleep duration, and general health as the strongest predictors across 17 clinical attributes.',
-    icon: 'favorite',
-    tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
-    commit: 'd2636af',
-    commitMessage: 'CardioRisk: production-style data pipeline for heart disease analysis',
-    updatedAt: 'Apr 2026',
-    codeUrl: 'https://github.com/prasannawarad/CardioRisk',
-    category: 'ml-ai',
+      'Internal ticketing app on Databricks Apps with every row of operational state in Lakebase Postgres — Flask, server-rendered HTML, one stylesheet, no build step and no stored credentials. Two tables joined by an enforced foreign key with ON DELETE CASCADE; status and priority are CHECK constraints in the database rather than application conventions, so the database rejects a bad value even when the app has a bug. All SQL is isolated in a repository layer with nothing hard-coded in the views.',
+    icon: 'confirmation_number',
+    tags: ['Databricks Apps', 'Lakebase Postgres', 'Flask', 'SQL Constraints'],
+    commit: '634223e',
+    commitMessage: 'fine tunes grants',
+    updatedAt: 'Aug 2026',
+    codeUrl: 'https://github.com/prasannawarad/databricks-support-desk-prasanna',
+    category: 'data-eng',
   },
   {
     id: 'proj-4',
@@ -206,6 +281,19 @@ export const projects = [
     commitMessage: 'Add tech stack section to README',
     updatedAt: 'Apr 2026',
     codeUrl: 'https://github.com/prasannawarad/credit-risk-default-prediction',
+    category: 'ml-ai',
+  },
+  {
+    id: 'proj-7',
+    title: 'CardioRisk',
+    description:
+      'Predictive health analytics pipeline in R benchmarking 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; a Decision Tree at 0.50 AUC was identified as majority-class prediction rather than signal. Random Forest ranked BMI, age category, sleep duration, and general health as the strongest predictors across 17 clinical attributes.',
+    icon: 'favorite',
+    tags: ['R', 'Statistical Modeling', 'ML Pipeline'],
+    commit: 'd2636af',
+    commitMessage: 'CardioRisk: production-style data pipeline for heart disease analysis',
+    updatedAt: 'Apr 2026',
+    codeUrl: 'https://github.com/prasannawarad/CardioRisk',
     category: 'ml-ai',
   },
   {
@@ -227,18 +315,5 @@ export const projects = [
     tags: ['SQL', 'Tableau', 'Analytics'],
     updatedAt: 'Jan 2024',
     category: 'data-eng',
-  },
-  {
-    id: 'proj-10',
-    title: 'Airflow_ETL_Pipeline',
-    description:
-      'Learning implementation of an Apache Airflow and Astro ETL workflow. The repository is based on an upstream example and currently has limited project documentation, so it is kept here as an archived learning project rather than a representative production case study.',
-    icon: 'conveyor_belt',
-    tags: ['Apache Airflow', 'Astro', 'Python', 'ETL'],
-    commit: '54a76ea',
-    commitMessage: 'Add files via upload',
-    updatedAt: 'Dec 2024',
-    codeUrl: 'https://github.com/prasannawarad/End-To-End-ETL-Pipeline-Using-AirFlow-And-Astro',
-    category: 'archive',
   },
 ];

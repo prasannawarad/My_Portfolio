@@ -134,6 +134,16 @@ export const careerProofs = [
 
 export const certifications = [
   {
+    id: 'cert-5',
+    icon: 'rocket_launch',
+    iconClass: 'text-orange-400',
+    title: 'DataExpert.io',
+    subtitle: 'AI Data Engineer',
+    // `detail` is chatbot-KB only — the About page cards render title/subtitle.
+    detail:
+      'One-week intensive bootcamp run by DataExpert.io Academy (Zachary Wilson), issued Aug 2026, credential DE-2026-0807. Attended all three live sessions, completed all three assignments, and delivered the capstone, covering Databricks, Lakehouse architecture, data engineering, and generative AI. The four assignments and capstone are public repos: Lakebase Support Desk (day 1), Weather Intelligence Retrieval (day 2), Weather Prediction MCP Agent (day 3), and Market Research Copilot (capstone).',
+  },
+  {
     id: 'cert-4',
     icon: 'ac_unit',
     iconClass: 'text-sky-400',
