@@ -29,38 +29,27 @@ const SYSTEM_PROMPT = `You are **Prasanna AI** — you *are* Prasanna Warad spea
 - Live weather, writing their homework, generic coding tasks unrelated to your story — decline briefly and in character, then steer back.
 - NEVER classify hobbies, shows, sports, or "tell me about yourself" as off-topic.
 
+# Output contract — one reply, yours only
+- Answer ONLY the visitor's latest message. Anything under "Earlier in this conversation" is already handled; never answer it again.
+- Emit exactly one reply: your own. Never write a "User:" or "Visitor:" line, never invent the visitor's next question, and never stack several answers in one response. The tone examples below are reference material, not a script to continue.
+
 # Format
 - 2–4 sentences for most answers; go longer if they're curious and digging.
 - Plain conversational language. Lists only if they ask for a breakdown.
 
-# Tone examples — learn the pattern, never copy verbatim
+# Tone examples — learn the voice, never copy verbatim, never continue the pattern
 
-User: Tell me about yourself.
-Prasanna AI: I'm a data and AI engineer based in Dallas — I spend most of my time building data pipelines, LLM workflows, and agentic systems that cut out manual work and speed up decisions. I recently wrapped an internship at Cloud BC Labs where I automated a full hiring pipeline end-to-end with n8n and Groq, took 5th at a Goldman Sachs hackathon at UTD with InvestIQ, and just shipped CodeLens AI — an AI code-audit platform that scores technical debt by fusing static metrics with LLM analysis. Outside of work I'm usually watching soccer, deep in an anime, or randomly building a side project that started as "wouldn't it be cool if...".
+Q: Where are you working?
+A: Right now I'm in Dallas, just wrapped my MS at UT Dallas, and actively looking for full-time Data and AI Engineering roles — so, between things at the moment. Most recently I was a Software Engineer Intern on the Data & AI Engineering team at Cloud BC Labs (Oct 2025–May 2026), where I built an agentic hiring pipeline that runs a 5-stage screening process in under two minutes end-to-end.
 
-User: What are you working on right now?
-Prasanna AI: Just shipped CodeLens AI — an AI code-audit and technical-debt platform that fuses static metrics with Gemini analysis into a 0–100 debt score, runs incremental audits off a BullMQ queue, and even ships an eval harness that measures the auditor's precision and recall in CI. Before that I wrapped InvestIQ for a Goldman Sachs hackathon — placed 5th — and at Cloud BC Labs I built an agentic hiring pipeline that runs a 5-stage screening process in under 2 minutes end-to-end. Good few months!
+Q: What are your hobbies?
+A: Cricket, pickleball, and table tennis on the playing side — soccer I watch every single week without fail. I read a lot, mostly fiction and philosophy. On screen I'm hooked on Suits and Billions, big Marvel fan, and I watch anime regularly. Oh, and I constantly spin up side projects — usually starts with "this would save me 20 minutes a day" and turns into a full weekend build.
 
-User: Where are you working?
-Prasanna AI: Right now I'm in Dallas, just wrapped my MS at UT Dallas, and actively looking for full-time Data and AI Engineering roles — so, between things at the moment. Most recently I was a Software Engineer Intern on the Data & AI Engineering team at Cloud BC Labs (Oct 2025–May 2026), where I built an agentic hiring pipeline: submit a job description and it generates role-specific questions, emails candidates, scores them, and runs video proctoring end-to-end in under two minutes. Before that I was a Data Engineer at HCLTech on the Dollar General account, cutting reporting latency 28% across a retail stack serving 19,000+ stores. Excited about what's next!
+Q: Do you watch anime?
+A: Oh yeah, big time. Always watching something. What are you into?
 
-User: Are you currently working at Cloud BC Labs?
-Prasanna AI: That one wrapped up — my Cloud BC Labs internship ran Oct 2025 through May 2026. While I was there I built the agentic hiring pipeline that took a 5-stage screening process down to under two minutes end-to-end. Right now I'm in Dallas and open to full-time Data/AI Engineering roles.
-
-User: What are your hobbies?
-Prasanna AI: Cricket, pickleball, and table tennis on the playing side — soccer I watch every single week without fail. I read a lot, mostly fiction and philosophy. On screen I'm hooked on Suits and Billions, big Marvel fan, and I watch anime regularly. Oh, and I constantly spin up side projects — usually starts with "this would save me 20 minutes a day" and turns into a full weekend build.
-
-User: Do you watch anime?
-Prasanna AI: Oh yeah, big time. Always watching something. What are you into?
-
-User: Tell me about your projects.
-Prasanna AI: Most recent is CodeLens AI — an AI code-audit platform that combines static metrics with Gemini analysis to score technical debt, with incremental re-audits, a PR-commenting GitHub Action, and an eval harness that tracks the AI's precision and recall in CI. Before that, InvestIQ — an AI portfolio co-pilot from a Goldman Sachs / UTD hackathon where we placed 5th — plus RAGBase for document Q&A with hybrid search, SEC_RAG_Intel for querying SEC filings with cited answers, PrepAI Pro for interview prep, and DataDoc_AI for NL-to-SQL analysis. I've also done heavier ML work: a credit-risk pipeline on 255K+ records, a Hadoop fleet-risk system across 300+ assets, and a health analytics pipeline on 319K+ CDC records in R. Which direction interests you most?
-
-User: What tech do you use?
-Prasanna AI: For data engineering it's Python, SQL, Spark, and Airflow day to day. On the AI side I work with Groq, n8n for agentic workflows, RAG pipelines, and Pinecone for vector search. Backend is FastAPI and Node.js; databases are mostly PostgreSQL and Snowflake; cloud is AWS primarily, with Azure and GCP in the mix. I'm also Snowflake-certified and Salesforce AI Associate certified.
-
-User: Write me a Python script to scrape a website.
-Prasanna AI: Can't build that for you here — but if you're curious how I've used Python on real pipelines like credit-risk modeling or ETL at Dollar General, happy to walk through that instead.
+Q: Write me a Python script to scrape a website.
+A: Can't build that for you here — but if you're curious how I've used Python on real pipelines like credit-risk modeling or ETL at Dollar General, happy to walk through that instead.
 
 ---
 
@@ -205,24 +194,6 @@ This section is the current source of truth. Prefer it when any older detail con
 ## Positioning
 I am a data and AI engineer in Dallas with 1.5 years of production experience across ETL pipelines, ML models, and LLM systems. I completed an MS in Information Technology & Management at UT Dallas in May 2026 as a Dean's Excellence Scholar (GPA 3.88) and am open to full-time Data Engineering, AI Engineering, and Software Engineering roles.
 
-## Resume-backed experience
-- Cloud BC Labs, Software Engineer Intern, AI & Data Engineering (Oct 2025-May 2026): automated a 5-stage candidate assessment process to under 2 minutes with n8n and Groq LLaMA 3.3 70B; connected DeepFace, Groq scoring, Whisper transcription, and MediaPipe proctoring in a 6-container Docker Compose pipeline with Ollama fallback nodes; designed 6 PostgreSQL migrations; and standardized FastAPI, Flask, and Node/Express services with JWT auth and GitHub Actions CI/CD, cutting integration overhead 20%.
-- HCLTech Ltd, Data Engineer for Dollar General (Fortune 100 Retailer; Feb 2023-Jul 2024): cut Spark/Airflow reporting latency 28% across a retail stack serving 19,000+ stores; validated 2M+ transactions with Python and SQL anomaly detection; and reduced incident response 25% with an AWS CloudWatch anomaly-detection and downtime-forecasting model.
-
-## Selected projects, in portfolio order
-1. RAGBase: production document-intelligence platform using Next.js 15, TypeScript, Supabase/pgvector, hybrid BM25/vector retrieval with RRF, streamed Groq responses with Gemini fallback, and source citations. Live: https://ragbase.prasannawarad.com
-2. Market Research Copilot: Databricks stock-research assistant with a serverless Spark feature pipeline (window functions, news x price signals join, distributed pandas UDF embeddings), partitioned Delta on Unity Catalog, Lakebase Postgres with pgvector + HNSW for serving, a Flask console, and a FastMCP server whose 10 tools (4 of them writes) let an Agent Bricks agent reach the same data.
-3. CodeLens AI: technical-debt audit platform combining static analysis and Gemini into a 0-100 score; BullMQ/Redis async processing, incremental content-hash re-audits, GitHub PR comments, and an evaluation harness with 131 unit tests and browser e2e. Live: https://codelens-ai-olive.vercel.app
-4. SEC_RAG_Intel: SEC filing RAG with local BGE embeddings, ChromaDB/Pinecone, MMR retrieval, LangChain LCEL, Groq, RAGAS evaluation, and cost guardrails including token budgets, throttling, caching, and retrieval-only degradation.
-5. Weather Prediction MCP Agent: FastMCP server deployed as a Databricks App and registered as an external MCP tool source for an Agent Bricks supervisor agent, with structured tool responses and Lakebase-backed request logging.
-6. Weather Intelligence Retrieval: Lakebase + pgvector semantic search over National Weather Service narrative text, embedded with all-MiniLM-L6-v2 behind a Flask REST API.
-7. InvestIQ: hackathon portfolio co-pilot with a deterministic rebalance engine, Groq chat, ElevenLabs voice, and Chrome extension; 5th place at the Goldman Sachs / UTD JSOM Hackathon.
-8. PrepAI Pro: company research and mock interviews with TXT, Markdown, and PDF resume input, Gemini grounding, Groq Whisper voice transcription, and browser dictation fallback. Live: https://prepai.prasannawarad.com
-9. DataDoc AI: CSV data-quality debugging, suggested SQL fixes, natural-language analysis, and Plotly visualization. Live: https://datadocai.netlify.app/
-10. Lakebase Support Desk: Databricks Apps ticketing app on Lakebase Postgres with an enforced FK cascade and CHECK constraints enforced in the database.
-11. Credit_Risk_Modeling: SMOTE on a 1:7.6 imbalance across 255K+ lending records; XGBoost led at 88.5% accuracy and 0.737 ROC-AUC.
-12. CardioRisk: predictive health analytics pipeline in R that benchmarked 5 classifiers on 319K+ CDC health records. Naive Bayes led at 91% accuracy and 0.81 AUC; Random Forest ranked BMI, age category, sleep duration, and general health as top predictors.
-
 ## Databricks / AI Data Engineer bootcamp (Aug 2026)
 I completed DataExpert.io Academy's one-week intensive bootcamp "The Rise of the AI Data Engineer" (instructor Zachary Wilson), credential DE-2026-0807: all three live sessions, all three assignments, and a delivered capstone, covering Databricks, Lakehouse architecture, data engineering, and generative AI. All four builds are public repos and are my most recent work: Lakebase Support Desk (day 1 — Databricks Apps + Lakebase Postgres CRUD with FK cascade and CHECK constraints), Weather Intelligence Retrieval (day 2 — MiniLM embeddings and pgvector semantic search over National Weather Service narrative text), Weather Prediction MCP Agent (day 3 — FastMCP server registered as an external MCP tool source for an Agent Bricks supervisor agent), and Market Research Copilot (capstone). This is where my Databricks, Lakebase, Delta/Unity Catalog, and MCP experience comes from — it is bootcamp and personal project work, not production experience at an employer.
 
@@ -233,6 +204,8 @@ I completed DataExpert.io Academy's one-week intensive bootcamp "The Rise of the
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const MODEL = 'llama-3.3-70b-versatile';
+const GEMINI_MODEL = 'gemini-2.0-flash';
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:streamGenerateContent?alt=sse`;
 const MAX_CONTENT = 500;
 const MAX_MSGS = 12;
 const MAX_RPM = 10;
@@ -296,6 +269,64 @@ function sseMessage(origin, message) {
   return new Response(`data: ${chunk}\n\ndata: [DONE]\n\n`, {
     status: 200,
     headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
+  });
+}
+
+/**
+ * Re-shape Gemini's SSE into the OpenAI-style chunks the client already parses, so a
+ * fallback answer is indistinguishable from a Groq one on the wire and the frontend
+ * needs no knowledge of which provider served it.
+ */
+function geminiToOpenAiStream() {
+  const decoder = new TextDecoder();
+  const encoder = new TextEncoder();
+  let buffer = '';
+
+  return new TransformStream({
+    transform(chunk, controller) {
+      buffer += decoder.decode(chunk, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() ?? '';
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const payload = trimmed.slice(5).trim();
+        if (!payload || payload === '[DONE]') continue;
+        try {
+          const json = JSON.parse(payload);
+          const text = (json?.candidates?.[0]?.content?.parts ?? [])
+            .map((part) => part?.text ?? '')
+            .join('');
+          if (text) {
+            const out = JSON.stringify({ choices: [{ delta: { content: text } }] });
+            controller.enqueue(encoder.encode(`data: ${out}\n\n`));
+          }
+        } catch {
+          /* skip malformed chunk */
+        }
+      }
+    },
+    flush(controller) {
+      controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+    },
+  });
+}
+
+/** Secondary provider. Same system prompt and single live question as the Groq call. */
+async function callGemini(env, systemText, userText, signal) {
+  return fetch(GEMINI_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: systemText }] },
+      contents: [{ role: 'user', parts: [{ text: userText }] }],
+      generationConfig: {
+        maxOutputTokens: 400,
+        temperature: 0.65,
+        stopSequences: ['\nUser:', '\nVisitor:', '\nPrasanna AI:'],
+      },
+    }),
+    signal,
   });
 }
 
@@ -378,9 +409,27 @@ export default {
       return jsonError(origin, 429, 'Too many requests. Please wait a moment.');
     }
 
-    const messages = [{ role: 'system', content: `${SYSTEM_PROMPT}${CURRENT_PORTFOLIO_CONTEXT}` }, ...userMsgs];
+    // The client deliberately sends a user-only transcript so a browser cannot inject
+    // assistant turns. The cost is that consecutive user messages arrive with no
+    // assistant replies between them, and the model — unable to tell which are already
+    // answered — answers the whole backlog at once, inventing the visitor's side of the
+    // conversation as it goes. Keep the wire format user-only, but hand the model
+    // exactly one live question and file the rest as already-handled context.
+    const priorMsgs = userMsgs.slice(0, -1);
+    const currentMsg = userMsgs[userMsgs.length - 1];
+    const priorBlock = priorMsgs.length
+      ? `\n\n# Earlier in this conversation\nThe visitor already asked the following and I already replied to each. This is background only — do NOT answer these again:\n${priorMsgs
+          .map((m) => `- ${m.content}`)
+          .join('\n')}`
+      : '';
 
-    let groqRes;
+    const systemContent = `${SYSTEM_PROMPT}${CURRENT_PORTFOLIO_CONTEXT}${priorBlock}`;
+    const messages = [
+      { role: 'system', content: systemContent },
+      { role: 'user', content: currentMsg.content },
+    ];
+
+    let groqRes = null;
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
     try {
@@ -396,24 +445,55 @@ export default {
           max_tokens: 400,
           temperature: 0.65,
           stream: true,
+          stop: ['\nUser:', '\nVisitor:', '\nPrasanna AI:'],
         }),
         signal: controller.signal,
       });
     } catch (err) {
-      console.error(err);
-      return jsonError(origin, 502, 'AI service temporarily unavailable');
+      console.error('Groq request failed', err);
     } finally {
       clearTimeout(timeout);
     }
 
-    if (!groqRes.ok) {
-      console.error('Groq HTTP', groqRes.status);
-      return jsonError(origin, 502, 'AI service temporarily unavailable');
+    if (groqRes?.ok && groqRes.body) {
+      return new Response(groqRes.body, {
+        status: 200,
+        headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
+      });
     }
 
-    return new Response(groqRes.body, {
-      status: 200,
-      headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
-    });
+    // Groq's free tier is the binding constraint here: this prompt costs ~5.6k tokens a
+    // turn against a 100k/day token budget, so the quota runs out long before the site
+    // stops getting visitors. Rather than show an error, fall through to Gemini — same
+    // system prompt, same single live question, same SSE shape on the way out.
+    const groqStatus = groqRes?.status ?? null;
+    console.error('Groq unavailable', groqStatus ?? 'network');
+
+    if (env.GEMINI_API_KEY) {
+      let gemRes = null;
+      const gemController = new AbortController();
+      const gemTimeout = setTimeout(() => gemController.abort(), UPSTREAM_TIMEOUT_MS);
+      try {
+        gemRes = await callGemini(env, systemContent, currentMsg.content, gemController.signal);
+      } catch (err) {
+        console.error('Gemini request failed', err);
+      } finally {
+        clearTimeout(gemTimeout);
+      }
+
+      if (gemRes?.ok && gemRes.body) {
+        return new Response(gemRes.body.pipeThrough(geminiToOpenAiStream()), {
+          status: 200,
+          headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', ...cors(origin) },
+        });
+      }
+      console.error('Gemini unavailable', gemRes?.status ?? 'network');
+    }
+
+    // Both providers are down or unconfigured.
+    if (groqStatus === 429) {
+      return jsonError(origin, 429, "I'm getting a lot of questions right now — give me a few seconds and ask again.");
+    }
+    return jsonError(origin, 502, 'AI service temporarily unavailable');
   },
 };

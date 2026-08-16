@@ -5,5 +5,8 @@ compatibility_date = "2024-12-01"
 [vars]
 ALLOWED_ORIGIN = "https://prasannawarad.com"
 
-# Secrets (set via `wrangler secret put GROQ_API_KEY`):
-# GROQ_API_KEY — never in this file
+# Secrets — never in this file. Set with `wrangler secret put <NAME>`:
+#   GROQ_API_KEY    primary provider (llama-3.3-70b-versatile)
+#   GEMINI_API_KEY  fallback provider, used when Groq errors or exhausts its free
+#                   token quota. Optional: without it the chat still works, it just
+#                   returns an honest cooldown message instead of falling through.
