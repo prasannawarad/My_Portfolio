@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { stripMarkdown } from '../../utils/stripMarkdown';
 
 function BotIcon() {
   return (
@@ -47,7 +48,7 @@ function ChatMessage({ role, content, isLoading = false }) {
         {isLoading && !content ? (
           <LoadingDots />
         ) : (
-          <p className="whitespace-pre-wrap break-words leading-relaxed">{content}</p>
+          <p className="whitespace-pre-wrap break-words leading-relaxed">{stripMarkdown(content)}</p>
         )}
       </div>
     </div>
