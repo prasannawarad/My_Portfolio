@@ -9,7 +9,7 @@ function Layout() {
   const showFooter = pathname !== '/resume';
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col bg-background-dark text-text-main font-display antialiased overflow-x-hidden">
+    <div className="relative flex min-h-screen w-full flex-col bg-background-dark text-text-main font-display antialiased overflow-x-safe">
       <Seo />
       <HashScrollHandler />
       <Navbar />

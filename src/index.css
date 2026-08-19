@@ -9,7 +9,10 @@
 
   html {
     scroll-behavior: smooth;
+    /* `hidden` first as the Safari < 16 fallback; see .overflow-x-safe below for
+       why `clip` is the one that matters. */
     overflow-x: hidden;
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     /* Fallback when JS scroll runs; pairs with sticky header */
     scroll-padding-top: 4rem;
@@ -24,6 +27,7 @@
   body {
     @apply bg-background-dark text-text-main font-display antialiased;
     overflow-x: hidden;
+    overflow-x: clip;
     background-image:
       radial-gradient(circle at 15% 12%, rgba(212, 175, 55, 0.08), transparent 30%),
       radial-gradient(circle at 85% 2%, rgba(148, 163, 184, 0.08), transparent 26%);
@@ -95,6 +99,16 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* `overflow-x: hidden` forces overflow-y to compute from `visible` to `auto`,
+     which turns the element into a scroll container — and a sticky child then
+     sticks to *that* box instead of the viewport, so the site header just
+     scrolled away. `clip` contains the same horizontal spill without creating a
+     scroll container. `hidden` stays first as the Safari < 16 fallback. */
+  .overflow-x-safe {
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* Hero mobile readability: reduce gold wash + add copy scrim */
