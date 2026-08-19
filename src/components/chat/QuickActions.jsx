@@ -14,7 +14,7 @@ function QuickActions({ onPick, visible }) {
   if (!visible) return null;
 
   return (
-    <div className="flex flex-wrap gap-2 px-3 pb-2 pt-1 max-sm:flex-nowrap max-sm:overflow-x-auto max-sm:pb-3 terminal-scrollbar">
+    <div className="flex flex-wrap gap-2">
       {PRESETS.map((label) => (
         <button
           key={label}

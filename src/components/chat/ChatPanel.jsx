@@ -10,6 +10,7 @@ function ChatPanel({ open, onClose }) {
   const isWaitingForResponse = isLoading;
   const panelRef = useRef(null);
   const endRef = useRef(null);
+  const logRef = useRef(null);
   const lastScrollLenRef = useRef(0);
   const openerRef = useRef(null);
   const lastIdx = messages.length - 1;
@@ -20,6 +21,14 @@ function ChatPanel({ open, onClose }) {
     const prevLen = lastScrollLenRef.current;
     const nextLen = messages.length;
     lastScrollLenRef.current = nextLen;
+
+    // An empty conversation has nothing to follow, and the greeting + quick
+    // actions overflow the short desktop panel — scrolling to the end would open
+    // the chat already scrolled past the greeting. Pin to the top instead.
+    if (nextLen === 0) {
+      if (logRef.current) logRef.current.scrollTop = 0;
+      return undefined;
+    }
 
     // Only smooth-scroll when a new message is appended.
     const behavior = nextLen > prevLen && !isWaitingForResponse ? 'smooth' : 'auto';
@@ -103,7 +112,7 @@ function ChatPanel({ open, onClose }) {
       aria-describedby="chat-panel-subtitle"
       className={`relative z-[1] flex w-[360px] max-w-[min(360px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-surface-accent bg-code-bg shadow-[0_8px_32px_rgba(0,0,0,0.4)] will-change-transform transition-[opacity,transform] duration-[250ms] ease-out
         h-[520px] max-h-[75dvh]
-        max-md:fixed max-md:inset-0 max-md:z-[10000] max-md:h-full max-md:max-h-none max-md:w-full max-md:rounded-none ${
+        max-md:fixed max-md:inset-0 max-md:z-[10000] max-md:h-full max-md:max-h-none max-md:w-full max-md:max-w-none max-md:rounded-none ${
           open ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 translate-y-2'
         }`}
     >
@@ -142,13 +151,25 @@ function ChatPanel({ open, onClose }) {
       ) : null}
 
       <div
+        ref={logRef}
         role="log"
         aria-live="polite"
         aria-relevant="additions"
         className="terminal-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto px-3 py-3"
       >
         {messages.length === 0 ? (
-          <QuickActions onPick={sendMessage} visible />
+          <div className="px-3">
+            <div className="rounded-lg border border-surface-accent bg-surface-dark px-3 py-2">
+              <p className="font-mono text-xs font-bold text-primary">&gt; prasanna_ai --ready</p>
+              <p className="mt-1 text-sm leading-snug text-text-main">
+                Ask about Prasanna&apos;s experience, projects, stack, or how to reach him.
+              </p>
+            </div>
+            <p className="mb-2 mt-3 font-mono text-[11px] uppercase tracking-wide text-text-muted">
+              Try one of these
+            </p>
+            <QuickActions onPick={sendMessage} visible />
+          </div>
         ) : null}
         {messages.map((m, i) => (
           <ChatMessage
